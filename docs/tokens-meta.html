@@ -1,0 +1,307 @@
+<title>Token da Meta em 6 Passos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#F6F5F2; --sf:#FFFFFF; --sf2:#EAE8E2; --ln:#D8D5CC; --ln2:#BAB6AA;
+  --ink:#1A1915; --ink2:#55524A; --ink3:#87837A;
+  --ac:#14507D; --ac-s:#DEEAF3;
+  --av:#8A5A06; --av-s:#F8EBD3;
+  --pg:#9B2F28; --pg-s:#F8E2E0;
+  --ok:#1D6640; --ok-s:#DDEEE3;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --body:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --disp:'Bricolage Grotesque','Source Sans 3',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141412; --sf:#1D1D1A; --sf2:#272723; --ln:#3A3935; --ln2:#514F49;
+  --ink:#F1EFE9; --ink2:#B3AFA5; --ink3:#87837A;
+  --ac:#7FB6DE; --ac-s:#12293A;
+  --av:#D8A741; --av-s:#332813;
+  --pg:#E8837C; --pg-s:#3A1F1D;
+  --ok:#62BE8C; --ok-s:#16321F;
+}}
+:root[data-theme="dark"]{
+  --bg:#141412; --sf:#1D1D1A; --sf2:#272723; --ln:#3A3935; --ln2:#514F49;
+  --ink:#F1EFE9; --ink2:#B3AFA5; --ink3:#87837A;
+  --ac:#7FB6DE; --ac-s:#12293A;
+  --av:#D8A741; --av-s:#332813;
+  --pg:#E8837C; --pg-s:#3A1F1D;
+  --ok:#62BE8C; --ok-s:#16321F;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.58;padding-inline:20px}
+.wrap{max-width:780px;margin:0 auto;padding-block:44px 90px}
+h1,h2,h3{font-family:var(--disp);font-weight:700;margin:0;text-wrap:balance}
+h1{font-size:clamp(33px,6vw,48px);line-height:1.02;letter-spacing:-.02em}
+h2{font-size:21px;line-height:1.22}
+h3{font-size:16px;font-family:var(--body);font-weight:600}
+p{margin:0}
+a{color:var(--ac)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.lede{font-size:17.5px;color:var(--ink2);max-width:60ch;margin-top:13px}
+header{border-bottom:1px solid var(--ln2);padding-bottom:28px}
+
+.meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:20px;font-family:var(--mono);font-size:12px;color:var(--ink2)}
+.meta b{color:var(--ink);font-weight:600}
+
+.note{border-left:3px solid var(--ln2);padding:3px 0 3px 15px;margin-top:18px;color:var(--ink2);font-size:15px;max-width:70ch}
+.note b{color:var(--ink)}
+.note.av{border-color:var(--av);background:var(--av-s);padding:13px 16px;border-radius:0 4px 4px 0;color:var(--ink)}
+.note.pg{border-color:var(--pg);background:var(--pg-s);padding:13px 16px;border-radius:0 4px 4px 0;color:var(--ink)}
+.note.ok{border-color:var(--ok);background:var(--ok-s);padding:13px 16px;border-radius:0 4px 4px 0;color:var(--ink)}
+
+.passo{margin-top:30px;border:1px solid var(--ln);border-radius:6px;background:var(--sf);overflow:hidden}
+.passo.feito{opacity:.5}
+.ph{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start;padding:17px 18px;background:var(--sf2);border-bottom:1px solid var(--ln)}
+.num{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--bg);background:var(--ac);
+  width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex:none;margin-top:1px}
+.ph .sub{font-size:13.5px;color:var(--ink2);margin-top:3px}
+.pc{padding:18px}
+.pc > *+*{margin-top:14px}
+.pc ol,.pc ul{margin:0;padding-left:20px}
+.pc li+li{margin-top:7px}
+
+.chk{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11.5px;color:var(--ink3);cursor:pointer;user-select:none;white-space:nowrap}
+.chk input{accent-color:var(--ok);width:17px;height:17px;cursor:pointer}
+
+table{border-collapse:collapse;width:100%;font-size:14.5px;margin-top:4px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--ln);vertical-align:top}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+tbody tr:last-child td{border-bottom:none}
+.tw{overflow-x:auto;border:1px solid var(--ln);border-radius:5px;background:var(--sf)}
+.tw table{min-width:520px}
+
+.cmd{position:relative;background:var(--ink);color:#F2F0EA;border-radius:5px;padding:13px 15px;padding-right:74px;
+  font-family:var(--mono);font-size:13px;line-height:1.55;overflow-x:auto;white-space:pre}
+:root[data-theme="dark"] .cmd,:root:not([data-theme="light"]) .cmd{background:#0D0D0C;border:1px solid var(--ln)}
+.cmd button{position:absolute;top:9px;right:9px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;
+  background:transparent;color:#B9B5AA;border:1px solid #4A4842;border-radius:4px;padding:4px 9px;cursor:pointer}
+.cmd button:hover{color:#F2F0EA;border-color:#8A8780}
+code{font-family:var(--mono);font-size:.89em;background:var(--sf2);padding:1px 5px;border-radius:3px}
+kbd{font-family:var(--mono);font-size:.85em;border:1px solid var(--ln2);border-bottom-width:2px;border-radius:4px;padding:1px 5px}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+@media (max-width:560px){.ph{grid-template-columns:auto 1fr;row-gap:8px}.ph .chk{grid-column:2}}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">@jamesolaya.es · credenciais</span>
+  <h1>Token da Meta em 6 Passos</h1>
+  <p class="lede">No fim você tem duas coisas, e só elas: <code>INSTAGRAM_USER_ID</code> e <code>INSTAGRAM_ACCESS_TOKEN</code>. Uns 15 minutos, se nada travar.</p>
+  <div class="meta">
+    <span>fluxo: <b>API com Login do Instagram</b></span>
+    <span>sem Página do Facebook</span>
+    <span>sem Análise do App</span>
+  </div>
+</header>
+
+<div class="note ok"><b>O que você NÃO precisa.</b> Página do Facebook, portfólio empresarial verificado, Análise do App, webhooks, URL de redirecionamento. Tudo isso só existe para apps que atendem contas de terceiros. Publicar na própria conta roda em <b>Standard Access</b>, que é o padrão de qualquer app novo. Se o painel mostrar esses cards como pendentes, ignore.</div>
+
+<section class="passo" data-p="0">
+  <div class="ph"><span class="num">0</span>
+    <div><h2>Antes de abrir o painel</h2><p class="sub">Três pré-requisitos. Se algum falhar, o botão de gerar token simplesmente não aparece — e é aí que a maioria trava.</p></div>
+    <label class="chk"><input type="checkbox" id="p0"> feito</label>
+  </div>
+  <div class="pc">
+    <ol>
+      <li><b>A conta precisa ser profissional.</b> No app do Instagram: <i>Configurações → Tipo de conta e ferramentas → Mudar para conta profissional</i>. Conta pessoal não é aceita por nenhuma API oficial.</li>
+      <li><b>A conta precisa estar pública.</b> A documentação exige isso na hora de atribuir a conta ao app.</li>
+      <li><b>Você precisa estar registrado como desenvolvedor.</b> <a href="https://developers.facebook.com" target="_blank" rel="noopener noreferrer">developers.facebook.com</a> → <i>Começar</i>. Formulário curto com confirmação de e-mail.</li>
+    </ol>
+    <div class="note"><b>Empresa ou Criador?</b> Para a API dá no mesmo. Para a @jamesolaya.es recomendo <b>Empresa</b>: dá botões de ação no perfil, categorias de negócio e integração com o Business Suite e a conta de anúncios. Criador tem biblioteca de música maior, mas isso não vale aqui — post publicado por API sobe com o áudio já dentro do MP4.</div>
+  </div>
+</section>
+
+<section class="passo" data-p="1">
+  <div class="ph"><span class="num">1</span>
+    <div><h2>Criar o app</h2><p class="sub">developers.facebook.com/apps → Criar app</p></div>
+    <label class="chk"><input type="checkbox" id="p1"> feito</label>
+  </div>
+  <div class="pc">
+    <p>O assistente tem quatro telas:</p>
+    <div class="tw"><table>
+      <thead><tr><th>Tela</th><th>O que escolher</th></tr></thead>
+      <tbody>
+        <tr><td>Detalhes do app</td><td>Nome <code>jamesolaya-es-publisher</code> e um e-mail. O nome é interno, ninguém vê.</td></tr>
+        <tr><td>Caso de uso</td><td><b>Outro.</b> As opções prontas levam a fluxos com webhooks que você não vai usar.</td></tr>
+        <tr><td>Tipo de app</td><td><b>Empresa.</b> Obrigatório.</td></tr>
+        <tr><td>Portfólio empresarial</td><td>Deixe em branco / "Não conectar agora".</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note pg"><b>Esta é a escolha que não tem volta.</b> Se o tipo do app não for <b>Empresa</b>, o card do Instagram nem aparece na lista de produtos — e o tipo não muda depois. Só criando outro app.</div>
+    <div class="note">Se o botão recusar: existe limite de <b>15 apps</b> por pessoa, e apps arquivados contam. Remova algum antigo.</div>
+  </div>
+</section>
+
+<section class="passo" data-p="2">
+  <div class="ph"><span class="num">2</span>
+    <div><h2>Adicionar o produto Instagram</h2><p class="sub">No painel do app, na lista de produtos</p></div>
+    <label class="chk"><input type="checkbox" id="p2"> feito</label>
+  </div>
+  <div class="pc">
+    <ol>
+      <li>Role até o card <b>Instagram</b> — a descrição diz "permite que criadores de conteúdo e empresas gerenciem mensagens e comentários, publiquem conteúdo…".</li>
+      <li>Clique em <b>Configurar</b>.</li>
+    </ol>
+    <div class="note av"><b>Se a tela oferecer escolher entre duas APIs</b>, pegue a <b>API com login do Instagram</b>, não a com login do Facebook. A segunda exige Página do Facebook vinculada e muda o host de <code>graph.instagram.com</code> para <code>graph.facebook.com</code> — o código do projeto usa o primeiro.</div>
+  </div>
+</section>
+
+<section class="passo" data-p="3">
+  <div class="ph"><span class="num">3</span>
+    <div><h2>Conectar a conta e gerar o token</h2><p class="sub">Instagram → Configuração da API com login do Instagram → seção "2. Gerar tokens de acesso"</p></div>
+    <label class="chk"><input type="checkbox" id="p3"> feito</label>
+  </div>
+  <div class="pc">
+    <div class="note pg"><b>Faça este passo numa janela anônima.</b> O pop-up de login <b>reusa a sessão do Instagram que já estiver aberta, sem avisar</b>. Se houver outra conta logada — pessoal, antiga, de outro projeto — é ela que vai para a Meta, e você só descobre no Passo 4, com o token errado na mão. Abra anônima, entre em <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">instagram.com</a> só com a <b>@jamesolaya.es</b>, e faça tudo nessa mesma janela.</div>
+    <ol>
+      <li><b>Adicionar conta</b> → o pop-up do Instagram abre.</li>
+      <li>Faça login como <b>@jamesolaya.es</b>. <b>Confira o @ na tela de consentimento antes de continuar.</b></li>
+      <li><b>Permitir.</b></li>
+      <li>A conta aparece numa lista. Clique em <b>Gerar token</b> ao lado dela.</li>
+      <li>Confirme e <b>copie o token</b>. Ele só é mostrado uma vez — mas se perder, é só gerar outro, não quebra nada.</li>
+    </ol>
+    <div class="note ok"><b>Esse token já é de longa duração: vale 60 dias.</b> É a diferença entre o token do painel e o do fluxo OAuth, que expira em 1 hora. Por isso o projeto não implementa OAuth — para publicar na própria conta ele é desnecessário.</div>
+    <h3>As permissões que aparecem</h3>
+    <ul>
+      <li><code>instagram_business_basic</code> — ler perfil e mídia. <b>Obrigatória.</b></li>
+      <li><code>instagram_business_content_publish</code> — publicar. <b>Obrigatória.</b></li>
+      <li><code>instagram_business_manage_insights</code> — métricas. Usada depois, para ajustar horários.</li>
+      <li><code>manage_comments</code> e <code>manage_messages</code> — opcionais, pode deixar marcadas.</li>
+    </ul>
+    <p style="color:var(--ink2);font-size:15px">Não se preocupe em desmarcar as opcionais: o token do painel vem com o conjunto padrão e permissão sobrando não atrapalha.</p>
+  </div>
+</section>
+
+<section class="passo" data-p="x">
+  <div class="ph" style="background:var(--pg-s);border-color:var(--pg)">
+    <span class="num" style="background:var(--pg)">!</span>
+    <div><h2>Se aparecer "Função de desenvolvedor é insuficiente"</h2><p class="sub">O erro mais comum do Passo 3. A mensagem engana.</p></div>
+  </div>
+  <div class="pc">
+    <p>Ela não fala do <i>seu</i> papel no app — fala do papel da <b>conta do Instagram</b> que o navegador mandou. Ser dono da @jamesolaya.es e ser admin do app são duas identidades separadas, e enquanto o app está em desenvolvimento só quem tem papel nele pode autorizar.</p>
+    <p><b>As três causas, em ordem de frequência:</b></p>
+    <ol>
+      <li><b>Sessão errada no navegador.</b> É quase sempre isto. Refaça o Passo 3 em janela anônima, com só a conta certa logada.</li>
+      <li><b>A conta não foi convidada como testadora.</b> No painel: <i>Funções do app → Funções</i> → seção de testadores do Instagram → adicione <code>jamesolaya.es</code>. <b>E o convite fica pendente até ser aceito do lado do Instagram</b>, não do painel — é aqui que quase todo mundo empaca: <a href="https://www.instagram.com/accounts/manage_access/" target="_blank" rel="noopener noreferrer">instagram.com/accounts/manage_access</a> → aba <b>Convites de testador</b> → <b>Aceitar</b>.</li>
+      <li><b>A conta do Instagram não está ligada à sua conta Meta.</b> Vincule na Central de Contas, pelo app do Instagram: <i>Configurações → Central de Contas → Contas → Adicionar contas</i>, entrando com a mesma conta Meta que criou o app.</li>
+    </ol>
+    <div class="note"><b>Como saber qual é a sua:</b> olhe o <code>@</code> na tela de consentimento do pop-up. Se não for <code>jamesolaya.es</code>, é a causa 1. Se for a conta certa e ainda falhar, é a 2 ou a 3.</div>
+  </div>
+</section>
+
+<section class="passo" data-p="4">
+  <div class="ph"><span class="num">4</span>
+    <div><h2>Pegar o <code>INSTAGRAM_USER_ID</code></h2><p class="sub">Um comando no terminal</p></div>
+    <label class="chk"><input type="checkbox" id="p4"> feito</label>
+  </div>
+  <div class="pc">
+    <p>Troque <code>SEU_TOKEN</code> pelo que você copiou:</p>
+    <div class="cmd"><button type="button" data-copy>copiar</button>curl -s "https://graph.instagram.com/v26.0/me?fields=user_id,username&amp;access_token=SEU_TOKEN"</div>
+    <p>Resposta esperada:</p>
+    <div class="cmd">{"user_id": "178414...", "username": "jamesolaya.es"}</div>
+    <div class="note av"><b>Use o campo <code>user_id</code>, não o campo <code>id</code>.</b> São números diferentes, e o <code>id</code> não funciona para publicar. E confira o <code>username</code>: se vier outro, você logou na conta errada no Passo 3 — volte e refaça em janela anônima.</div>
+  </div>
+</section>
+
+<section class="passo" data-p="5">
+  <div class="ph"><span class="num">5</span>
+    <div><h2>Guardar as credenciais</h2><p class="sub">Local agora; no GitHub quando o repositório existir</p></div>
+    <label class="chk"><input type="checkbox" id="p5"> feito</label>
+  </div>
+  <div class="pc">
+    <div class="cmd"><button type="button" data-copy>copiar</button>cd ~/PROJETOS_DEV/jamesolaya-es-social
+cp .env.example .env</div>
+    <p>Abra o <code>.env</code> e preencha as duas linhas. Ele já está no <code>.gitignore</code>.</p>
+    <div class="cmd">INSTAGRAM_USER_ID=178414...
+INSTAGRAM_ACCESS_TOKEN=IGAA...</div>
+    <div class="note pg"><b>Nunca coloque a chave da Anthropic nos secrets do GitHub.</b> O runner publica legendas já congeladas na fila e nunca chama IA. Chave que não precisa estar lá é superfície de ataque de graça.</div>
+    <p style="color:var(--ink2);font-size:15px">Quando o repositório existir, os mesmos valores viram <i>Settings → Secrets and variables → Actions</i> → aba <b>Secrets</b>. Na aba <b>Variables</b>: <code>PUBLISH_ENABLED</code> = <code>false</code> por enquanto.</p>
+  </div>
+</section>
+
+<section class="passo" data-p="6">
+  <div class="ph"><span class="num">6</span>
+    <div><h2>Validar</h2><p class="sub">O script diz, linha a linha, se está tudo certo. Não publica nada.</p></div>
+    <label class="chk"><input type="checkbox" id="p6"> feito</label>
+  </div>
+  <div class="pc">
+    <div class="cmd"><button type="button" data-copy>copiar</button>uv run python scripts/validar_conta.py</div>
+    <p>Ele confere cinco coisas: se o token é válido e aponta para a conta certa, se o <code>user_id</code> bate, se a permissão de publicar está ativa, quanto resta da cota de 24 horas, e se a trava <code>PUBLISH_ENABLED</code> está desligada.</p>
+    <div class="note ok"><b>Quando passar, me avisa.</b> Aí eu conecto a ingestão da fila e a gente faz o primeiro post de teste, disparado à mão e conferido no app antes de ligar o cron.</div>
+  </div>
+</section>
+
+<section style="margin-top:44px">
+  <h2>Renovação: a parte que mata o sistema em silêncio</h2>
+  <div class="note pg"><b>O token vale 60 dias e, se expirar, não há como recuperá-lo</b> — só gerar outro pelo painel, à mão. Sem automação de renovação, o robô para de publicar sozinho e ninguém percebe até alguém abrir o perfil.</div>
+  <p style="margin-top:16px">Duas formas de renovar, ambas válidas:</p>
+  <ul style="margin-top:10px;padding-left:20px;color:var(--ink2)">
+    <li><b>Pelo painel:</b> <i>Instagram → Configuração da API → Gerar token</i>. O novo vale imediatamente.</li>
+    <li><b>Pela API</b>, com um token que tenha pelo menos 24h de vida e ainda não tenha expirado:</li>
+  </ul>
+  <div class="cmd" style="margin-top:12px"><button type="button" data-copy>copiar</button>curl -s "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&amp;access_token=SEU_TOKEN"</div>
+  <p style="margin-top:14px;color:var(--ink2);font-size:15px">O projeto já tem isso implementado e um cron mensal que renova sozinho e atualiza o secret do GitHub. Para funcionar ele precisa de um <b><code>SECRETS_PAT</code></b> — um token fine-grained do GitHub com <code>Secrets: Read and write</code>. O <code>doctor</code> avisa quando faltam menos de 14 dias.</p>
+</section>
+
+<section style="margin-top:44px">
+  <h2>Se travar</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Sintoma</th><th>Causa quase certa</th></tr></thead>
+    <tbody>
+      <tr><td>Não aparece o card <b>Instagram</b> nos produtos</td><td>O app não é do tipo <b>Empresa</b>. Crie outro — o tipo não muda depois.</td></tr>
+      <tr><td>"Adicionar conta" não aceita a @jamesolaya.es</td><td>A conta ainda é pessoal, ou está privada.</td></tr>
+      <tr><td><b>"Função de desenvolvedor é insuficiente"</b></td><td>Sessão de outra conta no navegador, ou convite de testador não aceito. Ver o bloco vermelho acima.</td></tr>
+      <tr><td>Token gerado mas <code>/me</code> devolve erro 190</td><td>Token copiado com espaço ou quebra de linha, ou já revogado por uma geração nova.</td></tr>
+      <tr><td><code>/me</code> devolve outro <code>username</code></td><td>A sessão do navegador estava em outra conta. Refaça o Passo 3 em janela anônima.</td></tr>
+      <tr><td>Publicar devolve erro sobre PPA</td><td>A conta está vinculada a uma Página que exige Autorização de Publicação. Só ocorre com Página vinculada.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section style="margin-top:40px">
+  <h2>Fontes</h2>
+  <p style="color:var(--ink2);font-size:15px;margin-top:10px">Este roteiro foi conferido contra a documentação oficial. As páginas de origem foram atualizadas pela Meta em <b>30/jun/2026</b> (Publicação de conteúdo), <b>16/set/2026</b> (Visão geral) e <b>13/mar/2026</b> (Login de Empresa) — se um nome de botão aqui não bater com o que você vê, a Meta mexeu no painel depois disso.</p>
+  <ul style="margin-top:12px;padding-left:20px;font-size:15px">
+    <li><a href="https://developers.facebook.com/docs/instagram-platform/content-publishing" target="_blank" rel="noopener noreferrer">Publicação de conteúdo</a></li>
+    <li><a href="https://developers.facebook.com/docs/instagram-platform/overview" target="_blank" rel="noopener noreferrer">Visão geral da Plataforma do Instagram</a></li>
+    <li><a href="https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login" target="_blank" rel="noopener noreferrer">Login de Empresa no Instagram</a></li>
+  </ul>
+</section>
+</div>
+
+<script>
+(function(){
+  var K='meta-token-jamesolaya-es';
+  var feitos={};
+  try{ feitos=JSON.parse(localStorage.getItem(K)||'{}'); }catch(e){ feitos={}; }
+  Array.prototype.forEach.call(document.querySelectorAll('.chk input'),function(cb){
+    var card=cb.closest('.passo');
+    cb.checked=!!feitos[cb.id];
+    if(card) card.classList.toggle('feito',cb.checked);
+    cb.addEventListener('change',function(){
+      feitos[cb.id]=cb.checked;
+      if(!cb.checked) delete feitos[cb.id];
+      if(card) card.classList.toggle('feito',cb.checked);
+      try{ localStorage.setItem(K,JSON.stringify(feitos)); }catch(e){}
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'),function(b){
+    b.addEventListener('click',function(){
+      var txt=b.parentNode.textContent.replace(/^copiar/,'').trim();
+      var ok=function(){ b.textContent='copiado'; setTimeout(function(){ b.textContent='copiar'; },1400); };
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(ok,function(){ b.textContent='falhou'; });
+      } else {
+        try{
+          var ta=document.createElement('textarea');
+          ta.value=txt; document.body.appendChild(ta); ta.select();
+          document.execCommand('copy'); document.body.removeChild(ta); ok();
+        }catch(e){ b.textContent='falhou'; }
+      }
+    });
+  });
+})();
+</script>

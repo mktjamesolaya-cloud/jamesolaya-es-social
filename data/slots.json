@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "source": "heuristic",
+  "_nota": "Horarios de partida para @jamesolaya.es. Sao HIPOTESE, nao verdade medida: a conta comeca sem Insights. Depois de ~3 semanas rode 'jayes tune-slots' para reajustar os pesos com desempenho real, como foi feito no projeto irmao (que descobriu assim que a faixa da noite rendia 3,4x a da manha).",
+  "timezone": "America/Mexico_City",
+  "_fuso": "Ancorado no Mexico por ser o maior mercado de micropigmentacao em espanhol. Bogota e Lima ficam no mesmo horario; Buenos Aires 3h a frente; Madri fica de madrugada e nao e o alvo.",
+  "posts_per_day": 2,
+  "min_gap_minutes": 300,
+  "_gap": "12h e 18h distam 6h (360 min). O minimo de 300 permite o jitter mexer nas duas pontas sem colidir.",
+  "jitter_minutes": 20,
+  "explore_every": 7,
+  "pool": [
+    {
+      "id": "midday-wd",
+      "weekdays": [0, 1, 2, 3, 4],
+      "time": "12:00",
+      "weight": 1.0,
+      "samples": 0,
+      "rationale": "hipotese: intervalo de almoco em dia util"
+    },
+    {
+      "id": "evening-wd",
+      "weekdays": [0, 1, 2, 3, 4],
+      "time": "18:00",
+      "weight": 1.0,
+      "samples": 0,
+      "rationale": "hipotese: saida do trabalho; foi a melhor faixa no perfil irmao"
+    },
+    {
+      "id": "midday-we",
+      "weekdays": [5, 6],
+      "time": "12:00",
+      "weight": 1.0,
+      "samples": 0,
+      "rationale": "hipotese: manha tardia de fim de semana"
+    },
+    {
+      "id": "evening-we",
+      "weekdays": [5, 6],
+      "time": "18:00",
+      "weight": 1.0,
+      "samples": 0,
+      "rationale": "hipotese: comeco da noite de fim de semana"
+    }
+  ]
+}
