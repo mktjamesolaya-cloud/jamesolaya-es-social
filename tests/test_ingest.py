@@ -207,3 +207,32 @@ def test_resumir_conta_arquivos_e_tipos(arvore):
     assert r["candidatos"] == 2
     assert r["por_tipo"] == {"reel": 1, "carousel": 1}
     assert r["arquivos_a_hospedar"] == 4
+
+
+def test_veto_manual_tira_o_post_da_fila(arvore):
+    """A triagem aprova pelo que ve na midia; o veto existe para o que ela nao julga."""
+    midia, dados = arvore
+    monta(midia, "020_anitta", arquivos=["imagem.jpg"])
+    escreve_dados(dados, [t("020_anitta", "Imagem única", score=999.0)])
+    assert len(ingest.carregar(midia, dados)) == 1
+
+    (dados / "excluidos-es.json").write_text(
+        json.dumps({"excluidos": {"ABC123": "fofoca de pop brasileiro"}}), encoding="utf-8"
+    )
+    assert ingest.carregar(midia, dados) == []
+    assert "veto manual" in ingest.carregar.ultimo_descarte
+
+
+def test_veto_pode_viver_em_outro_diretorio(tmp_path):
+    """A triagem vem do projeto de analise; o veto e decisao deste projeto."""
+    midia = tmp_path / "midia"
+    dados = tmp_path / "analise"
+    vetos = tmp_path / "projeto"
+    vetos.mkdir()
+    monta(midia, "030_x", arquivos=["imagem.jpg"])
+    escreve_dados(dados, [t("030_x", "Imagem única")])
+    (vetos / "excluidos-es.json").write_text(
+        json.dumps({"excluidos": {"ABC123": "motivo"}}), encoding="utf-8"
+    )
+    assert len(ingest.carregar(midia, dados)) == 1, "sem dir_vetos, nada e vetado"
+    assert ingest.carregar(midia, dados, dir_vetos=vetos) == []

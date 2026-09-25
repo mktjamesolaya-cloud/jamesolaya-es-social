@@ -1,0 +1,13 @@
+{
+  "_nota": "Posts que nunca devem entrar na fila do @jamesolaya.es, com o motivo. A triagem automatica nao pega estes: ela le texto na arte e amarras na legenda, nao julga se o assunto serve para o publico em espanhol.",
+  "excluidos": {
+    "DN_OxSaCbbs": "Fofoca de pop brasileiro (feat Anitta x Rihanna, 'o Brasil desmonta'). Maior score do acervo, mas nao e micropigmentacao e a piada depende de contexto brasileiro. Decisao do cliente em 25/09/2026.",
+    "Dbs_KMwDvsC": "Carrossel de piada que termina em meme com a imagem da Cardi B. Usar a imagem de uma celebridade num meme e cultura normal de perfil pessoal brasileiro, mas numa conta de empresa em outro mercado o risco e outro. Decisao do cliente em 25/09/2026.",
+    "DB6dSiMJMSY": "Figura publica: cita adele, céline dion; cita cantora Adele, cantora Céline. Regra do cliente: nenhum post sobre celebridade. Detectado em 25/09/2026.",
+    "DOSB2wyid5t": "Figura publica: cita anitta. Regra do cliente: nenhum post sobre celebridade. Detectado em 25/09/2026.",
+    "DBl-iYEJ4Yg": "Figura publica: cita luan santana. Regra do cliente: nenhum post sobre celebridade. Detectado em 25/09/2026.",
+    "DEe_WnmxeA6": "Figura publica: cita fernanda torres; ancorado em globo de ouro. Regra do cliente: nenhum post sobre celebridade. Detectado em 25/09/2026.",
+    "DBlifC6pNZM": "Figura publica: cita tr#mp. Regra do cliente: nenhum post sobre celebridade. Detectado em 25/09/2026."
+  },
+  "_regra": "Nenhum post sobre celebridade vai ao ar. O detector em celebridades.py sinaliza o obvio, mas nao basta: o caso da Cardi B nao tinha pista nenhuma na legenda, so no ultimo slide. A garantia e olhar a midia antes de escrever a legenda."
+}

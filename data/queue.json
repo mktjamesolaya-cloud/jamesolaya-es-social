@@ -1,0 +1,288 @@
+{
+  "version": 2,
+  "items": [
+    {
+      "id": "q_20260925T180600_DcwLPoeiWxJ",
+      "tiktok_id": "DcwLPoeiWxJ",
+      "source_url": "https://www.instagram.com/p/DcwLPoeiWxJ/",
+      "status": "scheduled",
+      "scheduled_at": "2026-09-25T18:06:00-06:00",
+      "scheduled_at_utc": "2026-09-26T00:06:00+00:00",
+      "slot_id": "evening-wd",
+      "rank": 14,
+      "media": {
+        "kind": "image",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DcwLPoeiWxJ.jpg",
+        "asset_name": "DcwLPoeiWxJ.jpg",
+        "release_tag": "media-v1",
+        "sha256": "d0b8de9290035bed1ac5ecdb82e04d4315dbd526f3d9b32b2f18998a973f5f6b",
+        "bytes": 516081
+      },
+      "caption": "No siempre hay que reconstruir una ceja entera. A veces hay que saber exactamente dónde debe existir un solo pelo.\n\nArriba, el antes: la alopecia había vaciado la cola de la ceja. El resto conservaba su estructura natural, y ahí estaba la dificultad real: unir las dos partes sin que se viera el punto donde una empieza y la otra termina.\n\nCon la técnica Pelo a Pelo Realista en dermógrafo construí cada trazo respetando dirección, inclinación, separación y largo de los pelos que ya estaban ahí.\n\nNo era rellenar un hueco. Era leer la estructura que existía y reconstruirla a la vista.\n\nAhí entra el visagismo. Nadie busca hoy una ceja estandarizada: buscan naturalidad, armonía y un resultado que respete lo que ya es suyo.\n\n#micropigmentacion #cejas #peloapelo #alopecia #visagismo",
+      "caption_fingerprint": "b7a7bf3ff4620a6d",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-25T22:46:51.719495+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:46:55.340465+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:46:55.340541+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:46:55.340550+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "origem": {
+        "pasta": "014_Imagem-unica_2026-09-01_nem-sempre-e-preciso-reconstruir-uma",
+        "formato": "Imagem única",
+        "editorial": "História de cliente",
+        "balde": "A",
+        "score": 19.38,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20260926T114500_DbvzXhnluJU",
+      "tiktok_id": "DbvzXhnluJU",
+      "source_url": "https://www.instagram.com/p/DbvzXhnluJU/",
+      "status": "scheduled",
+      "scheduled_at": "2026-09-26T11:45:00-06:00",
+      "scheduled_at_utc": "2026-09-26T17:45:00+00:00",
+      "slot_id": "midday-we",
+      "rank": 18,
+      "media": {
+        "kind": "carousel",
+        "assets": [
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DbvzXhnluJU-01.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DbvzXhnluJU-01.jpg",
+            "sha256": "9d411f00a778761ebf95e970e4854901a91cbf9d1d3637fa9e7e60ed807d42d1",
+            "bytes": 501730,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DbvzXhnluJU-02.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DbvzXhnluJU-02.jpg",
+            "sha256": "472e6c717a684106bdeef282ddc9b0ab097e98f8322ab99b2286cc2eb59d003d",
+            "bytes": 490171,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DbvzXhnluJU-03.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DbvzXhnluJU-03.jpg",
+            "sha256": "038be98d483820e863b0c91d11504e7baf006b32612d5d56561358f32886bedf",
+            "bytes": 501943,
+            "is_video": false
+          }
+        ]
+      },
+      "caption": "Este es el resultado. DESLIZÁ AL LADO para ver de dónde salió.\n\nLa mirada nunca comunica solo con los ojos. Las cejas cargan buena parte de la expresión, y cuando la arquitectura no acompaña el rostro, la cara entera se ve más cansada de lo que está.\n\nEl trabajo no fue rellenar espacios. Fue rediseñar la estructura desde el visagismo, respetando la dirección natural del pelo, la anatomía de la cara y todo lo que hace única a esta clienta.\n\nCon la técnica Pelo a Pelo devolvimos densidad donde hacía falta, corregimos la forma y creamos una ceja que conversa con el resto del rostro.\n\nEl resultado va mucho más allá de lo estético: la expresión ganó fuerza y la mirada transmite otra confianza.\n\n#antesydespues #micropigmentacion #cejas #peloapelo #visagismo",
+      "caption_fingerprint": "73cf1cfd70420877",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-25T22:46:55.340726+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:47:05.063081+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:47:05.063146+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:47:05.063153+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "origem": {
+        "pasta": "018_Carrossel_2026-08-07_arrasta-para-o-lado-para-ver",
+        "formato": "Carrossel",
+        "editorial": "Antes e depois / resultado",
+        "balde": "A",
+        "score": 14.64,
+        "observacoes": [
+          "era colaboração — republicar solo"
+        ]
+      }
+    },
+    {
+      "id": "q_20260926T181500_DWW_SO-iaXo",
+      "tiktok_id": "DWW_SO-iaXo",
+      "source_url": "https://www.instagram.com/p/DWW_SO-iaXo/",
+      "status": "scheduled",
+      "scheduled_at": "2026-09-26T18:15:00-06:00",
+      "scheduled_at_utc": "2026-09-27T00:15:00+00:00",
+      "slot_id": "evening-we",
+      "rank": 21,
+      "media": {
+        "kind": "image",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DWW_SO-iaXo.jpg",
+        "asset_name": "DWW_SO-iaXo.jpg",
+        "release_tag": "media-v1",
+        "sha256": "1407bd7bb4e8b32268ee270c3abaa18dc5058e751cb0657388adab81f77821cc",
+        "bytes": 631583
+      },
+      "caption": "Hoy la clienta ya no busca un diseño marcado en la micropigmentación de cejas. Busca un resultado que simplemente no se note.\n\nMirá el antes y el después de esta foto: la ceja no quedó más oscura ni más gruesa. Quedó completa. Donde faltaba densidad ahora hay pelo, y donde ya había, no se tocó.\n\nEn el pelo a pelo realista no se trata de dibujar trazos. Se trata de entender:\n\n• Dirección de crecimiento\n• Grosor ideal\n• Profundidad correcta\n• Comportamiento de la piel al cicatrizar\n\nEso convierte un antes y después en un resultado que nadie nota… pero todo el mundo siente.\n\nSi sentís que tus trazos no quedan tan naturales como deberían, quizá no sea falta de práctica. Sea falta de método.\n\n#peloapelo #micropigmentacion #cejas #tecnica #formacion",
+      "caption_fingerprint": "bff8f406c54a4f8a",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-25T22:47:05.063287+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:47:07.925379+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:47:07.925413+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:47:07.925418+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "origem": {
+        "pasta": "021_Imagem-unica_2026-03-26_hoje-o-que-a-cliente-busca",
+        "formato": "Imagem única",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 10.66,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20260927T115000_Dah9s9ixMhc",
+      "tiktok_id": "Dah9s9ixMhc",
+      "source_url": "https://www.instagram.com/p/Dah9s9ixMhc/",
+      "status": "scheduled",
+      "scheduled_at": "2026-09-27T11:50:00-06:00",
+      "scheduled_at_utc": "2026-09-27T17:50:00+00:00",
+      "slot_id": "midday-we",
+      "rank": 4,
+      "media": {
+        "kind": "reel",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/Dah9s9ixMhc.mp4",
+        "asset_name": "Dah9s9ixMhc.mp4",
+        "release_tag": "media-v1",
+        "sha256": "5e59112786bbb40304b64cdaee015a7631280999140c10de0f733cd91118ad7d",
+        "bytes": 28878658
+      },
+      "caption": "Algunos trabajos quedan marcados por la técnica. Otros quedan marcados por la persona. El de Heitor fue de los segundos.\n\nLa alopecia le cambiaba la forma de verse en el espejo. Pero mi trabajo nunca fue simplemente dibujar una ceja: fue entender el rostro que tenía enfrente, respetar su identidad y construir trazos que parecieran haber estado siempre ahí.\n\nNaturalidad, para mí, no significa hacer poco. Significa hacer solo lo necesario.\n\nPorque cuando hay sensibilidad en la lectura del rostro, la técnica deja de llamar la atención y empieza a devolver confianza.\n\nEse es el tipo de transformación que me mueve. No porque cambie una ceja, sino porque cambia la manera en que alguien vuelve a mirarse.\n\n#micropigmentacion #cejas #alopecia #peloapelo #autoestima",
+      "caption_fingerprint": "a750e43a1df85c51",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-25T22:47:07.925491+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:47:12.153008+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:47:12.153035+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-25T22:47:12.153038+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "origem": {
+        "pasta": "004_Reel_2026-07-08_alguns-atendimentos-ficam-marcados-pela-tecnica",
+        "formato": "Reel",
+        "editorial": "História de cliente",
+        "balde": "A",
+        "score": 64.51,
+        "observacoes": []
+      }
+    }
+  ]
+}

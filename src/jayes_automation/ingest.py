@@ -105,8 +105,12 @@ def carregar(
     *,
     baldes: frozenset[str] = BALDES_BARATOS,
     esforcos: frozenset[str] = ESFORCO_BARATO,
+    dir_vetos: Path | None = None,
 ) -> list[Candidato]:
     """Monta a lista de candidatos, do melhor para o pior.
+
+    ``dir_vetos`` aponta para onde vive ``excluidos-es.json``; por padrao o
+    mesmo ``dir_dados``.
 
     ``baldes`` e ``esforcos`` controlam o corte: o padrao pega A, B e o C leve.
     Passar ``baldes={'A','B','C'}`` e ``esforcos={'leve','médio'}`` amplia a
@@ -126,6 +130,17 @@ def carregar(
         for it in json.loads(arq.read_text(encoding="utf-8")).get("itens", []):
             fichas[it["pasta"]] = it
 
+    # lista de veto manual: assuntos que a triagem automatica aprova mas que nao
+    # servem para o publico em espanhol. Ela le texto na arte e amarra na
+    # legenda; nao julga se o tema faz sentido em outro pais.
+    excluidos: dict[str, str] = {}
+    # O veto e decisao DESTE projeto; a triagem e os manifestos vem do projeto de
+    # analise. Sao diretorios diferentes, e ler os dois do mesmo lugar fazia o
+    # veto ser ignorado em silencio -- que e o pior jeito de falhar aqui.
+    veto = (dir_vetos or dir_dados) / "excluidos-es.json"
+    if veto.exists():
+        excluidos = json.loads(veto.read_text(encoding="utf-8")).get("excluidos", {})
+
     candidatos: list[Candidato] = []
     descartados: dict[str, int] = {}
 
@@ -133,6 +148,10 @@ def carregar(
         descartados[motivo] = descartados.get(motivo, 0) + 1
 
     for t in triagem:
+        short_code = t["url"].rstrip("/").rsplit("/", 1)[-1]
+        if short_code in excluidos:
+            descarta("veto manual")
+            continue
         balde = t.get("balde")
         if balde not in baldes and not (balde == "C" and t.get("esforco") in esforcos):
             descarta(f"balde {balde}")
@@ -160,7 +179,7 @@ def carregar(
         ficha = fichas.get(t["pasta"], {})
         candidatos.append(
             Candidato(
-                short_code=t["url"].rstrip("/").rsplit("/", 1)[-1],
+                short_code=short_code,
                 posicao=t["posicao"],
                 pasta=t["pasta"],
                 media_kind=kind,
