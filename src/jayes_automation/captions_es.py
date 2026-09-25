@@ -150,7 +150,10 @@ def validate_es(caption: str, hashtags: list[str]) -> list[str]:
     if total > MAX_CAPTION_CHARS:
         avisos.append(f"{total} caracteres (limite do Instagram: {MAX_CAPTION_CHARS})")
     if len(texto) < MIN_CAPTION_CHARS:
-        avisos.append(f"legenda com {len(texto)} caracteres: curta demais (minimo {MIN_CAPTION_CHARS})")
+        avisos.append(
+            f"legenda com {len(texto)} caracteres: curta demais "
+            f"(minimo {MIN_CAPTION_CHARS})"
+        )
 
     # o gancho: tudo que aparece antes do "mais"
     if len(texto) > HOOK_CHARS:

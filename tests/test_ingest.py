@@ -154,7 +154,7 @@ def test_descarta_pasta_sem_arquivo_de_midia(arvore):
 
 def test_ordena_do_melhor_para_o_pior(arvore):
     midia, dados = arvore
-    for i, s in enumerate([1.0, 50.0, 10.0], start=1):
+    for i in (1, 2, 3):
         monta(midia, f"{i:03d}_x", arquivos=["imagem.jpg"])
     escreve_dados(dados, [
         t("001_x", "Imagem única", posicao=1, score=1.0),

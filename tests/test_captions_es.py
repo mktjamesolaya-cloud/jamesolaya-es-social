@@ -130,7 +130,10 @@ def test_montar_gera_registro_com_avisos():
 
 
 def test_montar_carrega_os_avisos_de_uma_legenda_ruim():
-    r = ces.montar("ABC", {"x": 1}, caption="Você não vai acreditar nesse resultado lindo", hashtags=["#a"])
+    r = ces.montar(
+        "ABC", {"x": 1},
+        caption="Você não vai acreditar nesse resultado lindo", hashtags=["#a"],
+    )
     assert r["warnings"], "devia ter acusado portugues e hashtags de menos"
 
 
