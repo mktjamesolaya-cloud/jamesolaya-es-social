@@ -8,7 +8,7 @@
       "status": "published",
       "scheduled_at": "2026-09-26T08:19:21.180299-06:00",
       "scheduled_at_utc": "2026-09-26T14:19:21.180299+00:00",
-      "slot_id": "midday-we",
+      "slot_id": "we-midday",
       "rank": 14,
       "media": {
         "kind": "image",
@@ -87,7 +87,7 @@
       "status": "scheduled",
       "scheduled_at": "2026-09-26T19:15:00-06:00",
       "scheduled_at_utc": "2026-09-27T01:15:00+00:00",
-      "slot_id": "evening-we",
+      "slot_id": "we-evening",
       "rank": 18,
       "media": {
         "kind": "carousel",
@@ -176,7 +176,7 @@
       "status": "scheduled",
       "scheduled_at": "2026-09-27T11:50:00-06:00",
       "scheduled_at_utc": "2026-09-27T17:50:00+00:00",
-      "slot_id": "midday-we",
+      "slot_id": "we-midday",
       "rank": 21,
       "media": {
         "kind": "image",
@@ -242,7 +242,7 @@
       "status": "scheduled",
       "scheduled_at": "2026-09-27T18:51:00-06:00",
       "scheduled_at_utc": "2026-09-28T00:51:00+00:00",
-      "slot_id": "evening-we",
+      "slot_id": "we-evening",
       "rank": 4,
       "media": {
         "kind": "reel",

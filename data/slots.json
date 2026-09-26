@@ -11,7 +11,7 @@
   "explore_every": 7,
   "pool": [
     {
-      "id": "midday-wd",
+      "id": "wd-midday",
       "weekdays": [
         0,
         1,
@@ -25,7 +25,7 @@
       "rationale": "melhor segundo slot com intervalo de 5h; bom no leste dos EUA e na LatAm, fraco em LA (score 0,64)"
     },
     {
-      "id": "evening-wd",
+      "id": "wd-evening",
       "weekdays": [
         0,
         1,
@@ -39,7 +39,7 @@
       "rationale": "pico simultaneo em LA, Texas, Miami, Mexico, Bogota, Lima e Buenos Aires (score 0,96)"
     },
     {
-      "id": "midday-we",
+      "id": "we-midday",
       "weekdays": [
         5,
         6
@@ -50,7 +50,7 @@
       "rationale": "melhor segundo slot com intervalo de 5h; bom no leste dos EUA e na LatAm, fraco em LA (score 0,64)"
     },
     {
-      "id": "evening-we",
+      "id": "we-evening",
       "weekdays": [
         5,
         6
@@ -61,5 +61,6 @@
       "rationale": "pico simultaneo em LA, Texas, Miami, Mexico, Bogota, Lima e Buenos Aires (score 0,96)"
     }
   ],
-  "_horarios": "19h MX acerta pico em todos os mercados: 18h Los Angeles, 20h Houston, 21h Miami e Nova York, 19h Mexico, 20h Bogota e Lima, 22h Buenos Aires. O slot do meio-dia e o melhor segundo possivel respeitando o intervalo minimo de 5h -- nenhum horario da manha chega perto do da noite."
+  "_horarios": "19h MX acerta pico em todos os mercados: 18h Los Angeles, 20h Houston, 21h Miami e Nova York, 19h Mexico, 20h Bogota e Lima, 22h Buenos Aires. O slot do meio-dia e o melhor segundo possivel respeitando o intervalo minimo de 5h -- nenhum horario da manha chega perto do da noite.",
+  "_ids": "Prefixo wd-/we- e convencao do codigo, nao enfeite: plan_slots escolhe o pool pelo dia da semana e ha teste que cobra isso. Nomear 'midday-wd' quebrava a regra em silencio."
 }

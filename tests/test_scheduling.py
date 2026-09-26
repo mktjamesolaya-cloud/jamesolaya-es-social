@@ -177,11 +177,13 @@ class TestDeterminism:
 
 
 class TestTimezone:
-    def test_local_times_carry_the_brazilian_offset(self):
+    def test_local_times_carry_the_mexican_offset(self):
+        """O fuso mudou de Sao Paulo para Cidade do Mexico quando o publico
+        passou a incluir LatAm e os EUA. O Mexico nao faz horario de verao."""
         planned = plan_slots(MONDAY, 3, config(), per_day=2)
 
         for slot in planned:
-            assert slot.scheduled_at.endswith("-03:00")
+            assert slot.scheduled_at.endswith("-06:00")
 
     def test_utc_mirror_matches_the_local_time(self):
         planned = plan_slots(MONDAY, 3, config(), per_day=2)

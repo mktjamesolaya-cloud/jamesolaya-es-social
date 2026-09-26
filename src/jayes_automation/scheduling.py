@@ -26,79 +26,58 @@ from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
 
-TIMEZONE = "America/Sao_Paulo"
+TIMEZONE = "America/Mexico_City"
 
-#: Um unico horario, o unico que se provou (25/08/2026, n=30).
+#: Horarios de partida para @jamesolaya.es. Sao HIPOTESE: a conta comeca sem
+#: nenhum Insight proprio.
 #:
-#: Medianas de views as 24h, todas medidas na mesma idade:
+#: Escolhidos medindo cada hora contra oito mercados ponderados -- Los Angeles,
+#: Houston, Miami, Nova York, Cidade do Mexico, Bogota, Lima e Buenos Aires --
+#: em setembro E em dezembro, porque os EUA fazem horario de verao e o Mexico
+#: nao faz desde 2022. O par precisa sobreviver as duas metades do ano.
 #:
-#:     18-19h  7.664 (n=8)   <- este
-#:     10h     2.276 (n=12)
-#:     16h     1.789 (n=4)
-#:     12-13h  1.141 (n=3)
-#:     22h     1.101 (n=3)
+#: 19h no Mexico venceu com 0,96 nas duas estacoes: 18h em LA, 20h em Houston,
+#: 21h em Miami e NY, 20h em Bogota e Lima, 22h em Buenos Aires. Pico
+#: simultaneo em todos. As 18h pontuavam 0,89 e perdiam LA no inverno.
 #:
-#: A vantagem da noite sobrevive ao controle por ranking do video: 9,2x entre os
-#: de topo e 2,6x entre os da cauda. Nao e artefato de terem calhado videos
-#: melhores a noite.
+#: O slot do meio-dia e um compromisso assumido, nao uma boa escolha: e o melhor
+#: segundo possivel com o intervalo minimo de 5h (0,64). Nenhum horario da manha
+#: chega perto do da noite.
 #:
-#: O slot da manha saiu junto com a mudanca para 1 post/dia. Ele nao era ruim --
-#: era o melhor fora da noite -- mas so existia porque dois posts diarios nao
-#: cabem na mesma faixa de 4 horas. Com um post por dia, nao ha motivo para
-#: nenhum deles sair da melhor faixa. Manter a manha no pool faria a rotacao
-#: alternar e jogar metade da fila de volta no slot fraco, que e exatamente o que
-#: esta mudanca existe para evitar.
-#:
-#: Duas hipoteses minhas cairam no caminho: o slot das 21h, tirado da curva de
-#: `online_followers` da API, ficou em ultimo; e o das 16h, que eu tinha posto com
-#: peso alto por causa de um unico bom resultado, ficou abaixo da manha.
-#: Dentro da faixa, 18h e 19h ainda estao empatados -- e e um empate que so a
-#: alternancia desempata (31/08/2026).
-#:
-#:     18h  5.912 medianos (n=6)
-#:     19h 34.404 medianos (n=2)  <- 15.738 e 53.069
-#:
-#: Nao e efeito do ranking do video: os dois das 19h eram rank 4 e 9, cercados
-#: por posts das 18h de rank 2 e 6 que renderam menos. Mas sao dois posts, e
-#: dois posts nao mudam um pool sozinhos.
-#:
-#: Por isso os dois horarios convivem com peso igual: a rotacao por dia alterna
-#: entre eles, e em duas semanas a amostra das 19h sai de 2 para ~8. Alternar
-#: aqui e barato porque as duas pontas estao dentro da faixa que ja se provou --
-#: diferente da alternancia antiga com a manha, que jogava metade da fila num
-#: horario 3,4x pior.
+#: A fase 2 (`tune-slots`) reajusta isto com desempenho real. Sao necessarios uns
+#: 20 a 30 posts: com SHRINKAGE_K=5, abaixo disso ele puxa tudo para a media.
 DEFAULT_SLOTS: list[dict[str, Any]] = [
     {
-        "id": "wd-commute",
+        "id": "wd-midday",
         "weekdays": [0, 1, 2, 3, 4],
-        "time": "18:45",
-        "weight": 1.40,
-        "samples": 6,
-        "rationale": "5.912 views medianos (h24, n=6)",
+        "time": "12:00",
+        "weight": 1.0,
+        "samples": 0,
+        "rationale": "melhor segundo slot respeitando o intervalo de 5h (score 0,64)",
     },
     {
-        "id": "wd-prime",
+        "id": "wd-evening",
         "weekdays": [0, 1, 2, 3, 4],
-        "time": "19:15",
-        "weight": 1.40,
-        "samples": 2,
-        "rationale": "34.404 medianos com n=2; alterna com wd-commute para medir",
+        "time": "19:00",
+        "weight": 1.0,
+        "samples": 0,
+        "rationale": "pico simultaneo em LA, Texas, Miami, Mexico, Bogota, Lima e Buenos Aires",
+    },
+    {
+        "id": "we-midday",
+        "weekdays": [5, 6],
+        "time": "12:00",
+        "weight": 1.0,
+        "samples": 0,
+        "rationale": "meio-dia no fim de semana",
     },
     {
         "id": "we-evening",
         "weekdays": [5, 6],
-        "time": "18:30",
-        "weight": 1.40,
-        "samples": 6,
+        "time": "19:00",
+        "weight": 1.0,
+        "samples": 0,
         "rationale": "mesma faixa da noite, no fim de semana",
-    },
-    {
-        "id": "we-prime",
-        "weekdays": [5, 6],
-        "time": "19:15",
-        "weight": 1.40,
-        "samples": 2,
-        "rationale": "o teste das 19h tambem no fim de semana",
     },
 ]
 
@@ -116,7 +95,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
     # favor: entre os 14 dias com dois posts, o desempenho de um nao previu o do
     # outro (rho -0,09), ou seja, eles nao competiam. Por isso e um teste de duas
     # semanas, nao uma mudanca definitiva.
-    "posts_per_day": 1,
+    "posts_per_day": 2,
     "min_gap_minutes": 240,
     "jitter_minutes": 20,
     "explore_every": 7,

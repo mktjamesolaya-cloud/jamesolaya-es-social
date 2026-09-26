@@ -17,9 +17,13 @@ from jayes_automation.scheduling import DEFAULT_CONFIG, DEFAULT_SLOTS
 
 WORKFLOW = Path(__file__).resolve().parents[1] / ".github/workflows/publish.yml"
 
-#: O Brasil nao tem horario de verao desde 2019, entao o offset e fixo. Se
+#: O Mexico nao faz horario de verao desde 2022, entao o offset e fixo. Se
 #: voltar, esta constante muda e o teste avisa qual janela deixou de cobrir.
-OFFSET_UTC = -3
+#:
+#: Era -3 (Sao Paulo) herdado do projeto irmao. Ficou assim mesmo depois de a
+#: fila mudar de fuso, e foi este teste que avisou -- o cron novo passava, mas
+#: contra os slots errados.
+OFFSET_UTC = -6
 
 
 def janela_do_cron() -> tuple[set[int], set[int]]:
