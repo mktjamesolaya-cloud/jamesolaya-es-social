@@ -32,9 +32,9 @@ from typing import Any, Protocol
 
 from . import queue as queue_mod
 
-#: As metricas que a conta responde para REELS. Conferidas ao vivo --
-#: ``profile_visits`` e ``follows`` existem na API mas sao recusadas para reels.
-REELS_METRICS: tuple[str, ...] = (
+#: Nucleo que TODO tipo de midia responde. E o piso: se a Meta recusar o
+#: conjunto do tipo, tenta-se este antes de desistir do post.
+METRICAS_NUCLEO: tuple[str, ...] = (
     "views",
     "reach",
     "likes",
@@ -42,8 +42,32 @@ REELS_METRICS: tuple[str, ...] = (
     "shares",
     "saved",
     "total_interactions",
-    "ig_reels_avg_watch_time",
 )
+
+#: Metricas que so existem em Reel. Pedi-las para uma foto faz a Meta recusar a
+#: chamada INTEIRA -- e ai o post fica sem dado nenhum, nao sem a metrica extra.
+METRICAS_REEL: tuple[str, ...] = ("ig_reels_avg_watch_time",)
+
+#: Conjunto por tipo de midia.
+#:
+#: Antes daqui o coletor pedia sempre o conjunto de Reel, qualquer que fosse o
+#: tipo. Num acervo em que 70% dos posts sao foto e carrossel, isso significaria
+#: aprender o melhor horario olhando so 30% da fila -- e sem erro visivel, porque
+#: a falha e por post e o log so conta "erros".
+METRICAS_POR_TIPO: dict[str, tuple[str, ...]] = {
+    "reel": METRICAS_NUCLEO + METRICAS_REEL,
+    "image": METRICAS_NUCLEO,
+    "carousel": METRICAS_NUCLEO,
+}
+
+#: Mantido para quem importava o nome antigo.
+REELS_METRICS: tuple[str, ...] = METRICAS_POR_TIPO["reel"]
+
+
+def metricas_de(item: Any) -> tuple[str, ...]:
+    """Conjunto adequado ao tipo do item, com 'reel' como padrao."""
+    kind = str((item.get("media") or {}).get("kind") or "reel").lower()
+    return METRICAS_POR_TIPO.get(kind, METRICAS_NUCLEO)
 
 #: Em que idades cada post e medido.
 SNAPSHOT_AGES: dict[str, timedelta] = {
@@ -76,8 +100,15 @@ CSV_FIELDS: tuple[str, ...] = (
     "age_hours",
     "age_label",
     "is_trial",
+    # Sem isto a analise nao consegue separar Reel de carrossel, e comparar
+    # views de video com views de foto nao diz nada sobre horario.
+    "media_kind",
     "duration_seconds",
-    *REELS_METRICS,
+    *METRICAS_POR_TIPO["reel"],
+    # Marca a linha em que a Meta recusou o conjunto do tipo e caimos no nucleo.
+    # Sem a marca, um buraco de metrica pareceria um post que simplesmente nao
+    # teve aquele numero.
+    "metricas_reduzidas",
     "error",
 )
 
@@ -236,10 +267,21 @@ def collect(
             "is_trial": "true" if item.get("trial") else "false",
             "duration_seconds": midia.get("duration_seconds"),
         }
+        kind = str(midia.get("kind") or "reel").lower()
+        linha["media_kind"] = kind
         try:
-            linha.update(
-                parse_insights(publisher.media_insights(media_id, ",".join(REELS_METRICS)))
-            )
+            pedido = metricas_de(item)
+            try:
+                bruto = publisher.media_insights(media_id, ",".join(pedido))
+            except Exception:
+                # A Meta recusa a chamada inteira quando uma metrica nao vale
+                # para o tipo, e a lista dela muda sem aviso. Cair para o nucleo
+                # salva o post: melhor um dado menor que nenhum.
+                if set(pedido) == set(METRICAS_NUCLEO):
+                    raise
+                bruto = publisher.media_insights(media_id, ",".join(METRICAS_NUCLEO))
+                linha["metricas_reduzidas"] = "true"
+            linha.update(parse_insights(bruto))
             resultado["coletados"] += 1
         except Exception as error:  # noqa: BLE001 - um post nao pode derrubar os outros
             # So o tipo e a mensagem, com o token removido: o repositorio e

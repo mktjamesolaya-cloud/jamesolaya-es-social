@@ -1,46 +1,65 @@
 {
   "version": 1,
   "source": "heuristic",
-  "_nota": "Horarios de partida para @jamesolaya.es. Sao HIPOTESE, nao verdade medida: a conta comeca sem Insights. Depois de ~3 semanas rode 'jayes tune-slots' para reajustar os pesos com desempenho real, como foi feito no projeto irmao (que descobriu assim que a faixa da noite rendia 3,4x a da manha).",
+  "_nota": "Horarios de partida para @jamesolaya.es. Sao HIPOTESE: a conta comeca sem Insights. Depois de ~3 semanas rode 'jayes tune-slots' para reajustar com desempenho real, como no projeto irmao (que descobriu assim que a noite rendia 3,4x a manha).",
   "timezone": "America/Mexico_City",
-  "_fuso": "Ancorado no Mexico por ser o maior mercado de micropigmentacao em espanhol. Bogota e Lima ficam no mesmo horario; Buenos Aires 3h a frente; Madri fica de madrugada e nao e o alvo.",
+  "_fuso": "Ancorado em Cidade do Mexico, mas escolhido para servir LatAm E o publico hispanofalante dos EUA. O Mexico nao faz horario de verao e os EUA fazem, entao o par foi escolhido por sobreviver as duas metades do ano: 19h MX pontua 0,96 em setembro e 0,96 em dezembro.",
   "posts_per_day": 2,
   "min_gap_minutes": 300,
-  "_gap": "12h e 18h distam 6h (360 min). O minimo de 300 permite o jitter mexer nas duas pontas sem colidir.",
+  "_gap": "12h e 19h distam 7h (420 min). O minimo de 300 permite o jitter mexer nas duas pontas sem colidir.",
   "jitter_minutes": 20,
   "explore_every": 7,
   "pool": [
     {
       "id": "midday-wd",
-      "weekdays": [0, 1, 2, 3, 4],
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
       "time": "12:00",
       "weight": 1.0,
       "samples": 0,
-      "rationale": "hipotese: intervalo de almoco em dia util"
+      "rationale": "melhor segundo slot com intervalo de 5h; bom no leste dos EUA e na LatAm, fraco em LA (score 0,64)"
     },
     {
       "id": "evening-wd",
-      "weekdays": [0, 1, 2, 3, 4],
-      "time": "18:00",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "time": "19:00",
       "weight": 1.0,
       "samples": 0,
-      "rationale": "hipotese: saida do trabalho; foi a melhor faixa no perfil irmao"
+      "rationale": "pico simultaneo em LA, Texas, Miami, Mexico, Bogota, Lima e Buenos Aires (score 0,96)"
     },
     {
       "id": "midday-we",
-      "weekdays": [5, 6],
+      "weekdays": [
+        5,
+        6
+      ],
       "time": "12:00",
       "weight": 1.0,
       "samples": 0,
-      "rationale": "hipotese: manha tardia de fim de semana"
+      "rationale": "melhor segundo slot com intervalo de 5h; bom no leste dos EUA e na LatAm, fraco em LA (score 0,64)"
     },
     {
       "id": "evening-we",
-      "weekdays": [5, 6],
-      "time": "18:00",
+      "weekdays": [
+        5,
+        6
+      ],
+      "time": "19:00",
       "weight": 1.0,
       "samples": 0,
-      "rationale": "hipotese: comeco da noite de fim de semana"
+      "rationale": "pico simultaneo em LA, Texas, Miami, Mexico, Bogota, Lima e Buenos Aires (score 0,96)"
     }
-  ]
+  ],
+  "_horarios": "19h MX acerta pico em todos os mercados: 18h Los Angeles, 20h Houston, 21h Miami e Nova York, 19h Mexico, 20h Bogota e Lima, 22h Buenos Aires. O slot do meio-dia e o melhor segundo possivel respeitando o intervalo minimo de 5h -- nenhum horario da manha chega perto do da noite."
 }

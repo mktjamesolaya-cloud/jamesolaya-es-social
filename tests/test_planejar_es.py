@@ -6,7 +6,7 @@ consome e a Meta valida.
 """
 
 import json
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -222,3 +222,22 @@ def test_item_e_serializavel_em_json(tmp_path):
         nao_antes=agora(), upload=upload_falso,
     )
     json.dumps(itens)  # levanta TypeError se algum Path escapou
+
+
+def test_item_carrega_o_horario_do_operador_alem_do_publico(tmp_path):
+    """Ler o horario do Mexico com o relogio do Brasil ja fez parecer que um
+    post tinha saido quando faltavam tres horas."""
+    cs = [cand(tmp_path, "C1", "image")]
+    itens, _ = planejar_es.montar_fila(
+        cs, SLOTS, quantidade=1, legendas={"C1": "hola"},
+        nao_antes=agora(), upload=upload_falso,
+    )
+    it = itens[0]
+    publico = datetime.fromisoformat(it["scheduled_at"])
+    operador = datetime.fromisoformat(it["scheduled_at_operador"])
+    utc = datetime.fromisoformat(it["scheduled_at_utc"])
+    # os tres apontam para o mesmo instante, em fusos diferentes
+    assert publico.astimezone(UTC) == operador.astimezone(UTC)
+    assert publico.astimezone(UTC) == utc.astimezone(UTC)
+    # e o do operador esta 3h a frente (Mexico UTC-6, Brasil UTC-3)
+    assert operador.hour == (publico.hour + 3) % 24

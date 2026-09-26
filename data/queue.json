@@ -2,13 +2,13 @@
   "version": 2,
   "items": [
     {
-      "id": "q_20260925T180600_DcwLPoeiWxJ",
+      "id": "q_20260926T114500_DcwLPoeiWxJ",
       "tiktok_id": "DcwLPoeiWxJ",
       "source_url": "https://www.instagram.com/p/DcwLPoeiWxJ/",
       "status": "scheduled",
-      "scheduled_at": "2026-09-25T18:06:00-06:00",
-      "scheduled_at_utc": "2026-09-26T00:06:00+00:00",
-      "slot_id": "evening-wd",
+      "scheduled_at": "2026-09-26T11:45:00-06:00",
+      "scheduled_at_utc": "2026-09-26T17:45:00+00:00",
+      "slot_id": "midday-we",
       "rank": 14,
       "media": {
         "kind": "image",
@@ -33,30 +33,31 @@
       "published_at": null,
       "history": [
         {
-          "at": "2026-09-25T22:46:51.719495+00:00",
+          "at": "2026-09-26T14:07:17.206892+00:00",
           "from": "",
           "to": "planned",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:46:55.340465+00:00",
+          "at": "2026-09-26T14:07:19.989981+00:00",
           "from": "planned",
           "to": "prepared",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:46:55.340541+00:00",
+          "at": "2026-09-26T14:07:19.990049+00:00",
           "from": "prepared",
           "to": "hosted",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:46:55.340550+00:00",
+          "at": "2026-09-26T14:07:19.990058+00:00",
           "from": "hosted",
           "to": "scheduled",
           "by": "local"
         }
       ],
+      "scheduled_at_operador": "2026-09-26T14:45:00-03:00",
       "origem": {
         "pasta": "014_Imagem-unica_2026-09-01_nem-sempre-e-preciso-reconstruir-uma",
         "formato": "Imagem única",
@@ -67,13 +68,13 @@
       }
     },
     {
-      "id": "q_20260926T114500_DbvzXhnluJU",
+      "id": "q_20260926T191500_DbvzXhnluJU",
       "tiktok_id": "DbvzXhnluJU",
       "source_url": "https://www.instagram.com/p/DbvzXhnluJU/",
       "status": "scheduled",
-      "scheduled_at": "2026-09-26T11:45:00-06:00",
-      "scheduled_at_utc": "2026-09-26T17:45:00+00:00",
-      "slot_id": "midday-we",
+      "scheduled_at": "2026-09-26T19:15:00-06:00",
+      "scheduled_at_utc": "2026-09-27T01:15:00+00:00",
+      "slot_id": "evening-we",
       "rank": 18,
       "media": {
         "kind": "carousel",
@@ -119,30 +120,31 @@
       "published_at": null,
       "history": [
         {
-          "at": "2026-09-25T22:46:55.340726+00:00",
+          "at": "2026-09-26T14:07:19.990256+00:00",
           "from": "",
           "to": "planned",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:47:05.063081+00:00",
+          "at": "2026-09-26T14:07:27.364493+00:00",
           "from": "planned",
           "to": "prepared",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:47:05.063146+00:00",
+          "at": "2026-09-26T14:07:27.364547+00:00",
           "from": "prepared",
           "to": "hosted",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:47:05.063153+00:00",
+          "at": "2026-09-26T14:07:27.364557+00:00",
           "from": "hosted",
           "to": "scheduled",
           "by": "local"
         }
       ],
+      "scheduled_at_operador": "2026-09-26T22:15:00-03:00",
       "origem": {
         "pasta": "018_Carrossel_2026-08-07_arrasta-para-o-lado-para-ver",
         "formato": "Carrossel",
@@ -155,13 +157,13 @@
       }
     },
     {
-      "id": "q_20260926T181500_DWW_SO-iaXo",
+      "id": "q_20260927T115000_DWW_SO-iaXo",
       "tiktok_id": "DWW_SO-iaXo",
       "source_url": "https://www.instagram.com/p/DWW_SO-iaXo/",
       "status": "scheduled",
-      "scheduled_at": "2026-09-26T18:15:00-06:00",
-      "scheduled_at_utc": "2026-09-27T00:15:00+00:00",
-      "slot_id": "evening-we",
+      "scheduled_at": "2026-09-27T11:50:00-06:00",
+      "scheduled_at_utc": "2026-09-27T17:50:00+00:00",
+      "slot_id": "midday-we",
       "rank": 21,
       "media": {
         "kind": "image",
@@ -186,30 +188,31 @@
       "published_at": null,
       "history": [
         {
-          "at": "2026-09-25T22:47:05.063287+00:00",
+          "at": "2026-09-26T14:07:27.364660+00:00",
           "from": "",
           "to": "planned",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:47:07.925379+00:00",
+          "at": "2026-09-26T14:07:30.560886+00:00",
           "from": "planned",
           "to": "prepared",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:47:07.925413+00:00",
+          "at": "2026-09-26T14:07:30.560921+00:00",
           "from": "prepared",
           "to": "hosted",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:47:07.925418+00:00",
+          "at": "2026-09-26T14:07:30.560924+00:00",
           "from": "hosted",
           "to": "scheduled",
           "by": "local"
         }
       ],
+      "scheduled_at_operador": "2026-09-27T14:50:00-03:00",
       "origem": {
         "pasta": "021_Imagem-unica_2026-03-26_hoje-o-que-a-cliente-busca",
         "formato": "Imagem única",
@@ -220,13 +223,13 @@
       }
     },
     {
-      "id": "q_20260927T115000_Dah9s9ixMhc",
+      "id": "q_20260927T185100_Dah9s9ixMhc",
       "tiktok_id": "Dah9s9ixMhc",
       "source_url": "https://www.instagram.com/p/Dah9s9ixMhc/",
       "status": "scheduled",
-      "scheduled_at": "2026-09-27T11:50:00-06:00",
-      "scheduled_at_utc": "2026-09-27T17:50:00+00:00",
-      "slot_id": "midday-we",
+      "scheduled_at": "2026-09-27T18:51:00-06:00",
+      "scheduled_at_utc": "2026-09-28T00:51:00+00:00",
+      "slot_id": "evening-we",
       "rank": 4,
       "media": {
         "kind": "reel",
@@ -251,30 +254,31 @@
       "published_at": null,
       "history": [
         {
-          "at": "2026-09-25T22:47:07.925491+00:00",
+          "at": "2026-09-26T14:07:30.560979+00:00",
           "from": "",
           "to": "planned",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:47:12.153008+00:00",
+          "at": "2026-09-26T14:07:34.555487+00:00",
           "from": "planned",
           "to": "prepared",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:47:12.153035+00:00",
+          "at": "2026-09-26T14:07:34.555522+00:00",
           "from": "prepared",
           "to": "hosted",
           "by": "local"
         },
         {
-          "at": "2026-09-25T22:47:12.153038+00:00",
+          "at": "2026-09-26T14:07:34.555525+00:00",
           "from": "hosted",
           "to": "scheduled",
           "by": "local"
         }
       ],
+      "scheduled_at_operador": "2026-09-27T21:51:00-03:00",
       "origem": {
         "pasta": "004_Reel_2026-07-08_alguns-atendimentos-ficam-marcados-pela-tecnica",
         "formato": "Reel",

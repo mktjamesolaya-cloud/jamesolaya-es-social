@@ -30,6 +30,10 @@ from .ingest import Candidato
 #: por release e versionar por lote so dificultaria achar as coisas.
 TAG_MIDIA = "media-v1"
 
+#: Fuso de quem opera a fila. So para exibicao -- o agendamento real e sempre o
+#: do publico, definido em slots.json.
+TZ_OPERADOR = "America/Sao_Paulo"
+
 
 def _nome_asset(c: Candidato, arquivo: Path, indice: int) -> str:
     """Nome unico e legivel dentro da Release.
@@ -142,6 +146,13 @@ def montar_fila(
             scheduled_at_utc=slot.scheduled_at_utc,
             slot_id=slot.slot_id,
             rank=c.posicao,
+        )
+        # O item ja guarda o horario do publico (Mexico) e o UTC. Este terceiro
+        # e so para quem OPERA a fila, que esta no Brasil: sem ele, ler "18:06"
+        # e comparar com o relogio de casa faz parecer que um post ja saiu
+        # quando na verdade faltam tres horas. Aconteceu em 25/09/2026.
+        item["scheduled_at_operador"] = (
+            slot.local.astimezone(ZoneInfo(TZ_OPERADOR)).isoformat()
         )
         item["media"] = hospedar(c, upload=upload)
         # Copia, nao referencia: editar a legenda depois nao pode mexer num
