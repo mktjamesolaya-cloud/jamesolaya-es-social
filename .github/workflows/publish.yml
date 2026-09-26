@@ -42,7 +42,15 @@ name: Publicar Reels agendados
 # horarios -- foi ele que pegou o slot das 21:15 caindo fora dela.
 on:
   schedule:
-    - cron: "13,43 0-1,11-23 * * *"
+    # Janela em UTC para os slots de Cidade do Mexico (UTC-6, sem horario de
+    # verao): 12h MX = 18h UTC e 19h MX = 01h UTC do dia seguinte. Com jitter de
+    # +/-20min, a janela precisa abrir antes e fechar depois de cada um.
+    #
+    # O cron do GitHub atrasa sob carga (medido no projeto irmao: pede 30
+    # execucoes/dia, entrega ~8,5, atraso mediano de 45 min), entao a janela e
+    # generosa de proposito e o job dorme ate a hora exata em vez de publicar
+    # ao acordar.
+    - cron: "5,35 0-3,16-22 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
