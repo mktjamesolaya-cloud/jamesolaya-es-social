@@ -50,7 +50,7 @@ jobs:
       - name: O publicador precisa importar sem as dependencias pesadas
         run: |
           uv run python -c "
-          from lukasmax_automation import publisher, queue, instagram, hosting, insights
+          from jayes_automation import publisher, queue, instagram, hosting, insights
           print('ok: o caminho de publicacao nao depende de yt-dlp, ffmpeg nem PyAV')
           "
 
@@ -62,8 +62,8 @@ jobs:
         env:
           PUBLISH_ENABLED: "false"
         run: |
-          uv run lukasmax doctor
-          uv run lukasmax publish-due --dry-run --max-per-run 1
+          uv run jayes doctor
+          uv run jayes publish-due --dry-run --max-per-run 1
           # 'collect-insights' e 'audience' ficam de fora pelo mesmo motivo do
           # reconcile: consultam a Graph API e este job nao tem credenciais.
           # 'reconcile' fica de fora: ele consulta a Graph API por definicao, e

@@ -3,6 +3,6 @@ set -euo pipefail
 
 uv sync --extra dev
 uv run pytest
-uv run lukasmax audit-tiktok
+uv run jayes audit-tiktok
 
-echo "Ambiente preparado. Para arquivar: uv run lukasmax download-archive"
+echo "Ambiente preparado. Para arquivar: uv run jayes download-archive"

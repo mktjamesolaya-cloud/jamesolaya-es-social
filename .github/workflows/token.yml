@@ -59,7 +59,7 @@ jobs:
         run: |
           # O token puro nunca passa por 'echo': o log deste repositorio e
           # publico, e um token vazado vale ate ser revogado a mao.
-          uv run lukasmax refresh-token --print-token > token.txt
+          uv run jayes refresh-token --print-token > token.txt
           if [ ! -s token.txt ]; then
             echo "::error::A Meta nao devolveu um token novo."
             rm -f token.txt
@@ -74,4 +74,4 @@ jobs:
         env:
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
-        run: uv run lukasmax check-instagram
+        run: uv run jayes check-instagram

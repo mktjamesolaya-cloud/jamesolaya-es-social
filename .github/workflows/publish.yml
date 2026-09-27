@@ -98,7 +98,7 @@ jobs:
         run: uv sync --frozen
 
       - name: Checagem previa
-        run: uv run lukasmax doctor
+        run: uv run jayes doctor
 
       # O coracao da correcao do atraso. Imprime os segundos ate o proximo post,
       # ou -1 para "nada nas proximas 5 horas" -- e ai o run encerra em segundos
@@ -110,7 +110,7 @@ jobs:
       - name: Esperar a hora exata do post
         id: espera
         run: |
-          SEGUNDOS=$(uv run lukasmax next-due --max-wait-seconds "${MAX_WAIT_SECONDS}" --seconds-only)
+          SEGUNDOS=$(uv run jayes next-due --max-wait-seconds "${MAX_WAIT_SECONDS}" --seconds-only)
           if [ "${SEGUNDOS}" -lt 0 ]; then
             echo "Nenhum post vence nas proximas $((MAX_WAIT_SECONDS / 3600))h. Encerrando."
             echo "publicar=false" >> "$GITHUB_OUTPUT"
@@ -137,12 +137,12 @@ jobs:
       # 'publishing' por um run que morreu no meio.
       - name: Reconciliar publicacoes interrompidas
         if: steps.espera.outputs.publicar == 'true'
-        run: uv run lukasmax reconcile
+        run: uv run jayes reconcile
 
       - name: Publicar o que estiver vencido
         if: steps.espera.outputs.publicar == 'true'
         run: |
-          uv run lukasmax publish-due \
+          uv run jayes publish-due \
             --max-per-run "${{ inputs.max_per_run || 1 }}" \
             ${{ inputs.dry_run && '--dry-run' || '' }}
 
@@ -153,8 +153,8 @@ jobs:
             echo "Nada mudou na fila."
             exit 0
           fi
-          git config user.name  "lukasmax-bot"
-          git config user.email "lukasmax-bot@users.noreply.github.com"
+          git config user.name  "jayes-bot"
+          git config user.email "jayes-bot@users.noreply.github.com"
           git add data/
 
           # Um push rejeitado significa que outra execucao escreveu antes. Refaz
