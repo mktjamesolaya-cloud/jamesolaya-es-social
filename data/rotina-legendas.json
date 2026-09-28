@@ -138,6 +138,26 @@
         "DaOW5pViRR3"
       ],
       "nota": "Taxa de descarte subiu para 6 em 9. Descendo o ranking a repeticao aumenta: quatro copias de posts ja na fila, uma sequencia poetica ja saturada, e um Reel com legenda automatica em portugues queimada. O DaOW5pViRR3 so foi pego abrindo a midia -- legenda diferente, fotos identicas as de DXeoqh0Dgs-."
+    },
+    {
+      "quando": "2026-09-28T19:40-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DU9GTAICYWK",
+        "DWkB9IphkBi",
+        "DNl1ROJuX-6",
+        "DNtjtqtXKtq",
+        "DOrWPaxCboA",
+        "DNEW_2mM4K0",
+        "DXKB2HRBd1w"
+      ],
+      "pulados": [
+        "DO4OuS-iQMm",
+        "DMyVbAGMPka",
+        "DFOLVS2JRts",
+        "DFAaOBVR1YN"
+      ],
+      "nota": "Primeiro lote do balde C, e a descoberta que o justifica: dos 25 Reels do balde C, 8 estao totalmente limpos e outros 4 so tem a placa da clinica no fundo. O portugues estava so na CAPA do post original, que a API nao usa -- publicando por la a miniatura sai do proprio video. A triagem classificou pela capa. Nenhum destes 7 precisou de edicao."
     }
   ]
 }
