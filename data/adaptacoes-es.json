@@ -51,6 +51,15 @@
       ],
       "por_que_redesenhar": "O fundo e branco chapado, entao apagar e reescrever sai perfeito. Avenir Next Heavy e a fonte do sistema mais proxima da geometrica pesada do original; Futura Bold ficou leve demais e o indice 1 saiu italico.",
       "conferido": "OCR depois da edicao devolve ['Saber es','distinto de','dominar.','@jamesolaya'] -- nenhuma palavra em portugues."
+    },
+    "DXsLbfTCQtJ": {
+      "arquivo": "video.mp4",
+      "visto_em": "2026-09-28",
+      "motivo": "Legenda de destaque 'Falta muita / densidade aqui' em branco com contorno preto nos primeiros 6s. E o gancho do video: sem traduzir, o post abre em portugues.",
+      "onde": "720x1280, texto centralizado em x=140..600, y=735..915; aparece de 0s a 5,9s",
+      "filtros": "delogo=x=130:y=725:w=470:h=195:enable='lte(t,5.9)',drawtext=fontfile='/System/Library/Fonts/Supplemental/Arial Bold.ttf':text='Falta mucha':fontcolor=white:fontsize=58:borderw=6:bordercolor=black:x=(w-text_w)/2-50:y=735:enable='lte(t,5.9)',drawtext=fontfile='/System/Library/Fonts/Supplemental/Arial Bold.ttf':text='densidad aquí':fontcolor=white:fontsize=58:borderw=6:bordercolor=black:x=(w-text_w)/2-50:y=825:enable='lte(t,5.9)'",
+      "por_que_delogo": "A area e pele quase uniforme, entao o delogo nao deixa borrao visivel, e o texto novo em espanhol cobre o rastro que sobra. O estilo (branco com contorno preto, mesmo corpo) foi reproduzido para o post nao parecer remendado.",
+      "conferido": "OCR nos frames 1s, 3s e 5s devolve ['Falta mucha','densidad aquí'] e nada em 7s -- o portugues saiu e a janela de tempo esta certa."
     }
   },
   "_nao_precisou": {

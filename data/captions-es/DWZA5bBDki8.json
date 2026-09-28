@@ -1,0 +1,21 @@
+{
+  "tiktok_id": "DWZA5bBDki8",
+  "prompt_version": "es-v1",
+  "model": "claude-opus-5-sessao",
+  "generated_at": "2026-09-28T21:59:32.324646+00:00",
+  "input_fingerprint": "sha256:28534f0289534d4b3f4552eda4aae80f51c322d3344d1c3b0fb7953f2722f4a9",
+  "caption": "El Shadow no es maquillaje pesado. Es definición, presencia y sofisticación.\n\nDurante años la micropigmentación cargó el estigma del maquillaje definitivo: esa ceja marcada, artificial, que el tiempo no perdona.\n\nPero los pigmentos evolucionaron y las técnicas también.\n\nUn Shadow bien hecho no tiene bordes. Empieza en un gris casi invisible en la cabeza y va ganando densidad hacia el cuerpo, de modo que nunca se ve dónde comienza el pigmento y dónde termina el pelo real.\n\nLo que envejece mal no es la técnica. Es el borde duro.",
+  "hashtags": [
+    "#shadow",
+    "#micropigmentacion",
+    "#cejas",
+    "#naturalidad",
+    "#tecnica"
+  ],
+  "alt_text": "Antes y despues de una micropigmentacion shadow con degradado sin bordes",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-09-28T21:59:32.325232+00:00",
+  "history": []
+}

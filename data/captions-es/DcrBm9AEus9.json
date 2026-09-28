@@ -1,0 +1,21 @@
+{
+  "tiktok_id": "DcrBm9AEus9",
+  "prompt_version": "es-v1",
+  "model": "claude-opus-5-sessao",
+  "generated_at": "2026-09-28T21:59:32.326264+00:00",
+  "input_fingerprint": "sha256:5a7566b4bd257b217783e6fba6f4ecbaed0a4994aeaf02b48bc1d1aa21c28623",
+  "caption": "\"James, ¿a qué velocidad dejo el dermógrafo para hacer micropigmentación labial?\"\n\nEs una de las preguntas que más me llegan.\n\nLa velocidad no es una fórmula mágica que decide si el labio va a quedar perfecto. La máquina es una extensión de tu mano, no un sustituto de tu criterio.\n\nLo que define el resultado es la relación entre velocidad, profundidad y cuántas pasadas aguanta ese labio antes de irritarse. Un labio fino y muy vascularizado no soporta el mismo régimen que uno grueso, aunque la máquina esté en el mismo número.\n\nDeja de buscar el número. Aprende a leer cuándo la piel ya recibió suficiente.",
+  "hashtags": [
+    "#micropigmentacionlabial",
+    "#labios",
+    "#dermografo",
+    "#tecnica",
+    "#pmu"
+  ],
+  "alt_text": "Aplicacion de micropigmentacion labial con dermografo",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-09-28T21:59:32.326607+00:00",
+  "history": []
+}

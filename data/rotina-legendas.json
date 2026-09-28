@@ -197,6 +197,27 @@
         "Ddc8rWIu5_K"
       ],
       "nota": "Falha de processo corrigida: o Ddc8rWIu5_K reapareceu porque eu tinha registrado o descarte so no diario, nao em pulados-es.json. So o pulados-es.json alimenta o filtro. Tambem nasceu scripts/contato.py -- o tile do ffmpeg entregava mosaicos com metade das celulas pretas quando as proporcoes eram diferentes, o que da a impressao de ter conferido o que nao foi conferido."
+    },
+    {
+      "quando": "2026-09-28T21:40-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DWZA5bBDki8",
+        "DZusGN_jjVi",
+        "DcrBm9AEus9",
+        "DYkJIYqjt1H",
+        "DRzO_NZiWrf",
+        "DXsLbfTCQtJ"
+      ],
+      "pulados": [
+        "DULgQQrjrEE",
+        "DPogBVOjg5m",
+        "DMsi5HIMWhO",
+        "DQ1b6BNiRSL",
+        "DB92xszSxRy",
+        "DNRcdMZtgbm"
+      ],
+      "nota": "Segunda edicao de video: DXsLbfTCQtJ tinha \"Falta muita / densidade aqui\" em branco com contorno preto nos primeiros 6s. Delogo mais drawtext no mesmo estilo; sem borrao visivel porque a area e pele quase uniforme. 65 posts ate 30/10."
     }
   ]
 }
