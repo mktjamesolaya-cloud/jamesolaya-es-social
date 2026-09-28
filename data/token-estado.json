@@ -1,7 +1,6 @@
 {
-  "renovado_em": "2026-09-25T21:46:25+00:00",
-  "expira_em": "2026-11-24T21:46:25+00:00",
+  "renovado_em": "2026-09-28T17:43:20.623515+00:00",
+  "expira_em": "2026-11-27T17:43:20.623515+00:00",
   "validade_dias": 60,
-  "origem": "painel-meta",
-  "_nota": "Primeiro token, gerado a mao no Painel de Apps em 25/09/2026 -- a data vem do updated_at do secret INSTAGRAM_ACCESS_TOKEN no GitHub. A partir da proxima renovacao quem escreve este arquivo e 'jayes refresh-token', e o cron de token.yml o comita de volta. Se 'renovado_em' envelhecer, o cron parou."
+  "origem": "refresh-token"
 }
