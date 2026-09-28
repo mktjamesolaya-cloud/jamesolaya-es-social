@@ -148,7 +148,7 @@ def _criar_container_carrossel(
         raise PermanentError(f"Item {item['id']} e carrossel mas nao tem media.assets")
 
     filhos: list[str] = list(item.get("carousel_children") or [])
-    for slide in slides[len(filhos):]:
+    for slide in slides[len(filhos) :]:
         url = slide.get("asset_url") if isinstance(slide, dict) else slide
         if not url:
             raise PermanentError(f"Item {item['id']}: slide sem asset_url")

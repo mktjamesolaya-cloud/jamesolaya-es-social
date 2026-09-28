@@ -22,12 +22,16 @@ def test_legenda_boa_passa_sem_aviso():
 
 # --- portugues vazando ----------------------------------------------------
 
-@pytest.mark.parametrize("trecho,pista", [
-    ("Ela não queria uma ceja nueva, queria se reconhecer no espelho de casa hoy", "não"),
-    ("Reconstruímos pelo por pelo con mucha atenção al trazo natural de la clienta", "ção"),
-    ("Você va a ver el resultado en la próxima foto de esta secuencia completa", "você"),
-    ("El resultado es uma transformação real para la clienta que llegó insegura", "cedilha"),
-])
+
+@pytest.mark.parametrize(
+    "trecho,pista",
+    [
+        ("Ela não queria uma ceja nueva, queria se reconhecer no espelho de casa hoy", "não"),
+        ("Reconstruímos pelo por pelo con mucha atenção al trazo natural de la clienta", "ção"),
+        ("Você va a ver el resultado en la próxima foto de esta secuencia completa", "você"),
+        ("El resultado es uma transformação real para la clienta que llegó insegura", "cedilha"),
+    ],
+)
 def test_acusa_portugues(trecho, pista):
     avisos = ces.validate_es(trecho + " " * 20, TAGS)
     assert any("portugues" in a for a in avisos), f"nao acusou {pista}: {avisos}"
@@ -35,16 +39,20 @@ def test_acusa_portugues(trecho, pista):
 
 def test_nao_acusa_palavra_igual_nos_dois_idiomas():
     """'natural', 'técnica' e 'profesional' existem nos dois. Falso positivo seria constante."""
-    txt = ("Un resultado natural depende de la técnica y del ojo del profesional, "
-           "no del color del pigmento ni del equipo que uses en la sesión.")
+    txt = (
+        "Un resultado natural depende de la técnica y del ojo del profesional, "
+        "no del color del pigmento ni del equipo que uses en la sesión."
+    )
     assert ces.detectar_portugues(txt) == []
     assert not any("portugues" in a for a in ces.validate_es(txt, TAGS))
 
 
 def test_acento_solto_em_texto_claramente_espanhol_nao_bloqueia():
     """Um typo num texto cheio de marcas de espanhol e typo, nao portugues."""
-    txt = ("¿Cómo saber si tu shadow está bien hecho? El borde no puede verse. "
-           "Cuando se ve dónde empieza, la piel ya perdió naturalidad y el resultado és plano.")
+    txt = (
+        "¿Cómo saber si tu shadow está bien hecho? El borde no puede verse. "
+        "Cuando se ve dónde empieza, la piel ya perdió naturalidad y el resultado és plano."
+    )
     avisos = ces.validate_es(txt, TAGS)
     assert not any("portugues" in a for a in avisos), avisos
 
@@ -59,6 +67,7 @@ def test_detectar_portugues_devolve_lista_vazia_para_espanhol():
 
 
 # --- tamanho e gancho -----------------------------------------------------
+
 
 def test_legenda_longa_e_aceita():
     """A regra herdada do perfil irmao exigia <=125 e reprovaria este perfil inteiro."""
@@ -80,15 +89,19 @@ def test_legenda_curta_demais_e_barrada():
 
 def test_gancho_que_corta_no_meio_e_acusado():
     """O corte do Instagram cai em 'la', deixando o gancho pendurado."""
-    txt = ("Un resultado natural depende de la técnica y del ojo del profesional, "
-           "no del color del pigmento ni del equipo que uses en la sesión.")
-    assert txt[:ces.HOOK_CHARS].rstrip().endswith(" la"), "premissa do teste mudou"
+    txt = (
+        "Un resultado natural depende de la técnica y del ojo del profesional, "
+        "no del color del pigmento ni del equipo que uses en la sesión."
+    )
+    assert txt[: ces.HOOK_CHARS].rstrip().endswith(" la"), "premissa do teste mudou"
     assert any("gancho corta" in a for a in ces.validate_es(txt, TAGS))
 
 
 def test_gancho_que_fecha_bem_nao_e_acusado():
-    txt = ("Ella llegó escondiendo la frente con flequillo desde hacía ocho años y hoy "
-           "vuelve a mirarse al espejo sin buscar el ángulo que la disimulaba antes.")
+    txt = (
+        "Ella llegó escondiendo la frente con flequillo desde hacía ocho años y hoy "
+        "vuelve a mirarse al espejo sin buscar el ángulo que la disimulaba antes."
+    )
     assert not any("gancho corta" in a for a in ces.validate_es(txt, TAGS))
 
 
@@ -101,6 +114,7 @@ def test_legenda_vazia():
 
 
 # --- hashtags -------------------------------------------------------------
+
 
 def test_poucas_hashtags():
     assert any("alvo: 3 a 8" in a for a in ces.validate_es(BOA, ["#cejas"]))
@@ -120,6 +134,7 @@ def test_hashtag_com_espaco():
 
 # --- registro -------------------------------------------------------------
 
+
 def test_montar_gera_registro_com_avisos():
     r = ces.montar("ABC", {"x": 1}, caption=BOA, hashtags=TAGS)
     assert r["tiktok_id"] == "ABC"
@@ -131,8 +146,10 @@ def test_montar_gera_registro_com_avisos():
 
 def test_montar_carrega_os_avisos_de_uma_legenda_ruim():
     r = ces.montar(
-        "ABC", {"x": 1},
-        caption="Você não vai acreditar nesse resultado lindo", hashtags=["#a"],
+        "ABC",
+        {"x": 1},
+        caption="Você não vai acreditar nesse resultado lindo",
+        hashtags=["#a"],
     )
     assert r["warnings"], "devia ter acusado portugues e hashtags de menos"
 

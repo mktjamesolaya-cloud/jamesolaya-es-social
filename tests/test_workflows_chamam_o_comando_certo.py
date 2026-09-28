@@ -75,10 +75,16 @@ def test_script_chama_o_comando_declarado(arquivo: Path):
 
 
 def test_nenhum_workflow_carrega_nome_do_projeto_irmao():
-    """Guarda ampla: qualquer sobra de 'lukasmax' em workflow e sintoma."""
+    """Guarda ampla: qualquer sobra de 'lukasmax' em workflow e sintoma.
+
+    Sem caixa: a primeira versao comparava minusculas e por isso nao via o
+    secret ``LUKASMAX_CANARY`` no token.yml, que ficou la depois da renomeacao.
+    Nome de secret e de variavel de ambiente vive em maiusculas -- procurar so
+    por 'lukasmax' cobria justamente a metade errada do arquivo.
+    """
     sobras = []
     for arquivo in WORKFLOWS + SCRIPTS:
         for n, linha in enumerate(arquivo.read_text(encoding="utf-8").splitlines(), 1):
-            if "lukasmax" in linha:
+            if "lukasmax" in linha.lower():
                 sobras.append(f"{arquivo.name}:{n}: {linha.strip()}")
     assert not sobras, "sobrou nome do projeto irmao:\n" + "\n".join(sobras)

@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   renovar:
@@ -45,11 +45,11 @@ jobs:
             echo "::error::Falta o secret SECRETS_PAT. Sem ele o token vence e a publicacao para."
             exit 1
           fi
-          if ! echo "canary" | gh secret set LUKASMAX_CANARY 2>/dev/null; then
+          if ! echo "canary" | gh secret set CANARIO_ESCRITA_SECRET 2>/dev/null; then
             echo "::error::O SECRETS_PAT nao consegue escrever secrets. No token fine-grained: Repository permissions > Secrets > Read and write."
             exit 1
           fi
-          gh secret delete LUKASMAX_CANARY || true
+          gh secret delete CANARIO_ESCRITA_SECRET || true
 
       - name: Renovar e gravar no secret
         env:
@@ -75,3 +75,19 @@ jobs:
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
         run: uv run jayes check-instagram
+
+      # data/token-estado.json e a unica fonte de "quando isto vence": a Graph
+      # API do Instagram nao tem 'debug_token'. Se este commit parar de chegar,
+      # o 'doctor' reclama de renovacao velha -- que e o sintoma de o cron ter
+      # morrido, exatamente o que ficou invisivel por quatro execucoes em
+      # setembro de 2026.
+      - name: Guardar a validade nova
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/token-estado.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Token renovado no run ${GITHUB_RUN_ID}"
+          git pull --rebase --autostash
+          git push

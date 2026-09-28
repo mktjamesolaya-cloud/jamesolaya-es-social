@@ -53,7 +53,33 @@ class Paths:
 
     @property
     def captions_dir(self) -> Path:
-        return self.data / "captions"
+        # 'captions-es' e nao 'captions': as legendas deste projeto sao escritas
+        # em espanhol e validadas por captions_es, que tem regras proprias. O
+        # nome herdado apontava para uma pasta que nunca existiu aqui, e o
+        # efeito era silencioso -- 'review-captions' e 'approve-caption'
+        # simplesmente nao achavam nada, e as quatro primeiras legendas foram
+        # parar em disco a mao, sem nunca passar pelo validador.
+        return self.data / "captions-es"
+
+    @property
+    def token_estado(self) -> Path:
+        """Quando o token foi renovado e quando vence.
+
+        A Graph API do Instagram nao tem 'debug_token', entao a unica forma de
+        saber a validade sem gastar uma renovacao e anotar a ultima. Sem este
+        arquivo o 'doctor' dizia "ok" a um dia do vencimento.
+        """
+        return self.data / "token-estado.json"
+
+    @property
+    def midia_adaptada(self) -> Path:
+        """Midia reeditada para o publico em espanhol.
+
+        Fica fora do git (media/ e ignorado) porque sao dezenas de MB por
+        arquivo e todos sao regeneraveis: a receita de cada edicao mora em
+        ``data/adaptacoes-es.json``, que e versionado.
+        """
+        return self.media / "adaptado-es"
 
     @property
     def media_reports_dir(self) -> Path:

@@ -344,6 +344,645 @@
         "score": 64.51,
         "observacoes": []
       }
+    },
+    {
+      "id": "q_20260928T120500_DC2jugqyz3I",
+      "tiktok_id": "DC2jugqyz3I",
+      "source_url": "https://www.instagram.com/p/DC2jugqyz3I/",
+      "status": "scheduled",
+      "scheduled_at": "2026-09-28T12:05:00-06:00",
+      "scheduled_at_utc": "2026-09-28T18:05:00+00:00",
+      "slot_id": "wd-midday",
+      "rank": 32,
+      "media": {
+        "kind": "carousel",
+        "assets": [
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DC2jugqyz3I-01.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DC2jugqyz3I-01.jpg",
+            "sha256": "fa4233ced7563e1fceda10c5f092af9186e689ef93df7263d6f0f1291572503f",
+            "bytes": 247675,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DC2jugqyz3I-02.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DC2jugqyz3I-02.jpg",
+            "sha256": "0f19556520c8d9e0705e99d3f2d740b4090a5690c82fabdc3bdc771b4d4b3736",
+            "bytes": 63531,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DC2jugqyz3I-03.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DC2jugqyz3I-03.jpg",
+            "sha256": "3f146417795e41949ef8ad243c2129f12b7d30f4b33fb1677a03ced8fbc5708c",
+            "bytes": 60342,
+            "is_video": false
+          }
+        ]
+      },
+      "caption": "¿Te gustaría atender un caso como este?\n\nTransformar líneas invisibles en una ceja real cambia algo más grande que un rostro.\n\nEn la alopecia, el espejo muchas veces devuelve más inseguridad que certezas. Reconstruir una ceja es devolver una parte de la identidad: volver a sentirse completo, seguro, presente.\n\nCada trazo se piensa con la delicadeza de un artista y el cuidado de quien entiende que la técnica y la humanidad caminan juntas.\n\nPorque lo que hacemos aquí no es solo estética.\n\nSi quieres aprender a leer el rostro, a proyectar y a ejecutar casos como este, comenta ONLINE y te cuento cómo estudiar conmigo.\n\n#alopecia #micropigmentacion #cejas #reconstruccion #autoestima",
+      "caption_fingerprint": "ea16df4bf48d071b",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T15:11:30.721154+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:11:38.400941+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:11:38.401291+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:11:38.401300+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-09-28T15:05:00-03:00",
+      "origem": {
+        "pasta": "032_Carrossel_2024-11-26_quer-atender-um-caso-com-esse",
+        "formato": "Carrossel",
+        "editorial": "História de cliente",
+        "balde": "A",
+        "score": 6.35,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20260928T190000_DFQqB8cyul8",
+      "tiktok_id": "DFQqB8cyul8",
+      "source_url": "https://www.instagram.com/p/DFQqB8cyul8/",
+      "status": "scheduled",
+      "scheduled_at": "2026-09-28T19:00:00-06:00",
+      "scheduled_at_utc": "2026-09-29T01:00:00+00:00",
+      "slot_id": "wd-evening",
+      "rank": 35,
+      "media": {
+        "kind": "carousel",
+        "assets": [
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DFQqB8cyul8-01.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DFQqB8cyul8-01.jpg",
+            "sha256": "bbd3e8e63f0b7946e21ab0db934c8493d921c9360be0adedd4b034fc51fec458",
+            "bytes": 124693,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DFQqB8cyul8-02.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DFQqB8cyul8-02.jpg",
+            "sha256": "3bee027f16d697d0f1e1f0722f32c58a0f7a69a3feec51a2db6d4d602c5ec2f2",
+            "bytes": 365030,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DFQqB8cyul8-03.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DFQqB8cyul8-03.jpg",
+            "sha256": "4a8fe778753f8cd4d75f5ab5e3af7bfae40df748df94abb33ac7b7aa0a441fca",
+            "bytes": 382008,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DFQqB8cyul8-04.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DFQqB8cyul8-04.jpg",
+            "sha256": "679ae804ff2d0d79a1a35e1eae148a94fd84e4fd48c42b38fd336727dede6963",
+            "bytes": 356001,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DFQqB8cyul8-05.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DFQqB8cyul8-05.jpg",
+            "sha256": "946cf9e3d15b55a645884537a5d3d5f3d767dafcda402b1fda2cfcaab2162230",
+            "bytes": 385171,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DFQqB8cyul8-06.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DFQqB8cyul8-06.jpg",
+            "sha256": "76390f086649db69410298fe4b598ba0f5578ff9f8b36562a106db6edfb8ee32",
+            "bytes": 80639,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DFQqB8cyul8-07.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DFQqB8cyul8-07.jpg",
+            "sha256": "9e451847b5ac823fc467ee41bba5d8a379555f8d7acf818b799a5894cb3fe032",
+            "bytes": 101096,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DFQqB8cyul8-08.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DFQqB8cyul8-08.jpg",
+            "sha256": "935e0f4f0a37dcde203299d6c04022f93030bd9654fa17701affe57007c11e23",
+            "bytes": 93800,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DFQqB8cyul8-09.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DFQqB8cyul8-09.jpg",
+            "sha256": "fca92d714cf27c4beb018fb7912c22247155092fa84d633d8eabf16a236ec078",
+            "bytes": 112370,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DFQqB8cyul8-10.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DFQqB8cyul8-10.jpg",
+            "sha256": "c4f7c59f0275c260eeb31bafca1dd43382c42a4ede871186466631ce3966a241",
+            "bytes": 113743,
+            "is_video": false
+          }
+        ]
+      },
+      "caption": "Esto es nano de verdad.\n\nDetrás de cada ceja hay una historia. Con los años entendí que la micropigmentación va mucho más allá de embellecer la mirada o armonizar el rostro.\n\nCuando una clienta se acuesta en la camilla, casi siempre dice lo mismo: \"quiero cejas bonitas\". Pero con dos o tres preguntas aparece algo mucho más profundo.\n\nDolores disfrazados de sonrisas tímidas. Historias de rechazo, de autoestima frágil, de autoimagen distorsionada. Marcas que dejaron batallas en la salud y en la mente.\n\nSomos más que artistas: somos reparadores.\n\nY la nanopigmentación no perdona. Exige trazo fino, profundidad exacta y una lectura honesta de la piel. No hay atajo, hay método.\n\nComenta ONLINE si quieres aprender esta técnica conmigo.\n\n#nanopigmentacion #micropigmentacion #cejas #tecnica #formacion",
+      "caption_fingerprint": "540dde36e6c23698",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T15:11:38.401821+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:05.837146+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:05.837202+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:05.837208+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-09-28T22:00:00-03:00",
+      "origem": {
+        "pasta": "035_Carrossel_2025-01-25_isso-e-nano-de-verdade-por",
+        "formato": "Carrossel",
+        "editorial": "Mentalidade/posicionamento",
+        "balde": "A",
+        "score": 5.74,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20260929T121500_DRPL28YiZLP",
+      "tiktok_id": "DRPL28YiZLP",
+      "source_url": "https://www.instagram.com/p/DRPL28YiZLP/",
+      "status": "scheduled",
+      "scheduled_at": "2026-09-29T12:15:00-06:00",
+      "scheduled_at_utc": "2026-09-29T18:15:00+00:00",
+      "slot_id": "wd-midday",
+      "rank": 36,
+      "media": {
+        "kind": "image",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DRPL28YiZLP.jpg",
+        "asset_name": "DRPL28YiZLP.jpg",
+        "release_tag": "media-v1",
+        "sha256": "50ccbe642d10ada365504b5d641756b061d19c07d2c270dcb71eec335291f3d1",
+        "bytes": 538531
+      },
+      "caption": "¡VOTACIÓN ABIERTA!\n\nMira de cerca este resultado de pelo a pelo realista y dime:\n\n¿Qué técnica crees que se usó aquí?\n\n1 • Nanoblading\n2 • Microblading\n3 • Pelo a pelo con dermógrafo\n\nComenta abajo tu respuesta 👇\n\nUna pista antes de decidir: fíjate en la dirección de los trazos, en cómo se cruzan y en la manera en que se abren hacia la cola de la ceja. Ahí está la firma de cada técnica, y es también donde se nota quién entendió el crecimiento natural del pelo y quién apenas copió un diseño.\n\nA ver quién acierta.\n\n#peloapelo #micropigmentacion #cejas #nanoblading #microblading",
+      "caption_fingerprint": "ea67df1ad6c652cd",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T15:12:05.838405+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:08.174615+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:08.174650+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:08.174654+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-09-29T15:15:00-03:00",
+      "origem": {
+        "pasta": "036_Imagem-unica_2025-11-19_votacao-aberta-olha-esse-resultado-de",
+        "formato": "Imagem única",
+        "editorial": "Antes e depois / resultado",
+        "balde": "A",
+        "score": 5.55,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20260929T190300_DXFg5NEB4MS",
+      "tiktok_id": "DXFg5NEB4MS",
+      "source_url": "https://www.instagram.com/p/DXFg5NEB4MS/",
+      "status": "scheduled",
+      "scheduled_at": "2026-09-29T19:03:00-06:00",
+      "scheduled_at_utc": "2026-09-30T01:03:00+00:00",
+      "slot_id": "wd-evening",
+      "rank": 25,
+      "media": {
+        "kind": "reel",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DXFg5NEB4MS.mp4",
+        "asset_name": "DXFg5NEB4MS.mp4",
+        "release_tag": "media-v1",
+        "sha256": "e07a26e2174b78c29f711c0efc52747b3699b1715ce251609aa7122285839bf0",
+        "bytes": 30660780
+      },
+      "caption": "Davi tiene alopecia universal. No tiene cejas, ni pestañas, ni cabello.\n\nY lo que pasa aquí va mucho más allá de la estética. Tiene que ver con cómo te ves en el espejo, con la confianza, con la forma de pararte frente al mundo.\n\nCon técnica, lectura del rostro y respeto por los rasgos masculinos, no dibujamos solamente una ceja.\n\nLe devolvimos presencia. Expresión. Identidad.\n\nPero para mí el momento más fuerte no es el antes y después.\n\nEs la reacción de quien lo ama. Ahí se entiende el tamaño real de lo que hacemos.\n\nMira hasta el final y después cuéntame qué sentiste.\n\n¿Quieres aprender a crear resultados así, con técnica y propósito? Comenta ONLINE y te muestro cómo.\n\n#alopecia #micropigmentacion #cejas #cejasmasculinas #peloapelo",
+      "caption_fingerprint": "f8306bd595efbbec",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T15:12:08.174716+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:24.810753+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:24.811195+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:24.811252+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-09-29T22:03:00-03:00",
+      "origem": {
+        "pasta": "025_Reel_2026-04-13_assiste-esse-video-ate-o-final",
+        "formato": "Reel",
+        "editorial": "História de cliente",
+        "balde": "C",
+        "score": 8.99,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20260930T120300_DXeoqh0Dgs-",
+      "tiktok_id": "DXeoqh0Dgs-",
+      "source_url": "https://www.instagram.com/p/DXeoqh0Dgs-/",
+      "status": "scheduled",
+      "scheduled_at": "2026-09-30T12:03:00-06:00",
+      "scheduled_at_utc": "2026-09-30T18:03:00+00:00",
+      "slot_id": "wd-midday",
+      "rank": 44,
+      "media": {
+        "kind": "carousel",
+        "assets": [
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DXeoqh0Dgs--01.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DXeoqh0Dgs--01.jpg",
+            "sha256": "db0e9ec0f2ec6a55649d41c29a6ff12a31512ca7c965aa37c1404600f0407f37",
+            "bytes": 471747,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DXeoqh0Dgs--02.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DXeoqh0Dgs--02.jpg",
+            "sha256": "f52f64858ee93fc7e2ed8b7ff9e61a7ab07a7cfcaad7afd281079ec09950719e",
+            "bytes": 431500,
+            "is_video": false
+          }
+        ]
+      },
+      "caption": "Esta técnica cambió mi mirada. Y puede cambiar la tuya.\n\nEn la micropigmentación realista el secreto nunca estuvo en el exceso. Está en la intención detrás de cada pelo.\n\nSe trata de saber dónde sumar. Dónde parar. Dónde observar más que ejecutar.\n\nEn el curso online Pelo a Pelo Realista enseño todo lo que sostiene un resultado natural y profesional:\n\n• Proyecto con base en visagismo\n• Simulación con lápiz antes de tocar la piel\n• Técnica para trazos finos y armónicos\n• Control de presión, dirección y ritmo\n• Elección y ajuste inteligente de los pigmentos\n• Cuidados según cada tipo de piel\n\nTodo con lenguaje claro, ejemplos reales y un método que respeta tu tiempo de aprendizaje.\n\nComenta ONLINE y recibe los detalles en tu inbox.\n\n#peloapelo #cursoonline #micropigmentacion #cejas #visagismo",
+      "caption_fingerprint": "3375a4532cb3762e",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T15:12:24.812880+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:30.688328+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:30.688376+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:30.688381+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-09-30T15:03:00-03:00",
+      "origem": {
+        "pasta": "044_Carrossel_2026-04-23_essa-tecnica-mudou-o-meu-olhar",
+        "formato": "Carrossel",
+        "editorial": "Divulgação de curso/evento",
+        "balde": "A",
+        "score": 4.69,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20260930T190800_DTcwLG3idEc",
+      "tiktok_id": "DTcwLG3idEc",
+      "source_url": "https://www.instagram.com/p/DTcwLG3idEc/",
+      "status": "scheduled",
+      "scheduled_at": "2026-09-30T19:08:00-06:00",
+      "scheduled_at_utc": "2026-10-01T01:08:00+00:00",
+      "slot_id": "wd-evening",
+      "rank": 45,
+      "media": {
+        "kind": "image",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DTcwLG3idEc.jpg",
+        "asset_name": "DTcwLG3idEc.jpg",
+        "release_tag": "media-v1",
+        "sha256": "3e460ef13b92077857b435883cf72721296c5db294119884f3c72869cae03028",
+        "bytes": 399049
+      },
+      "caption": "Esta fue la primera sesión de Lívia.\n\nDespués de un accidente que comprometió la región de la ceja, buscó una forma de recuperar la armonía de la mirada respetando cada límite de la piel.\n\nAquí cada pelo se pensó con calma, analizando la textura, el relieve y la respuesta del tejido. Sin prisa. Sin exceso.\n\nEl objetivo era devolver ligereza con naturalidad, sin pasar por encima de lo que la piel puede recibir.\n\nEmpezamos con trazos bien ubicados, más espaciados, siguiendo el patrón natural del crecimiento. En la mezcla del pigmento usé Escuro de Hades levemente calentado con Calor de Gaia: profundidad sin recargar la mirada.\n\nEsa es la ventaja de unir técnica, criterio y estudio: el resultado es sutil, pero transforma.\n\nY esto es apenas el comienzo.\n\n#micropigmentacion #cejas #cicatrices #peloapelo #tecnica",
+      "caption_fingerprint": "0abc226d6599dedf",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T15:12:30.688495+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:33.323222+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:33.323435+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:33.323459+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-09-30T22:08:00-03:00",
+      "origem": {
+        "pasta": "045_Imagem-unica_2026-01-13_essa-foi-a-primeira-sessao-da",
+        "formato": "Imagem única",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 4.69,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20261001T120500_DULJ5ghDq5X",
+      "tiktok_id": "DULJ5ghDq5X",
+      "source_url": "https://www.instagram.com/p/DULJ5ghDq5X/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-01T12:05:00-06:00",
+      "scheduled_at_utc": "2026-10-01T18:05:00+00:00",
+      "slot_id": "wd-midday",
+      "rank": 42,
+      "media": {
+        "kind": "reel",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DULJ5ghDq5X.mp4",
+        "asset_name": "DULJ5ghDq5X.mp4",
+        "release_tag": "media-v1",
+        "sha256": "5c4180c0e165825b889878c3fc7ed54ef02e0ebb17a61d88e5ac0381cef96820",
+        "bytes": 14521976
+      },
+      "caption": "Esto no empieza con una técnica. Empieza con una conversación.\n\nCuando la clienta dice \"ya me gusta cómo me veo, solo quiero sentirme un poco mejor\", no está pidiendo un diseño. Está pidiendo escucha, cuidado y dirección.\n\nAntes de cualquier procedimiento existe la lectura: del rostro, de la historia, del momento de vida. Existe la simulación, la prueba, el lápiz en la mano.\n\nNo para decidir por ella, sino para construir juntos.\n\nLa belleza que permanece no nace del impulso. Nace del protocolo, del respeto a los límites, de entender dónde empieza y dónde termina cada pelo.\n\nCumplir un sueño no es exagerar. Es saber cuándo parar, cuándo ajustar y cuándo conducir con seguridad.\n\nComenta ONLINE y te envío los detalles de la formación.\n\n#micropigmentacion #cejas #visagismo #peloapelo #formacion",
+      "caption_fingerprint": "74bb7342295f2277",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T15:12:33.323896+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:39.111584+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:39.111616+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:39.111619+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-01T15:05:00-03:00",
+      "origem": {
+        "pasta": "042_Reel_2026-01-31_aqui-nao-comeca-com-uma-tecnica",
+        "formato": "Reel",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 4.98,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20261001T191200_DHoGbxrRCsT",
+      "tiktok_id": "DHoGbxrRCsT",
+      "source_url": "https://www.instagram.com/p/DHoGbxrRCsT/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-01T19:12:00-06:00",
+      "scheduled_at_utc": "2026-10-02T01:12:00+00:00",
+      "slot_id": "wd-evening",
+      "rank": 48,
+      "media": {
+        "kind": "reel",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DHoGbxrRCsT.mp4",
+        "asset_name": "DHoGbxrRCsT.mp4",
+        "release_tag": "media-v1",
+        "sha256": "c5d65529d3a13de0d801d5fd2e0689f29d82cb765fc5c88687c8495f5306e0f5",
+        "bytes": 3772705
+      },
+      "caption": "Mira sin apuro. Este es el tipo de trazo que no se improvisa.\n\nDirección constante, profundidad pareja y una presión que no cambia aunque la mano ya lleve horas trabajando.\n\nLo que se ve como un video satisfactorio es en realidad el resultado de miles de repeticiones. La piel perdona poco: cada pasada de más se paga después, en la cicatrización, cuando el trazo se abre y pierde la definición que tenía en la camilla.\n\nNo existe filtro que arregle un trazo mal puesto.\n\nSi estás aprendiendo pelo a pelo realista y sientes que tus trazos todavía no tienen esta limpieza, comenta ONLINE y te muestro el método.\n\n#peloapelo #micropigmentacion #cejas #satisfying #tecnica",
+      "caption_fingerprint": "8966e420f7bed167",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T15:12:39.111708+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:42.104331+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:42.104368+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:42.104372+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-01T22:12:00-03:00",
+      "origem": {
+        "pasta": "048_Reel_2025-03-25_aquele-video-satisfatorio-de-um-atendimento",
+        "formato": "Reel",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 4.46,
+        "observacoes": []
+      }
     }
   ]
 }

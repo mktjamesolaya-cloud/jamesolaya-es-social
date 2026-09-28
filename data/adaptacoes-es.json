@@ -1,0 +1,17 @@
+{
+  "_nota": "Posts cuja midia traz portugues queimado na imagem e que valem a reedicao. Cada entrada nasce de alguem ter ABERTO o arquivo -- a triagem automatica errou nos dois sentidos aqui (ver adaptar_es.py). O MP4 gerado mora em media/adaptado-es/, que o git ignora; o que precisa sobreviver e esta receita.",
+  "adaptacoes": {
+    "DULJ5ghDq5X": {
+      "arquivo": "video.mp4",
+      "visto_em": "2026-09-28",
+      "motivo": "Card de encerramento nos ultimos 8s (a partir de 50,3s) com 'AGENDE SUA AVALIACAO' em branco sobre a faixa da logo. Alem do idioma, o CTA nao serve: agendar avaliacao e na clinica de Campinas, que nenhum seguidor no Mexico ou nos EUA vai usar.",
+      "onde": "texto em 720x1280, x=178..541, y=757..781; o card comeca em t=50,3s e vai ate o fim (57,98s)",
+      "filtros": "delogo=x=168:y=748:w=386:h=40:enable='gte(t,50.2)',drawtext=fontfile='/System/Library/Fonts/HelveticaNeue.ttc':text='FORMACIÓN ONLINE':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=754:enable='gte(t,50.5)'",
+      "por_que_delogo": "O fundo atras do texto e video vivo (pele, luva, sombra), nao uma cor chapada: uma caixa solida deixaria um retangulo obvio. O delogo interpola a partir das bordas e, como a area ja era escura, nao sobra borrao.",
+      "conferido": "OCR do frame em t=55s depois da edicao devolve ['AMESOLAY.', 'FORMACIÓN ONLINE'] -- o portugues saiu."
+    }
+  },
+  "_nao_precisou": {
+    "DXFg5NEB4MS": "A triagem marcou balde C por 'VEJA ESSE VIDEO / ate o final', mas esse texto so existe na capa.jpg do post original. Varri os 152s do video de 5 em 5 segundos com OCR: nada. Publicando pela API a capa sai do proprio video, entao nao ha o que editar."
+  }
+}

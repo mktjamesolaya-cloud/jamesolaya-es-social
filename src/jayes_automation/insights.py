@@ -69,6 +69,7 @@ def metricas_de(item: Any) -> tuple[str, ...]:
     kind = str((item.get("media") or {}).get("kind") or "reel").lower()
     return METRICAS_POR_TIPO.get(kind, METRICAS_NUCLEO)
 
+
 #: Em que idades cada post e medido.
 SNAPSHOT_AGES: dict[str, timedelta] = {
     "h24": timedelta(hours=24),

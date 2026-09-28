@@ -70,6 +70,7 @@ class Falso:
 def paths(tmp_path: Path):
     class P:
         publish_log = tmp_path / "log.jsonl"
+
     return P()
 
 
@@ -85,6 +86,7 @@ def item_base(kind, **media):
 
 # --- media_kind -----------------------------------------------------------
 
+
 def test_item_antigo_sem_kind_e_tratado_como_reel():
     assert pub.media_kind({"id": "x", "media": {}}) == "reel"
 
@@ -95,6 +97,7 @@ def test_kind_desconhecido_falha_claramente():
 
 
 # --- despacho -------------------------------------------------------------
+
 
 def test_imagem_usa_o_container_de_imagem(paths):
     ig = Falso()
@@ -116,14 +119,20 @@ def test_reel_continua_no_caminho_antigo(paths):
 
 def test_carrossel_cria_slides_e_depois_o_pai_nessa_ordem(paths):
     ig = Falso()
-    it = item_base("carousel", assets=[
-        {"asset_url": "https://x/1.jpg"},
-        {"asset_url": "https://x/2.jpg"},
-        {"asset_url": "https://x/3.mp4", "is_video": True},
-    ])
+    it = item_base(
+        "carousel",
+        assets=[
+            {"asset_url": "https://x/1.jpg"},
+            {"asset_url": "https://x/2.jpg"},
+            {"asset_url": "https://x/3.mp4", "is_video": True},
+        ],
+    )
     pub.publish_item(it, ig, paths)
     assert ig.chamadas[:4] == [
-        "slide:https://x/1.jpg", "slide:https://x/2.jpg", "slide:https://x/3.mp4", "pai",
+        "slide:https://x/1.jpg",
+        "slide:https://x/2.jpg",
+        "slide:https://x/3.mp4",
+        "pai",
     ]
     assert ig.filhos_recebidos == ["filho-1", "filho-2", "filho-3"]
     assert it["status"] == "published"
@@ -137,6 +146,7 @@ def test_carrossel_sem_assets_falha_antes_de_chamar_a_api(paths):
 
 
 # --- filhos orfaos: o caso caro -------------------------------------------
+
 
 def test_filhos_sao_persistidos_antes_do_pai(paths):
     """Cada slide e gravado assim que criado, nao no fim."""
@@ -176,6 +186,7 @@ def test_container_ja_criado_nao_e_recriado(paths):
 
 # --- log ------------------------------------------------------------------
 
+
 def test_log_registra_o_tipo_publicado(paths):
     ig = Falso()
     pub.publish_item(item_base("image", asset_url="https://x/y.jpg"), ig, paths)
@@ -189,13 +200,18 @@ def test_log_registra_o_tipo_publicado(paths):
 # Estes exercitam cmd_doctor de verdade, capturando o JSON que ele imprime.
 # Reimplementar a regra no teste nao provaria nada sobre o cli.
 
+
 def roda_doctor(tmp_path, media, monkeypatch):
     from jayes_automation import cli
 
     (tmp_path / "data").mkdir(parents=True, exist_ok=True)
     item = {
-        "id": "q1", "status": "scheduled", "caption": "hola",
-        "scheduled_at": "2026-10-01T12:00:00-06:00", "media": media, "history": [],
+        "id": "q1",
+        "status": "scheduled",
+        "caption": "hola",
+        "scheduled_at": "2026-10-01T12:00:00-06:00",
+        "media": media,
+        "history": [],
     }
     (tmp_path / "data" / "queue.json").write_text(
         json.dumps({"version": 2, "items": [item]}), encoding="utf-8"

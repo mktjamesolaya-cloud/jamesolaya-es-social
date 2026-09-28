@@ -20,8 +20,10 @@ espanhol. Barrar isso e mais importante que qualquer regra de estilo.
 
 from __future__ import annotations
 
+import json
 import re
 import unicodedata
+from pathlib import Path
 from typing import Any
 
 from .captions import (
@@ -79,9 +81,25 @@ MARCAS_PT_FRACAS = [
 #: depois de reprovarem um texto espanhol correto num teste.
 IGUAIS_NOS_DOIS = frozenset(
     {
-        "natural", "profesional", "tecnica", "arte", "color", "piel", "esta",
-        "ideal", "personal", "digital", "total", "final", "real", "social",
-        "saber", "labios", "resultado", "sesion", "tratamiento",
+        "natural",
+        "profesional",
+        "tecnica",
+        "arte",
+        "color",
+        "piel",
+        "esta",
+        "ideal",
+        "personal",
+        "digital",
+        "total",
+        "final",
+        "real",
+        "social",
+        "saber",
+        "labios",
+        "resultado",
+        "sesion",
+        "tratamiento",
     }
 )
 
@@ -97,12 +115,44 @@ MARCAS_ES = re.compile(
 #: A lista herdada e portuguesa ("de", "da", "do") e nao serve aqui.
 DANGLING_ES = frozenset(
     {
-        "y", "o", "u", "pero", "que", "de", "del", "en", "con", "sin", "por",
-        "para", "el", "la", "los", "las", "un", "una", "unos", "unas", "al",
-        "se", "ya", "a", "como", "su", "sus", "tu", "tus", "mi", "mis", "si",
-        "the", "and", "of",
+        "y",
+        "o",
+        "u",
+        "pero",
+        "que",
+        "de",
+        "del",
+        "en",
+        "con",
+        "sin",
+        "por",
+        "para",
+        "el",
+        "la",
+        "los",
+        "las",
+        "un",
+        "una",
+        "unos",
+        "unas",
+        "al",
+        "se",
+        "ya",
+        "a",
+        "como",
+        "su",
+        "sus",
+        "tu",
+        "tus",
+        "mi",
+        "mis",
+        "si",
+        "the",
+        "and",
+        "of",
     }
 )
+
 
 def _sem_acento(s: str) -> str:
     return "".join(c for c in unicodedata.normalize("NFD", s) if not unicodedata.combining(c))
@@ -151,8 +201,7 @@ def validate_es(caption: str, hashtags: list[str]) -> list[str]:
         avisos.append(f"{total} caracteres (limite do Instagram: {MAX_CAPTION_CHARS})")
     if len(texto) < MIN_CAPTION_CHARS:
         avisos.append(
-            f"legenda com {len(texto)} caracteres: curta demais "
-            f"(minimo {MIN_CAPTION_CHARS})"
+            f"legenda com {len(texto)} caracteres: curta demais (minimo {MIN_CAPTION_CHARS})"
         )
 
     # o gancho: tudo que aparece antes do "mais"
@@ -220,3 +269,49 @@ def texto_completo(registro: dict[str, Any]) -> str:
     caption = (registro.get("caption") or "").strip()
     tags = " ".join(registro.get("hashtags") or [])
     return f"{caption}\n\n{tags}".strip() if tags else caption
+
+
+# ---------------------------------------------------------------------------
+# Portao de aprovacao
+# ---------------------------------------------------------------------------
+#
+# As quatro primeiras legendas deste perfil foram ao ar com ``status: draft`` e
+# ``approved_at: null``: a aprovacao aconteceu no chat e nunca chegou ao disco,
+# porque o CLI procurava as legendas em ``data/captions`` e elas estavam em
+# ``data/captions-es``. Passavam no validador -- eu conferi depois -- mas por
+# sorte, nao por processo. Daqui em diante a fila so aceita ``approved``.
+
+
+class LegendaError(RuntimeError):
+    pass
+
+
+def aprovar(registro: dict[str, Any], *, forcar: bool = False) -> dict[str, Any]:
+    """Promove um rascunho a aprovado, recusando avisos do validador."""
+    avisos = validate_es(registro.get("caption") or "", registro.get("hashtags") or [])
+    registro["warnings"] = avisos
+    if avisos and not forcar:
+        raise LegendaError(
+            f"{registro.get('tiktok_id')}: {len(avisos)} aviso(s) impedem a aprovacao "
+            f"({'; '.join(avisos)}). Edite o arquivo ou use --forcar."
+        )
+    registro["status"] = "approved"
+    registro["approved_at"] = _now()
+    return registro
+
+
+def carregar_aprovadas(pasta: Path) -> dict[str, str]:
+    """short_code -> texto pronto para a API, so das legendas aprovadas.
+
+    E esta funcao que alimenta ``montar_fila``. Rascunho nao entra: publicar
+    uma legenda que ninguem leu no perfil errado e irreversivel.
+    """
+    if not pasta.is_dir():
+        return {}
+    aprovadas: dict[str, str] = {}
+    for caminho in sorted(pasta.glob("*.json")):
+        registro = json.loads(caminho.read_text(encoding="utf-8"))
+        if registro.get("status") != "approved":
+            continue
+        aprovadas[registro["tiktok_id"]] = texto_completo(registro)
+    return aprovadas

@@ -101,8 +101,7 @@ def plan_queue(
     claimed = [item for item in queue["items"] if item.get("status") == "publishing"]
     if claimed:
         raise queue_mod.QueueError(
-            f"{len(claimed)} item(ns) em 'publishing'. "
-            "Rode 'jayes reconcile' antes de replanejar."
+            f"{len(claimed)} item(ns) em 'publishing'. Rode 'jayes reconcile' antes de replanejar."
         )
 
     config = slots_config if slots_config is not None else scheduling.load_slots(paths.slots)

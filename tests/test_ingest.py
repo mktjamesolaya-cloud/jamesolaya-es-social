@@ -32,9 +32,15 @@ def escreve_dados(dados, triagem, manifesto=None):
 
 def t(pasta, formato, *, balde="A", esforco=None, posicao=1, score=10.0):
     return {
-        "posicao": posicao, "pasta": pasta, "formato": formato, "balde": balde,
-        "esforco": esforco, "score": score, "data": "2026-01-01",
-        "url": "https://www.instagram.com/p/ABC123/", "editorial": "Aula técnica",
+        "posicao": posicao,
+        "pasta": pasta,
+        "formato": formato,
+        "balde": balde,
+        "esforco": esforco,
+        "score": score,
+        "data": "2026-01-01",
+        "url": "https://www.instagram.com/p/ABC123/",
+        "editorial": "Aula técnica",
     }
 
 
@@ -46,6 +52,7 @@ def arvore(tmp_path):
 
 
 # --- tipos ----------------------------------------------------------------
+
 
 def test_reel_pega_o_video_e_a_capa(arvore):
     midia, dados = arvore
@@ -105,6 +112,7 @@ def test_carrossel_sem_slides_cai_para_a_imagem_principal(arvore):
 
 # --- descartes ------------------------------------------------------------
 
+
 def test_descarta_balde_d(arvore):
     midia, dados = arvore
     monta(midia, "007_x", arquivos=["imagem.jpg"])
@@ -116,10 +124,13 @@ def test_descarta_c_medio_mas_aceita_c_leve(arvore):
     midia, dados = arvore
     monta(midia, "008_leve", arquivos=["imagem.jpg"])
     monta(midia, "009_medio", arquivos=["imagem.jpg"])
-    escreve_dados(dados, [
-        t("008_leve", "Imagem única", balde="C", esforco="leve", posicao=8),
-        t("009_medio", "Imagem única", balde="C", esforco="médio", posicao=9),
-    ])
+    escreve_dados(
+        dados,
+        [
+            t("008_leve", "Imagem única", balde="C", esforco="leve", posicao=8),
+            t("009_medio", "Imagem única", balde="C", esforco="médio", posicao=9),
+        ],
+    )
     pastas = [c.pasta for c in ingest.carregar(midia, dados)]
     assert pastas == ["008_leve"]
 
@@ -152,15 +163,19 @@ def test_descarta_pasta_sem_arquivo_de_midia(arvore):
 
 # --- ordem e metadados ----------------------------------------------------
 
+
 def test_ordena_do_melhor_para_o_pior(arvore):
     midia, dados = arvore
     for i in (1, 2, 3):
         monta(midia, f"{i:03d}_x", arquivos=["imagem.jpg"])
-    escreve_dados(dados, [
-        t("001_x", "Imagem única", posicao=1, score=1.0),
-        t("002_x", "Imagem única", posicao=2, score=50.0),
-        t("003_x", "Imagem única", posicao=3, score=10.0),
-    ])
+    escreve_dados(
+        dados,
+        [
+            t("001_x", "Imagem única", posicao=1, score=1.0),
+            t("002_x", "Imagem única", posicao=2, score=50.0),
+            t("003_x", "Imagem única", posicao=3, score=10.0),
+        ],
+    )
     assert [c.score for c in ingest.carregar(midia, dados)] == [50.0, 10.0, 1.0]
 
 
@@ -199,10 +214,13 @@ def test_resumir_conta_arquivos_e_tipos(arvore):
     midia, dados = arvore
     monta(midia, "014_r", arquivos=["video.mp4"])
     monta(midia, "015_c", arquivos=["slide-01.jpg", "slide-02.jpg", "slide-03.jpg"])
-    escreve_dados(dados, [
-        t("014_r", "Reel", posicao=14),
-        t("015_c", "Carrossel", posicao=15),
-    ])
+    escreve_dados(
+        dados,
+        [
+            t("014_r", "Reel", posicao=14),
+            t("015_c", "Carrossel", posicao=15),
+        ],
+    )
     r = ingest.resumir(ingest.carregar(midia, dados))
     assert r["candidatos"] == 2
     assert r["por_tipo"] == {"reel": 1, "carousel": 1}

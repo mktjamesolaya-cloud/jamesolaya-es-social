@@ -22,6 +22,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from . import adaptar_es
+
 #: Baldes que saem baratos: so reescrever a legenda, ou uma frase curta na arte.
 #: O 'C medio' e o 'C pesado' exigem refazer arte e ficam de fora por padrao.
 BALDES_BARATOS = frozenset({"A", "B"})
@@ -106,11 +108,17 @@ def carregar(
     baldes: frozenset[str] = BALDES_BARATOS,
     esforcos: frozenset[str] = ESFORCO_BARATO,
     dir_vetos: Path | None = None,
+    dir_adaptado: Path | None = None,
 ) -> list[Candidato]:
     """Monta a lista de candidatos, do melhor para o pior.
 
     ``dir_vetos`` aponta para onde vive ``excluidos-es.json``; por padrao o
     mesmo ``dir_dados``.
+
+    ``dir_adaptado`` aponta para a midia reeditada (ver ``adaptar_es``). Quando
+    ha uma versao adaptada de um arquivo, ela substitui a original -- e e ela
+    que sobe para a Release. Sem isso o post iria ao ar com o texto em
+    portugues apesar da edicao ter sido feita.
 
     ``baldes`` e ``esforcos`` controlam o corte: o padrao pega A, B e o C leve.
     Passar ``baldes={'A','B','C'}`` e ``esforcos={'leve','médio'}`` amplia a
@@ -167,6 +175,8 @@ def carregar(
         if not arquivos:
             descarta(f"sem arquivo de midia ({kind})")
             continue
+        if dir_adaptado is not None:
+            arquivos = adaptar_es.substituir(arquivos, short_code, dir_adaptado)
         if kind == "carousel" and len(arquivos) < 2:
             # um "carrossel" com 1 arquivo e imagem unica para a API
             kind = "image"

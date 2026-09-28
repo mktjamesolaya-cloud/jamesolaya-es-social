@@ -33,13 +33,19 @@ class LeitorFalso:
 def item(kind, id_="q1"):
     publicado = datetime.now(TZ) - timedelta(hours=25)
     return {
-        "id": id_, "status": "published", "instagram_media_id": "m1", "tiktok_id": "ABC",
-        "slot_id": "evening", "scheduled_at": publicado.isoformat(),
-        "published_at": publicado.isoformat(), "media": {"kind": kind},
+        "id": id_,
+        "status": "published",
+        "instagram_media_id": "m1",
+        "tiktok_id": "ABC",
+        "slot_id": "evening",
+        "scheduled_at": publicado.isoformat(),
+        "published_at": publicado.isoformat(),
+        "media": {"kind": kind},
     }
 
 
 # --- conjunto por tipo ----------------------------------------------------
+
 
 def test_reel_pede_a_metrica_de_reel():
     assert "ig_reels_avg_watch_time" in ins.metricas_de(item("reel"))
@@ -59,6 +65,7 @@ def test_item_antigo_sem_kind_e_tratado_como_reel():
 
 
 # --- coleta ---------------------------------------------------------------
+
 
 def _coleta(tmp_path, it, leitor):
     return ins.collect({"items": [it]}, leitor, tmp_path / "insights.csv")

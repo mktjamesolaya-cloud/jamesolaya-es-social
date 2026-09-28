@@ -77,9 +77,7 @@ def duracao_estimada(
     return int(min(dias_video, dias_estatico))
 
 
-def intercalar(
-    candidatos: Sequence[Any], alvo_video: float = ALVO_VIDEO_PADRAO
-) -> list[Any]:
+def intercalar(candidatos: Sequence[Any], alvo_video: float = ALVO_VIDEO_PADRAO) -> list[Any]:
     """Reordena ``candidatos`` alternando video e estatico.
 
     Preserva a ordem de score **dentro** de cada tipo: o melhor video ainda sai
@@ -125,8 +123,7 @@ def resumir(fila: Sequence[Any], posts_por_dia: int = 2) -> dict[str, Any]:
     tipos: dict[str, int] = {}
     for item in fila:
         kind = (
-            item.get("media_kind") if isinstance(item, dict)
-            else getattr(item, "media_kind", "?")
+            item.get("media_kind") if isinstance(item, dict) else getattr(item, "media_kind", "?")
         )
         k = str(kind or "?").lower()
         tipos[k] = tipos.get(k, 0) + 1

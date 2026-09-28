@@ -294,9 +294,7 @@ class InstagramPublisher:
             fields["image_url"] = url
         return self._post(f"{self.user_id}/media", **fields)
 
-    def create_carousel_container(
-        self, children: Sequence[str], caption: str
-    ) -> dict[str, Any]:
+    def create_carousel_container(self, children: Sequence[str], caption: str) -> dict[str, Any]:
         """Container pai que amarra os slides ja criados.
 
         Duas regras da Meta que mordem:
@@ -311,9 +309,7 @@ class InstagramPublisher:
         """
         filhos = list(children)
         if not 2 <= len(filhos) <= 10:
-            raise PermanentError(
-                f"Carrossel precisa de 2 a 10 itens; recebi {len(filhos)}."
-            )
+            raise PermanentError(f"Carrossel precisa de 2 a 10 itens; recebi {len(filhos)}.")
         return self._post(
             f"{self.user_id}/media",
             media_type="CAROUSEL",

@@ -41,7 +41,22 @@ def _gh(*args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
             "O CLI 'gh' nao esta instalado. Instale com 'brew install gh' e rode 'gh auth login'."
         ) from error
     if check and result.returncode != 0:
-        raise HostingError(f"gh {' '.join(args)} falhou: {result.stderr.strip()}")
+        erro = result.stderr.strip()
+        # 404 no host de upload quase nunca e "release nao existe": e a conta
+        # ativa do gh nao ter permissao de escrita no repo. A maquina tem tres
+        # contas logadas e o 'gh auth switch' e global, entao qualquer outro
+        # terminal pode trocar a ativa no meio do trabalho. Aconteceu em
+        # 28/09/2026 e a mensagem crua nao dizia nada disso.
+        if "404" in erro and "uploads.github.com" in erro:
+            quem = subprocess.run(
+                ["gh", "api", "user", "-q", ".login"], capture_output=True, text=True
+            ).stdout.strip()
+            raise HostingError(
+                f"gh {' '.join(args[:2])} devolveu 404 no upload. A conta ativa do gh e "
+                f"'{quem or '?'}', que provavelmente nao tem permissao de escrita neste repo. "
+                f"Rode 'gh auth switch --user <dono-do-repo>'. Erro original: {erro}"
+            )
+        raise HostingError(f"gh {' '.join(args)} falhou: {erro}")
     return result
 
 

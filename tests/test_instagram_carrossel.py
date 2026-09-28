@@ -29,6 +29,7 @@ def ig():
 
 # --- imagem unica ---------------------------------------------------------
 
+
 def test_imagem_nao_manda_media_type(ig):
     """A ausencia de media_type e o que identifica imagem. Mandar IMAGE nao e documentado."""
     ig.create_image_container("https://x/y.jpg", "hola")
@@ -65,6 +66,7 @@ def test_imagem_como_slide_nao_leva_legenda(ig):
 
 # --- slides ---------------------------------------------------------------
 
+
 def test_slide_de_imagem(ig):
     ig.create_carousel_item("https://x/1.jpg")
     campos = ig.chamadas[0][1]
@@ -81,6 +83,7 @@ def test_slide_de_video_usa_media_type_video_e_nao_reels(ig):
 
 
 # --- container pai --------------------------------------------------------
+
 
 def test_carrossel_manda_children_separados_por_virgula_na_ordem(ig):
     ig.create_carousel_container(["a", "b", "c"], "hola")
@@ -115,6 +118,7 @@ def test_carrossel_aceita_qualquer_iteravel(ig):
 
 
 # --- o Reel nao pode ter mudado -------------------------------------------
+
 
 def test_reel_continua_igual(ig):
     ig.create_container_from_url("https://x/v.mp4", "hola", thumb_offset_ms=1500)

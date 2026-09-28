@@ -57,10 +57,18 @@ def cand(tmp_path, short_code, kind, *, n_arquivos=1, score=10.0, posicao=1):
         p.write_bytes(b"x" * 100)
         arquivos.append(p)
     return Candidato(
-        short_code=short_code, posicao=posicao, pasta=pasta.name, media_kind=kind,
-        arquivos=arquivos, capa=None, legenda_original="original em portugues",
-        score=score, formato={"reel": "Reel", "carousel": "Carrossel"}.get(kind, "Imagem única"),
-        editorial="Aula técnica", balde="A", data="2026-01-01",
+        short_code=short_code,
+        posicao=posicao,
+        pasta=pasta.name,
+        media_kind=kind,
+        arquivos=arquivos,
+        capa=None,
+        legenda_original="original em portugues",
+        score=score,
+        formato={"reel": "Reel", "carousel": "Carrossel"}.get(kind, "Imagem única"),
+        editorial="Aula técnica",
+        balde="A",
+        data="2026-01-01",
     )
 
 
@@ -69,6 +77,7 @@ def agora():
 
 
 # --- hospedagem -----------------------------------------------------------
+
 
 def test_imagem_gera_bloco_media_com_asset_url(tmp_path):
     c = cand(tmp_path, "IMG1", "image")
@@ -111,12 +120,17 @@ def test_candidato_sem_arquivo_falha(tmp_path):
 
 # --- a trava da legenda ---------------------------------------------------
 
+
 def test_item_sem_legenda_em_espanhol_nao_entra_na_fila(tmp_path):
     """Publicar legenda em portugues no perfil espanhol seria pior que nao publicar."""
     cs = [cand(tmp_path, f"C{i}", "image", posicao=i) for i in range(1, 4)]
     itens, resumo = planejar_es.montar_fila(
-        cs, SLOTS, quantidade=3, legendas={"C2": "hola"},
-        nao_antes=agora(), upload=upload_falso,
+        cs,
+        SLOTS,
+        quantidade=3,
+        legendas={"C2": "hola"},
+        nao_antes=agora(),
+        upload=upload_falso,
     )
     assert len(itens) == 1
     assert itens[0]["tiktok_id"] == "C2"
@@ -135,8 +149,12 @@ def test_sem_nenhuma_legenda_a_fila_sai_vazia(tmp_path):
 def test_legenda_e_congelada_com_fingerprint(tmp_path):
     cs = [cand(tmp_path, "C1", "image")]
     itens, _ = planejar_es.montar_fila(
-        cs, SLOTS, quantidade=1, legendas={"C1": "hola mundo"},
-        nao_antes=agora(), upload=upload_falso,
+        cs,
+        SLOTS,
+        quantidade=1,
+        legendas={"C1": "hola mundo"},
+        nao_antes=agora(),
+        upload=upload_falso,
     )
     assert itens[0]["caption"] == "hola mundo"
     assert len(itens[0]["caption_fingerprint"]) == 16
@@ -144,11 +162,16 @@ def test_legenda_e_congelada_com_fingerprint(tmp_path):
 
 # --- agendamento ----------------------------------------------------------
 
+
 def test_itens_saem_no_estado_scheduled(tmp_path):
     cs = [cand(tmp_path, "C1", "image")]
     itens, _ = planejar_es.montar_fila(
-        cs, SLOTS, quantidade=1, legendas={"C1": "hola"},
-        nao_antes=agora(), upload=upload_falso,
+        cs,
+        SLOTS,
+        quantidade=1,
+        legendas={"C1": "hola"},
+        nao_antes=agora(),
+        upload=upload_falso,
     )
     assert itens[0]["status"] == "scheduled"
     # passou por toda a maquina de estados, sem pular etapa
@@ -181,9 +204,11 @@ def test_nao_agenda_no_passado(tmp_path):
 
 # --- mescla ---------------------------------------------------------------
 
+
 def test_a_fila_sai_mesclada_e_nao_em_blocos(tmp_path):
-    cs = ([cand(tmp_path, f"V{i}", "reel", posicao=i) for i in range(1, 11)]
-          + [cand(tmp_path, f"E{i}", "image", posicao=100 + i) for i in range(1, 31)])
+    cs = [cand(tmp_path, f"V{i}", "reel", posicao=i) for i in range(1, 11)] + [
+        cand(tmp_path, f"E{i}", "image", posicao=100 + i) for i in range(1, 31)
+    ]
     legendas = {c.short_code: "hola" for c in cs}
     itens, resumo = planejar_es.montar_fila(
         cs, SLOTS, quantidade=40, legendas=legendas, nao_antes=agora(), upload=upload_falso
@@ -192,12 +217,18 @@ def test_a_fila_sai_mesclada_e_nao_em_blocos(tmp_path):
 
 
 def test_alvo_de_video_pode_ser_forcado(tmp_path):
-    cs = ([cand(tmp_path, f"V{i}", "reel", posicao=i) for i in range(1, 11)]
-          + [cand(tmp_path, f"E{i}", "image", posicao=100 + i) for i in range(1, 11)])
+    cs = [cand(tmp_path, f"V{i}", "reel", posicao=i) for i in range(1, 11)] + [
+        cand(tmp_path, f"E{i}", "image", posicao=100 + i) for i in range(1, 11)
+    ]
     legendas = {c.short_code: "hola" for c in cs}
     _, resumo = planejar_es.montar_fila(
-        cs, SLOTS, quantidade=10, legendas=legendas, alvo_video=0.5,
-        nao_antes=agora(), upload=upload_falso
+        cs,
+        SLOTS,
+        quantidade=10,
+        legendas=legendas,
+        alvo_video=0.5,
+        nao_antes=agora(),
+        upload=upload_falso,
     )
     assert 0.4 <= resumo["proporcao_video"] <= 0.6
 
@@ -205,8 +236,12 @@ def test_alvo_de_video_pode_ser_forcado(tmp_path):
 def test_origem_do_post_fica_registrada(tmp_path):
     cs = [cand(tmp_path, "C1", "image")]
     itens, _ = planejar_es.montar_fila(
-        cs, SLOTS, quantidade=1, legendas={"C1": "hola"},
-        nao_antes=agora(), upload=upload_falso,
+        cs,
+        SLOTS,
+        quantidade=1,
+        legendas={"C1": "hola"},
+        nao_antes=agora(),
+        upload=upload_falso,
     )
     origem = itens[0]["origem"]
     assert origem["formato"] == "Imagem única"
@@ -218,8 +253,12 @@ def test_item_e_serializavel_em_json(tmp_path):
     """A fila e gravada em disco; Path nao sobrevive a isso."""
     cs = [cand(tmp_path, "C1", "carousel", n_arquivos=3)]
     itens, _ = planejar_es.montar_fila(
-        cs, SLOTS, quantidade=1, legendas={"C1": "hola"},
-        nao_antes=agora(), upload=upload_falso,
+        cs,
+        SLOTS,
+        quantidade=1,
+        legendas={"C1": "hola"},
+        nao_antes=agora(),
+        upload=upload_falso,
     )
     json.dumps(itens)  # levanta TypeError se algum Path escapou
 
@@ -229,8 +268,12 @@ def test_item_carrega_o_horario_do_operador_alem_do_publico(tmp_path):
     post tinha saido quando faltavam tres horas."""
     cs = [cand(tmp_path, "C1", "image")]
     itens, _ = planejar_es.montar_fila(
-        cs, SLOTS, quantidade=1, legendas={"C1": "hola"},
-        nao_antes=agora(), upload=upload_falso,
+        cs,
+        SLOTS,
+        quantidade=1,
+        legendas={"C1": "hola"},
+        nao_antes=agora(),
+        upload=upload_falso,
     )
     it = itens[0]
     publico = datetime.fromisoformat(it["scheduled_at"])

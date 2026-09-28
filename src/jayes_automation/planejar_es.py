@@ -151,16 +151,14 @@ def montar_fila(
         # e so para quem OPERA a fila, que esta no Brasil: sem ele, ler "18:06"
         # e comparar com o relogio de casa faz parecer que um post ja saiu
         # quando na verdade faltam tres horas. Aconteceu em 25/09/2026.
-        item["scheduled_at_operador"] = (
-            slot.local.astimezone(ZoneInfo(TZ_OPERADOR)).isoformat()
-        )
+        item["scheduled_at_operador"] = slot.local.astimezone(ZoneInfo(TZ_OPERADOR)).isoformat()
         item["media"] = hospedar(c, upload=upload)
         # Copia, nao referencia: editar a legenda depois nao pode mexer num
         # post que ja esta no calendario.
         item["caption"] = legendas[c.short_code]
-        item["caption_fingerprint"] = hashlib.sha256(
-            item["caption"].encode("utf-8")
-        ).hexdigest()[:16]
+        item["caption_fingerprint"] = hashlib.sha256(item["caption"].encode("utf-8")).hexdigest()[
+            :16
+        ]
         item["origem"] = {
             "pasta": c.pasta,
             "formato": c.formato,

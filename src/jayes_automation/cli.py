@@ -15,18 +15,28 @@ import os
 import sys
 from collections.abc import Callable
 from dataclasses import asdict
-from datetime import date, timedelta
+from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from dotenv import load_dotenv
 
+from . import adaptar_es, hosting, ingest, insights, planejar_es, planner, scheduling
 from . import captions as captions_mod
-from . import hosting, insights, planner, scheduling
+from . import captions_es as legendas_es
 from . import publisher as publisher_mod
 from . import queue as queue_mod
 from .paths import Paths
 from .ranking import rank_videos
+
+#: A partir de quantos dias de token restante o doctor reprova. 21 da tres
+#: semanas de folga: o cron de renovacao roda dia 1 de cada mes, entao mesmo
+#: uma execucao perdida ainda cabe dentro da janela.
+TOKEN_ALERTA_DIAS = 21
+
+#: Quanto tempo sem renovar ja indica que o cron mensal parou.
+TOKEN_RENOVACAO_MAX_DIAS = 45
 
 
 def _emit(payload: Any) -> None:
@@ -208,10 +218,13 @@ def cmd_approve_caption(args: argparse.Namespace) -> int:
         if record.get("status") == "approved" and not args.force:
             continue
         try:
-            captions_mod.approve(record, force=args.force)
+            # validador espanhol, nao o herdado: o do projeto irmao exige uma
+            # frase de ate 125 caracteres, e as legendas do @jamesolaya tem
+            # mediana de 816 -- aprovar por aquelas regras reprovaria tudo
+            legendas_es.aprovar(record, forcar=args.force)
             captions_mod.save(record, path)
             approved.append(record["tiktok_id"])
-        except captions_mod.CaptionError as error:
+        except legendas_es.LegendaError as error:
             captions_mod.save(record, path)
             blocked.append({"id": record.get("tiktok_id"), "reason": str(error)})
 
@@ -222,6 +235,180 @@ def cmd_approve_caption(args: argparse.Namespace) -> int:
 # ---------------------------------------------------------------------------
 # Media preparation
 # ---------------------------------------------------------------------------
+
+
+# ---------------------------------------------------------------------------
+# Acervo em espanhol
+# ---------------------------------------------------------------------------
+#
+# A midia e a triagem vivem no projeto de analise (FormatosValidadosJamesolaya),
+# nao aqui: este repo guarda a decisao (veto, legenda, receita de edicao) e a
+# fila. Sao raizes diferentes de proposito, e ja houve um bug de ler as duas do
+# mesmo lugar -- por isso os caminhos sao explicitos.
+
+ACERVO_PADRAO = Path.home() / "PROJETOS_DEV" / "FormatosValidadosJamesolaya"
+
+
+def _acervo(args: argparse.Namespace) -> tuple[Path, Path]:
+    """(pasta de midia, pasta de dados da analise)."""
+    raiz = Path(
+        getattr(args, "acervo", None) or os.environ.get("JAYES_ACERVO") or ACERVO_PADRAO
+    ).expanduser()
+    return raiz / "melhores-conteudos", raiz / "data"
+
+
+def _candidatos(args: argparse.Namespace, paths: Paths) -> list[ingest.Candidato]:
+    midia, dados = _acervo(args)
+    if not midia.is_dir():
+        raise SystemExit(
+            f"Acervo nao encontrado em {midia}. Passe --acervo ou defina JAYES_ACERVO."
+        )
+    return ingest.carregar(midia, dados, dir_vetos=paths.data, dir_adaptado=paths.midia_adaptada)
+
+
+def cmd_adaptar_es(args: argparse.Namespace) -> int:
+    """Renderiza a midia reeditada descrita em data/adaptacoes-es.json."""
+    paths = _paths(args)
+    midia, _ = _acervo(args)
+    receitas = adaptar_es.carregar(paths.data / adaptar_es.ARQUIVO)
+    if not receitas:
+        _emit({"adaptadas": [], "nota": "nenhuma receita em data/adaptacoes-es.json"})
+        return 0
+
+    # o short_code nao diz em que pasta o post esta; a triagem diz
+    pastas = {c.short_code: c for c in _candidatos(args, paths)}
+    feitas, falhas = [], []
+    for short_code, receita in receitas.items():
+        candidato = pastas.get(short_code)
+        if candidato is None:
+            falhas.append({"id": short_code, "motivo": "nao esta entre os candidatos"})
+            continue
+        origem = midia / candidato.pasta / (receita.get("arquivo") or "video.mp4")
+        try:
+            destino = adaptar_es.aplicar(
+                short_code, origem, receita, paths.midia_adaptada, refazer=args.refazer
+            )
+        except adaptar_es.AdaptacaoError as erro:
+            falhas.append({"id": short_code, "motivo": str(erro)})
+            continue
+        feitas.append({"id": short_code, "arquivo": str(destino), "bytes": destino.stat().st_size})
+    _emit({"adaptadas": feitas, "falhas": falhas})
+    return 1 if falhas and not feitas else 0
+
+
+def cmd_importar_legendas_es(args: argparse.Namespace) -> int:
+    """Carrega legendas em espanhol escritas a mao e as passa pelo validador.
+
+    Substitui o 'import-captions' herdado, que exigia um '.info.json' do TikTok
+    -- arquivo que neste projeto nunca existiu.
+    """
+    paths = _paths(args)
+    entradas = json.loads(args.file.read_text(encoding="utf-8"))
+    candidatos = {c.short_code: c for c in _candidatos(args, paths)}
+
+    gravadas, bloqueadas = [], []
+    for entrada in entradas:
+        short_code = str(entrada["tiktok_id"])
+        candidato = candidatos.get(short_code)
+        if candidato is None:
+            bloqueadas.append({"id": short_code, "motivo": "nao esta entre os candidatos"})
+            continue
+        # o fingerprint amarra a legenda ao post de origem: se a legenda
+        # original ou o formato mudarem, da para saber que ela envelheceu
+        metadados = {
+            "short_code": short_code,
+            "formato": candidato.formato,
+            "balde": candidato.balde,
+            "legenda_original": candidato.legenda_original,
+        }
+        registro = legendas_es.montar(
+            short_code,
+            metadados,
+            caption=entrada["caption"],
+            hashtags=entrada.get("hashtags") or [],
+            alt_text=entrada.get("alt_text") or "",
+            autor=args.autor,
+        )
+        if args.aprovar:
+            try:
+                legendas_es.aprovar(registro)
+            except legendas_es.LegendaError as erro:
+                captions_mod.save(registro, paths.caption(short_code))
+                bloqueadas.append({"id": short_code, "motivo": str(erro)})
+                continue
+        captions_mod.save(registro, paths.caption(short_code))
+        gravadas.append({"id": short_code, "status": registro["status"]})
+
+    _emit({"gravadas": gravadas, "bloqueadas": bloqueadas})
+    return 1 if bloqueadas and not gravadas else 0
+
+
+def cmd_plan_es(args: argparse.Namespace) -> int:
+    """Monta a fila a partir do acervo, das legendas aprovadas e dos slots.
+
+    Este comando existe porque 'planejar_es.montar_fila' tinha onze testes e
+    nenhum chamador: a primeira fila foi montada por um script avulso digitado
+    de memoria. E o mesmo descasamento entre o que roda e o que esta testado
+    que deixou o cron morto por quatro execucoes.
+    """
+    paths = _paths(args)
+    fila = queue_mod.load_queue(paths.queue)
+    config = scheduling.load_slots(paths.slots)
+    tz = ZoneInfo(config.get("timezone", scheduling.TIMEZONE))
+
+    ja_na_fila = {item["tiktok_id"] for item in fila["items"]}
+    candidatos = [c for c in _candidatos(args, paths) if c.short_code not in ja_na_fila]
+    aprovadas = legendas_es.carregar_aprovadas(paths.captions_dir)
+
+    # nao agendar por cima do que ja esta marcado
+    ocupados = [
+        datetime.fromisoformat(item["scheduled_at"])
+        for item in fila["items"]
+        if item.get("status") in {"scheduled", "retry"} and item.get("scheduled_at")
+    ]
+    agora = datetime.now(tz)
+    nao_antes = max([*ocupados, agora]) if ocupados else agora
+
+    def upload_falso(caminho: Path, tag: str, **kw: Any) -> dict[str, Any]:
+        return {
+            "release_tag": tag,
+            "asset_name": caminho.name,
+            "asset_url": f"dry-run://{tag}/{caminho.name}",
+            "sha256": "dry-run",
+            "bytes": caminho.stat().st_size,
+        }
+
+    itens, resumo = planejar_es.montar_fila(
+        candidatos,
+        config,
+        quantidade=args.quantidade,
+        alvo_video=args.alvo_video,
+        legendas=aprovadas,
+        nao_antes=nao_antes,
+        ocupados=ocupados,
+        upload=upload_falso if args.dry_run else None,
+    )
+
+    resumo["legendas_aprovadas"] = len(aprovadas)
+    resumo["agenda"] = [
+        {
+            "id": i["tiktok_id"],
+            "tipo": i["media"]["kind"],
+            "publico": i["scheduled_at"],
+            "operador": i["scheduled_at_operador"],
+        }
+        for i in itens
+    ]
+    if args.dry_run:
+        resumo["dry_run"] = True
+        _emit(resumo)
+        return 0
+
+    fila["items"].extend(itens)
+    queue_mod.save_queue(fila, paths.queue)
+    resumo["gravados"] = len(itens)
+    _emit(resumo)
+    return 0
 
 
 def cmd_prepare(args: argparse.Namespace) -> int:
@@ -272,37 +459,19 @@ def cmd_prepare(args: argparse.Namespace) -> int:
 
 
 def cmd_plan_queue(args: argparse.Namespace) -> int:
-    paths = _paths(args)
-    start = date.fromisoformat(args.start) if args.start else date.today()
-    config = scheduling.load_slots(paths.slots)
-    result = planner.plan_queue(
-        paths,
-        start=start,
-        days=args.days,
-        per_day=args.per_day or int(config.get("posts_per_day", 2)),
-        strategy=args.strategy,
-        slots_config=config,
+    """Planejador do projeto irmao. Nao serve aqui -- e uma armadilha.
+
+    'planner.plan_queue' casa video do TikTok com horario e assume um arquivo
+    por post. Aqui a origem e uma pasta ja triada e um post pode ter dez
+    arquivos em ordem. Rodar isto por engano montaria uma fila errada em
+    silencio, que e o modo de falha caro deste projeto.
+    """
+    print(
+        "plan-queue e o planejador do TikTok e nao vale para o @jamesolaya.es.\n"
+        "Use 'jayes plan-es --quantidade N'.",
+        file=sys.stderr,
     )
-    summary = {
-        "janela": f"{start.isoformat()} + {args.days} dias",
-        "slots_planejados": result["planned_slots"],
-        "elegiveis": result["eligible"],
-        "a_agendar": len(result["created"]),
-        "slots_sobrando": result["unused_slots"],
-        "elegiveis_sem_slot": result["unscheduled_eligible"],
-        "recusados": planner.summarize_rejections(result["rejected"]),
-        "agenda": [
-            {"id": item["tiktok_id"], "quando": item["scheduled_at"], "slot": item["slot_id"]}
-            for item in result["created"]
-        ],
-    }
-    if args.dry_run:
-        summary["dry_run"] = True
-        _emit(summary)
-        return 0
-    summary["gravados"] = planner.commit_plan(result, paths)
-    _emit(summary)
-    return 0
+    return 2
 
 
 def cmd_refresh_captions(args: argparse.Namespace) -> int:
@@ -606,6 +775,24 @@ def cmd_refresh_token(args: argparse.Namespace) -> int:
         return 1
 
     dias = int(resposta.get("expires_in") or 0) // 86400
+    # anota a validade: e a unica fonte que o doctor tem para avisar antes da
+    # hora, ja que a Graph API do Instagram nao expoe 'debug_token'
+    if dias:
+        agora = datetime.now(UTC)
+        _paths(args).token_estado.write_text(
+            json.dumps(
+                {
+                    "renovado_em": agora.isoformat(),
+                    "expira_em": (agora + timedelta(days=dias)).isoformat(),
+                    "validade_dias": dias,
+                    "origem": "refresh-token",
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
     # O token so aparece em stdout quando pedido: o log do Actions e publico
     # neste repositorio, e um token vazado vale ate ser revogado a mao.
     if args.print_token:
@@ -868,6 +1055,36 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     else:
         notes["publicacao"] = "PUBLISH_ENABLED nao esta true (nada sera postado)"
 
+    # Validade do token. Sem isto o doctor dizia "ok" com um dia de token
+    # restante: ele conferia conta e quota, nunca prazo. Quando o token vence, a
+    # publicacao para e nada avisa -- nem aqui, nem no app.
+    estado = paths.token_estado
+    if not estado.exists():
+        problems.append(
+            f"{estado.name} nao existe: ninguem sabe quando o token vence. "
+            "Rode 'jayes refresh-token'."
+        )
+    else:
+        dados = json.loads(estado.read_text(encoding="utf-8"))
+        expira = datetime.fromisoformat(dados["expira_em"])
+        renovado = datetime.fromisoformat(dados["renovado_em"])
+        agora = datetime.now(UTC)
+        faltam = (expira - agora).days
+        notes["token_expira_em_dias"] = faltam
+        notes["token_renovado_em"] = dados["renovado_em"][:10]
+        if faltam < TOKEN_ALERTA_DIAS:
+            problems.append(
+                f"o token vence em {faltam} dia(s) ({dados['expira_em'][:10]}). "
+                "Sem renovacao a publicacao para em silencio."
+            )
+        # O cron de renovacao roda todo dia 1. Se a ultima renovacao tem mais de
+        # 45 dias, ele nao esta rodando -- provavelmente falta o SECRETS_PAT.
+        if (agora - renovado).days > TOKEN_RENOVACAO_MAX_DIAS:
+            problems.append(
+                f"a ultima renovacao foi ha {(agora - renovado).days} dias; o cron mensal "
+                "nao esta rodando. Confira o secret SECRETS_PAT e o workflow token.yml."
+            )
+
     notes["orcamento_24h_restante"] = queue_mod.daily_budget_left(paths.publish_log)
     _emit({"ok": not problems, "problemas": problems, "notas": notes})
     return 1 if problems else 0
@@ -942,6 +1159,9 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "doctor": cmd_doctor,
     "migrate-queue": cmd_migrate_queue,
     "init-slots": cmd_init_slots,
+    "adaptar-es": cmd_adaptar_es,
+    "importar-legendas-es": cmd_importar_legendas_es,
+    "plan-es": cmd_plan_es,
 }
 
 
@@ -1097,6 +1317,30 @@ def build_parser() -> argparse.ArgumentParser:
 
     doctor = commands.add_parser("doctor", help="Checagem completa antes de publicar")
     doctor.add_argument("--check-assets", action="store_true", help="Confere cada URL de midia")
+
+    adaptar = commands.add_parser(
+        "adaptar-es", help="Reedita a midia com portugues queimado (data/adaptacoes-es.json)"
+    )
+    adaptar.add_argument("--acervo", type=Path, help="Raiz do projeto de analise")
+    adaptar.add_argument("--refazer", action="store_true", help="Reencoda mesmo se ja existe")
+
+    importar = commands.add_parser(
+        "importar-legendas-es", help="Carrega legendas em espanhol escritas a mao"
+    )
+    importar.add_argument("--file", type=Path, required=True, help="JSON com as legendas")
+    importar.add_argument("--acervo", type=Path, help="Raiz do projeto de analise")
+    importar.add_argument("--autor", default="claude-opus-5-sessao")
+    importar.add_argument(
+        "--aprovar", action="store_true", help="Aprova ja, se passar no validador"
+    )
+
+    planes = commands.add_parser("plan-es", help="Monta a fila a partir do acervo em espanhol")
+    planes.add_argument("--quantidade", type=int, default=8)
+    planes.add_argument(
+        "--alvo-video", type=float, help="Proporcao de video (default: deduz do estoque)"
+    )
+    planes.add_argument("--acervo", type=Path, help="Raiz do projeto de analise")
+    planes.add_argument("--dry-run", action="store_true", help="Nao sobe midia nem grava a fila")
 
     slots = commands.add_parser("init-slots", help="Cria data/slots.json com os horarios padrao")
     slots.add_argument("--force", action="store_true")
