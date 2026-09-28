@@ -12,6 +12,7 @@ import argparse
 import csv
 import json
 import os
+import subprocess
 import sys
 from collections.abc import Callable
 from dataclasses import asdict
@@ -408,6 +409,98 @@ def cmd_plan_es(args: argparse.Namespace) -> int:
     queue_mod.save_queue(fila, paths.queue)
     resumo["gravados"] = len(itens)
     _emit(resumo)
+    return 0
+
+
+def cmd_rotina_status(args: argparse.Namespace) -> int:
+    """Tudo que a rotina horaria precisa para decidir se trabalha, num comando.
+
+    Existe por economia: a rotina dispara de hora em hora e, na maioria das
+    vezes, a resposta certa e nao fazer nada. Sem isto cada disparo abriria
+    quatro arquivos e rodaria o ingest inteiro so para descobrir que a fila
+    ainda esta cheia.
+
+    'trabalhar' e a unica chave que importa. As outras existem para explicar o
+    porque -- e para o cliente conseguir auditar a decisao depois.
+    """
+    paths = _paths(args)
+    fila = queue_mod.load_queue(paths.queue)
+    config = scheduling.load_slots(paths.slots)
+    tz = ZoneInfo(config.get("timezone", scheduling.TIMEZONE))
+    agora = datetime.now(tz)
+
+    agendados = [i for i in fila["items"] if i.get("status") in {"scheduled", "retry"}]
+    presos = [i["id"] for i in fila["items"] if i.get("status") == "publishing"]
+    horarios = [datetime.fromisoformat(i["scheduled_at"]) for i in agendados]
+    ultimo = max(horarios) if horarios else agora
+    folga_dias = round((ultimo - agora).total_seconds() / 86400, 2)
+
+    git = subprocess.run(
+        ["git", "status", "--porcelain"],
+        capture_output=True,
+        text=True,
+        cwd=paths.root,
+    )
+    # Fora de um repositorio o git falha. Nao bloqueia: a rotina roda 'git pull'
+    # antes disso e teria morrido ali. Mas sai na resposta, para "nao sei" nunca
+    # se confundir com "esta limpo".
+    sujo = git.stdout.strip() if git.returncode == 0 else ""
+    git_disponivel = git.returncode == 0
+
+    motivos: list[str] = []
+    if presos:
+        motivos.append(f"item preso em publishing: {', '.join(presos)}")
+    if sujo:
+        motivos.append(f"{len(sujo.splitlines())} arquivo(s) sem commit")
+    if folga_dias >= args.folga_dias:
+        motivos.append(f"fila cobre {folga_dias} dias (alvo: {args.folga_dias})")
+
+    resposta: dict[str, Any] = {
+        "trabalhar": not motivos,
+        "motivos_para_nao": motivos,
+        "itens_agendados": len(agendados),
+        "folga_dias": folga_dias,
+        "ultimo_agendado": ultimo.isoformat() if horarios else None,
+        "git_legivel": git_disponivel,
+    }
+
+    # O ingest so roda se a decisao ja for de trabalhar: e a parte cara desta
+    # checagem, e nao faz sentido paga-la para confirmar uma fila cheia.
+    if not motivos:
+        na_fila = {i["tiktok_id"] for i in fila["items"]}
+        aprovadas = legendas_es.carregar_aprovadas(paths.captions_dir)
+        pulados = (
+            json.loads((paths.data / "pulados-es.json").read_text(encoding="utf-8")).get(
+                "pulados", {}
+            )
+            if (paths.data / "pulados-es.json").exists()
+            else {}
+        )
+        livres = [
+            c
+            for c in _candidatos(args, paths)
+            if c.short_code not in na_fila
+            and c.short_code not in aprovadas
+            and c.short_code not in pulados
+            and c.balde == "A"
+        ]
+        resposta["candidatos_livres"] = len(livres)
+        resposta["proximos"] = [
+            {
+                "id": c.short_code,
+                "tipo": c.media_kind,
+                "score": round(c.score, 2),
+                "pasta": str(_acervo(args)[0] / c.pasta),
+            }
+            for c in livres[: args.quantos]
+        ]
+        if len(livres) < 10:
+            resposta["trabalhar"] = False
+            resposta["motivos_para_nao"].append(
+                f"so restam {len(livres)} candidatos livres; avise o cliente"
+            )
+
+    _emit(resposta)
     return 0
 
 
@@ -1162,6 +1255,7 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "adaptar-es": cmd_adaptar_es,
     "importar-legendas-es": cmd_importar_legendas_es,
     "plan-es": cmd_plan_es,
+    "rotina-status": cmd_rotina_status,
 }
 
 
@@ -1341,6 +1435,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     planes.add_argument("--acervo", type=Path, help="Raiz do projeto de analise")
     planes.add_argument("--dry-run", action="store_true", help="Nao sobe midia nem grava a fila")
+
+    rotina = commands.add_parser(
+        "rotina-status", help="A rotina horaria de legendas precisa trabalhar agora?"
+    )
+    rotina.add_argument("--folga-dias", type=float, default=6.0, help="Fila alvo, em dias")
+    rotina.add_argument("--quantos", type=int, default=2, help="Quantos candidatos sugerir")
+    rotina.add_argument("--acervo", type=Path, help="Raiz do projeto de analise")
 
     slots = commands.add_parser("init-slots", help="Cria data/slots.json com os horarios padrao")
     slots.add_argument("--force", action="store_true")

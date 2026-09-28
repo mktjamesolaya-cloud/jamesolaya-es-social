@@ -1,0 +1,4 @@
+{
+  "_nota": "Posts que a rotina automatica olhou e decidiu NAO usar, com o motivo. Diferente de data/excluidos-es.json, que e veto permanente do cliente: aqui e 'o robo nao teve confianca'. Vale revisar de vez em quando -- um post pulado por 'nao entendi o contexto' pode ser otimo com um par de olhos humanos.",
+  "pulados": {}
+}

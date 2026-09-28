@@ -1,0 +1,5 @@
+{
+  "_nota": "Diario da rotina automatica de legendas (docs/ROTINA_LEGENDAS.md). Uma entrada por disparo que fez trabalho; disparos que sairam cedo por fila cheia nao aparecem aqui. E por este arquivo que da para auditar o que o robo escreveu e o que ele preferiu pular, sem ler o historico do git.",
+  "iniciada_em": "2026-09-28",
+  "execucoes": []
+}
