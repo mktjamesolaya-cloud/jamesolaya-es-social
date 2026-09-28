@@ -32,6 +32,21 @@
         "DZ5x1Uep-yE"
       ],
       "nota": "Lote so de Reel, o oposto do anterior. As duas pontas viraram bloco do mesmo tipo, o que expos que montar_fila mescla apenas dentro do lote. Corrigido com 'jayes remesclar', que redistribui a fila inteira sem mexer nos horarios: sequencia caiu de 4 para 2."
+    },
+    {
+      "quando": "2026-09-28T16:40-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DaneQvKDnvt",
+        "DQekyWZjiq6",
+        "DJhdso2JvCy",
+        "DTVg7axDkId"
+      ],
+      "pulados": [
+        "DaDq7EEOEjD",
+        "DLmskw7Omkv"
+      ],
+      "nota": "Primeiro lote montado ja com 'remesclar' no fim: a fila de 19 itens alterna video e estatico quase perfeitamente (sequencia 2)."
     }
   ]
 }
