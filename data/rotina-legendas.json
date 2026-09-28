@@ -218,6 +218,27 @@
         "DNRcdMZtgbm"
       ],
       "nota": "Segunda edicao de video: DXsLbfTCQtJ tinha \"Falta muita / densidade aqui\" em branco com contorno preto nos primeiros 6s. Delogo mais drawtext no mesmo estilo; sem borrao visivel porque a area e pele quase uniforme. 65 posts ate 30/10."
+    },
+    {
+      "quando": "2026-09-28T22:10-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DKwnRkEuodR",
+        "Da3ecKIE6ZT",
+        "DceJoskG9-7",
+        "DKZr8msOGvi",
+        "DCojKi9p0Aa",
+        "DEh1Nhfxfnq"
+      ],
+      "pulados": [
+        "DSne9eOCS_Q",
+        "DZNBOIwCb2S",
+        "DOjn0J2iaEm",
+        "DPw3m49CWFy",
+        "DLYNB2uuLQS",
+        "DXh14iVCb8U"
+      ],
+      "nota": "O detector de celebridade nao pegou DPw3m49CWFy porque a legenda diz so \"uma famosa\", sem nome. Peguei pelo OCR do video. Vale lembrar que a regex cobre o obvio, nao o suficiente."
     }
   ]
 }
