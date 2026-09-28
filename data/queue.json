@@ -983,6 +983,286 @@
         "score": 4.46,
         "observacoes": []
       }
+    },
+    {
+      "id": "q_20261002T114900_DEFh8W6REf6",
+      "tiktok_id": "DEFh8W6REf6",
+      "source_url": "https://www.instagram.com/p/DEFh8W6REf6/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-02T11:49:00-06:00",
+      "scheduled_at_utc": "2026-10-02T17:49:00+00:00",
+      "slot_id": "wd-midday",
+      "rank": 61,
+      "media": {
+        "kind": "image",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DEFh8W6REf6.jpg",
+        "asset_name": "DEFh8W6REf6.jpg",
+        "release_tag": "media-v1",
+        "sha256": "c4d602acfdeda2a46733c0ddfe17416cc84ff1f8eb34cbb58494035379423f2c",
+        "bytes": 256383
+      },
+      "caption": "Míralo dos veces. Arriba no hay una ceja antigua: hay un pigmento que viró de color.\n\nEs de los casos que más llegan a la camilla. Un trabajo hecho hace años, con un pigmento que con el tiempo perdió el componente frío y se fue al naranja, dejando una mancha compacta donde debería haber pelo.\n\nEl camino fue en dos tiempos. Primero remoción, para bajar la carga de ese pigmento viejo. Después reconstrucción pelo a pelo, siguiendo el crecimiento real y respetando una piel madura, que recibe el pigmento y cicatriza de otra manera.\n\nLo difícil de una corrección no es tapar. Es saber cuánto se puede quitar antes de volver a construir, y aceptar que el resultado se consigue en más de una sesión.\n\nQuien intenta cubrir un trabajo viejo con más pigmento casi siempre lo empeora.\n\nComenta ONLINE si quieres aprender a leer y corregir estos casos.\n\n#correccion #remocion #micropigmentacion #cejas #peloapelo",
+      "caption_fingerprint": "38f87a3033ba1d12",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T18:08:56.607276+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:08:59.468702+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:08:59.468774+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:08:59.468782+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-02T14:49:00-03:00",
+      "origem": {
+        "pasta": "061_Imagem-unica_2024-12-27_aquela-antes-e-depois-com-forca",
+        "formato": "Imagem única",
+        "editorial": "Antes e depois / resultado",
+        "balde": "A",
+        "score": 3.97,
+        "observacoes": [
+          "era colaboração — republicar solo",
+          "cita cidade brasileira na legenda"
+        ]
+      }
+    },
+    {
+      "id": "q_20261002T185400_Dbbhls_muiW",
+      "tiktok_id": "Dbbhls_muiW",
+      "source_url": "https://www.instagram.com/p/Dbbhls_muiW/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-02T18:54:00-06:00",
+      "scheduled_at_utc": "2026-10-03T00:54:00+00:00",
+      "slot_id": "wd-evening",
+      "rank": 62,
+      "media": {
+        "kind": "carousel",
+        "assets": [
+          {
+            "release_tag": "media-v1",
+            "asset_name": "Dbbhls_muiW-01.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/Dbbhls_muiW-01.jpg",
+            "sha256": "3678bd0bee7518899119e0d7bf643027f25ef4cac37681db8584c729112e8d64",
+            "bytes": 408322,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "Dbbhls_muiW-02.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/Dbbhls_muiW-02.jpg",
+            "sha256": "0a28ec3b501f56b13798600bfe9d77a58a1424898e286e9a20f13d3298d6f4b2",
+            "bytes": 337032,
+            "is_video": false
+          }
+        ]
+      },
+      "caption": "Un resultado natural empieza mucho antes del primer pelo.\n\nEn la nanopigmentación cada detalle pesa. El visagismo es lo que permite entender la individualidad de cada rostro, respetar sus proporciones y crear una ceja que converse con la expresión de quien la lleva.\n\nEl objetivo no es transformar la ceja. Es entender qué necesita transmitir.\n\nMás ligereza.\nMás definición.\nMás armonía.\n\nCuando la técnica se construye a partir del rostro, el resultado no pesa ni descaracteriza. Al contrario: valora lo que ya estaba ahí y traduce, en cada trazo, la intención de quien está en la camilla.\n\nPorque una ceja bien planificada no necesita llamar la atención sobre sí misma.\n\nNecesita tener sentido en el rostro.\n\n#nanopigmentacion #visagismo #cejas #micropigmentacion #naturalidad",
+      "caption_fingerprint": "34b866dcb6518e35",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T18:08:59.468957+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:09:04.709213+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:09:04.709273+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:09:04.709278+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-02T21:54:00-03:00",
+      "origem": {
+        "pasta": "062_Carrossel_2026-07-30_um-resultado-natural-comeca-muito-antes",
+        "formato": "Carrossel",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 3.92,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20261003T121600_DcOs3mwml3-",
+      "tiktok_id": "DcOs3mwml3-",
+      "source_url": "https://www.instagram.com/p/DcOs3mwml3-/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-03T12:16:00-06:00",
+      "scheduled_at_utc": "2026-10-03T18:16:00+00:00",
+      "slot_id": "we-midday",
+      "rank": 66,
+      "media": {
+        "kind": "image",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DcOs3mwml3-.jpg",
+        "asset_name": "DcOs3mwml3-.jpg",
+        "release_tag": "media-v1",
+        "sha256": "de39775ab4756cd4e3602fdd3c23d2236dab5bcc5135349f8c5840b257eea868",
+        "bytes": 379084
+      },
+      "caption": "Una de las cosas que más me llaman la atención en el consultorio es notar cuánta falta hace una ceja cuando deja de existir.\n\nQuien convive con alopecia, o con una pérdida importante de pelo, suele desarrollar costumbres sin darse cuenta. Hay quien no sale de casa sin dibujarse las cejas. Otros evitan las fotos, la playa, la piscina. No por vanidad: por incomodidad.\n\nPor eso siempre digo lo mismo. Antes de hacer una ceja necesito entender a la persona que tengo delante.\n\nCada caso tiene una historia distinta. Hay pacientes que todavía conservan algunos pelos y otros que perdieron por completo la referencia. Hay pieles finas, gruesas, sensibles, y cada una pide una estrategia diferente.\n\nNo existe una técnica que sirva igual para todo el mundo.\n\nComenta ONLINE si quieres aprender a leer cada caso antes de tocar la piel.\n\n#alopecia #micropigmentacion #cejas #autoestima #formacion",
+      "caption_fingerprint": "8bd08959b3558ec4",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T18:09:04.709719+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:09:06.994340+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:09:06.994499+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:09:06.994506+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-03T15:16:00-03:00",
+      "origem": {
+        "pasta": "066_Imagem-unica_2026-08-19_uma-das-coisas-que-mais-me",
+        "formato": "Imagem única",
+        "editorial": "História de cliente",
+        "balde": "A",
+        "score": 3.66,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20261003T190000_DdPEvK_IMKD",
+      "tiktok_id": "DdPEvK_IMKD",
+      "source_url": "https://www.instagram.com/p/DdPEvK_IMKD/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-03T19:00:00-06:00",
+      "scheduled_at_utc": "2026-10-04T01:00:00+00:00",
+      "slot_id": "we-evening",
+      "rank": 68,
+      "media": {
+        "kind": "image",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DdPEvK_IMKD.jpg",
+        "asset_name": "DdPEvK_IMKD.jpg",
+        "release_tag": "media-v1",
+        "sha256": "e5829ab55138e6f4dc01b949c9788f2b6d73a78942797d5d162429a3c58303f1",
+        "bytes": 518229
+      },
+      "caption": "Con los años la ceja también cambia.\n\nLa piel cambia, el pelo se afina y algunas zonas pierden parte del crecimiento natural. En este caso había además una cicatriz que interrumpía el flujo del pelo a partir de cierto punto.\n\nCuando el pelo ya no crece en esa zona existen caminos posibles. La micropigmentación puede reconstruir visualmente el área sin alterar lo que la piel presenta de forma natural.\n\nFue lo que hice aquí.\n\nCon pelo a pelo en dermógrafo reconstruí la continuidad de la ceja, creando trazos que acompañan el sentido del pelo existente y haciendo la transición de manera fluida hasta la cola.\n\nEl objetivo no fue esconder la historia de esa piel. Fue integrar la cicatriz a la nueva composición, para que dejara de interrumpir visualmente la ceja.\n\nBien indicada y bien ejecutada, la micropigmentación no necesita cambiar a una persona. Puede simplemente devolverle el equilibrio.\n\n#micropigmentacion #cejas #cicatrices #peloapelo #dermografo",
+      "caption_fingerprint": "f53e336712490b0b",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T18:09:06.995073+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:09:10.196898+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:09:10.197304+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:09:10.197314+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-03T22:00:00-03:00",
+      "origem": {
+        "pasta": "068_Imagem-unica_2026-09-13_com-o-passar-dos-anos-a",
+        "formato": "Imagem única",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 3.58,
+        "observacoes": []
+      }
     }
   ]
 }

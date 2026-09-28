@@ -1,5 +1,23 @@
 {
   "_nota": "Diario da rotina automatica de legendas (docs/ROTINA_LEGENDAS.md). Uma entrada por disparo que fez trabalho; disparos que sairam cedo por fila cheia nao aparecem aqui. E por este arquivo que da para auditar o que o robo escreveu e o que ele preferiu pular, sem ler o historico do git.",
   "iniciada_em": "2026-09-28",
-  "execucoes": []
+  "execucoes": [
+    {
+      "quando": "2026-09-28T15:30-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "Dbbhls_muiW",
+        "DcOs3mwml3-",
+        "DdPEvK_IMKD",
+        "DEFh8W6REf6"
+      ],
+      "pulados": [
+        "DZNVyjDiY2f",
+        "DZqTz0zhdUu",
+        "DX68dMvDj4w",
+        "DT58V4zCdjK"
+      ],
+      "nota": "Lote so de estatico (3 imagens + 1 carrossel): a mescla de tipos so age dentro do lote, entao a fila terminou com 3 imagens seguidas. Proximo lote prioriza Reel."
+    }
+  ]
 }
