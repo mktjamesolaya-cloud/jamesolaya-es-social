@@ -120,6 +120,24 @@
         "DHCShA2pdbZ"
       ],
       "nota": "Meta nova do cliente: posts ate 31/12. Faltam ~148 depois deste lote. O validador recusou dois ganchos e as duas legendas foram reescritas."
+    },
+    {
+      "quando": "2026-09-28T19:00-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DcjTOmZn6Z6",
+        "DZa29t9heoh",
+        "DGnT998xZ_2"
+      ],
+      "pulados": [
+        "DP3o2CxCbA6",
+        "DNA0Ulvs6VY",
+        "DDu-l4oxFEM",
+        "DF7zr92Rvjt",
+        "DEDk4IwRAkm",
+        "DaOW5pViRR3"
+      ],
+      "nota": "Taxa de descarte subiu para 6 em 9. Descendo o ranking a repeticao aumenta: quatro copias de posts ja na fila, uma sequencia poetica ja saturada, e um Reel com legenda automatica em portugues queimada. O DaOW5pViRR3 so foi pego abrindo a midia -- legenda diferente, fotos identicas as de DXeoqh0Dgs-."
     }
   ]
 }
