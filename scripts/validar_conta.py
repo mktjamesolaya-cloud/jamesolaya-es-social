@@ -18,7 +18,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ / "src"))
 
-from jayes_automation.instagram import InstagramPublisher, InstagramError  # noqa: E402
+from jayes_automation.instagram import InstagramError, InstagramPublisher  # noqa: E402
 
 CONTA_ESPERADA = "jamesolaya.es"
 
@@ -47,7 +47,9 @@ def main() -> int:
 
     if not user_id or not token:
         faltando = [
-            n for n, v in (("INSTAGRAM_USER_ID", user_id), ("INSTAGRAM_ACCESS_TOKEN", token)) if not v
+            n
+            for n, v in (("INSTAGRAM_USER_ID", user_id), ("INSTAGRAM_ACCESS_TOKEN", token))
+            if not v
         ]
         print(f"[{FALHA}] {' e '.join(faltando)} nao definido(s).")
         print("         Copie .env.example para .env e preencha, ou exporte no ambiente.")

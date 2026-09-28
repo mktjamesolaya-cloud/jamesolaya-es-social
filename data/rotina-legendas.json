@@ -174,6 +174,29 @@
         "DHvVdAhRl8H"
       ],
       "nota": "Primeira edicao de imagem: o card tipografico DWOLf8SFMC- foi redesenhado em espanhol com PIL e a receita ficou registrada. O DU5z_xlDvwb e o Heitor cicatrizado, e a palavra na arte (*CICATRIZADA*) e identica em espanhol, entao nao precisou de nada."
+    },
+    {
+      "quando": "2026-09-28T21:00-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DBuYdXxS5Z-",
+        "DRhGV58DmrI",
+        "DKqNmYoJYU8",
+        "DdUOVLInORV",
+        "DbgWjlnj8rA"
+      ],
+      "pulados": [
+        "DZsOQuFjnRS",
+        "DcgvENJJrZ_",
+        "DN5d42h0gQI",
+        "DLLVj09OTJT",
+        "DZnu8cyh1uo",
+        "DW2EcZ8iRIp",
+        "DD7SVCEJmmM",
+        "DE-6GBSROPk",
+        "Ddc8rWIu5_K"
+      ],
+      "nota": "Falha de processo corrigida: o Ddc8rWIu5_K reapareceu porque eu tinha registrado o descarte so no diario, nao em pulados-es.json. So o pulados-es.json alimenta o filtro. Tambem nasceu scripts/contato.py -- o tile do ffmpeg entregava mosaicos com metade das celulas pretas quando as proporcoes eram diferentes, o que da a impressao de ter conferido o que nao foi conferido."
     }
   ]
 }
