@@ -102,6 +102,24 @@
       ],
       "pulados": [],
       "nota": "Cliente liberou o DT58V4zCdjK (Heitor), que estava pulado por duvida de idade. O validador recusou a primeira versao da legenda: o gancho cortava no meio da frase antes do 'mais'. Reescrita a abertura e aprovada."
+    },
+    {
+      "quando": "2026-09-28T18:40-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DZcy_tTu-ZE",
+        "DYE6-XACaXc",
+        "DX9Ml0MjhkZ",
+        "DLAEE3Pu42m",
+        "DcTN4bfDxAJ",
+        "DNoaGMBJ0hx"
+      ],
+      "pulados": [
+        "DYHfzYyCbSZ",
+        "DYSHhjRCbC0",
+        "DHCShA2pdbZ"
+      ],
+      "nota": "Meta nova do cliente: posts ate 31/12. Faltam ~148 depois deste lote. O validador recusou dois ganchos e as duas legendas foram reescritas."
     }
   ]
 }
