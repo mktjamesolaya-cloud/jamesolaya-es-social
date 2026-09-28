@@ -77,6 +77,22 @@
         "DW80sXMhSMr"
       ],
       "nota": "28 itens ate 12/10. O DE8Campx1VB mostra de novo que a triagem erra: marcado balde A com textoTela vazio, tem quatro blocos de narracao tecnica em portugues queimados no video."
+    },
+    {
+      "quando": "2026-09-28T17:55-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DWjEt4yCXU_",
+        "DIT2ue4RXnu",
+        "DblgJnWkiyE",
+        "DRw119gjk8h",
+        "DSphTXDDs7U"
+      ],
+      "pulados": [
+        "DY12HNeRP9K",
+        "DGDkm3Mxv88"
+      ],
+      "nota": "33 itens ate 14/10. Criterio de idade ajustado: pular por sinal especifico (legenda que cita familia, foto de crianca como referencia), nao por alguem simplesmente parecer jovem -- senao o filtro descarta todo cliente homem jovem."
     }
   ]
 }
