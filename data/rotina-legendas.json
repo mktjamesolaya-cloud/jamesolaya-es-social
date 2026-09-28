@@ -93,6 +93,15 @@
         "DGDkm3Mxv88"
       ],
       "nota": "33 itens ate 14/10. Criterio de idade ajustado: pular por sinal especifico (legenda que cita familia, foto de crianca como referencia), nao por alguem simplesmente parecer jovem -- senao o filtro descarta todo cliente homem jovem."
+    },
+    {
+      "quando": "2026-09-28T18:15-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DT58V4zCdjK"
+      ],
+      "pulados": [],
+      "nota": "Cliente liberou o DT58V4zCdjK (Heitor), que estava pulado por duvida de idade. O validador recusou a primeira versao da legenda: o gancho cortava no meio da frase antes do 'mais'. Reescrita a abertura e aprovada."
     }
   ]
 }
