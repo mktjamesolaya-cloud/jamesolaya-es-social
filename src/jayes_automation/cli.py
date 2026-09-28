@@ -615,6 +615,30 @@ def _cover_targets(queue: dict[str, Any], ids: list[str] | None) -> list[dict[st
     ]
 
 
+def cmd_remesclar(args: argparse.Namespace) -> int:
+    """Alterna video e estatico na fila ja agendada, sem mexer nos horarios."""
+    paths = _paths(args)
+    fila = queue_mod.load_queue(paths.queue)
+    if any(i.get("status") == "publishing" for i in fila["items"]):
+        print("Ha item em 'publishing'; rode 'jayes reconcile' antes.", file=sys.stderr)
+        return 1
+    resultado = planejar_es.remesclar(fila, alvo_video=args.alvo_video)
+    if not args.dry_run and resultado.get("remesclados"):
+        queue_mod.save_queue(fila, paths.queue)
+    resultado["dry_run"] = args.dry_run
+    resultado["agenda"] = [
+        {
+            "operador": i.get("scheduled_at_operador"),
+            "tipo": (i.get("media") or {}).get("kind"),
+            "id": i["tiktok_id"],
+        }
+        for i in fila["items"]
+        if i.get("status") in {"scheduled", "retry"}
+    ]
+    _emit(resultado)
+    return 0
+
+
 def cmd_pick_covers(args: argparse.Namespace) -> int:
     from . import covers
 
@@ -1256,6 +1280,7 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "importar-legendas-es": cmd_importar_legendas_es,
     "plan-es": cmd_plan_es,
     "rotina-status": cmd_rotina_status,
+    "remesclar": cmd_remesclar,
 }
 
 
@@ -1435,6 +1460,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     planes.add_argument("--acervo", type=Path, help="Raiz do projeto de analise")
     planes.add_argument("--dry-run", action="store_true", help="Nao sobe midia nem grava a fila")
+
+    remescla = commands.add_parser(
+        "remesclar", help="Alterna video e estatico na fila sem mudar os horarios"
+    )
+    remescla.add_argument("--alvo-video", type=float)
+    remescla.add_argument("--dry-run", action="store_true")
 
     rotina = commands.add_parser(
         "rotina-status", help="A rotina horaria de legendas precisa trabalhar agora?"

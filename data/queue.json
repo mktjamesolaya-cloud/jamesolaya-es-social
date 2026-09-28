@@ -787,79 +787,13 @@
       }
     },
     {
-      "id": "q_20260930T190800_DTcwLG3idEc",
-      "tiktok_id": "DTcwLG3idEc",
-      "source_url": "https://www.instagram.com/p/DTcwLG3idEc/",
-      "status": "scheduled",
-      "scheduled_at": "2026-09-30T19:08:00-06:00",
-      "scheduled_at_utc": "2026-10-01T01:08:00+00:00",
-      "slot_id": "wd-evening",
-      "rank": 45,
-      "media": {
-        "kind": "image",
-        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DTcwLG3idEc.jpg",
-        "asset_name": "DTcwLG3idEc.jpg",
-        "release_tag": "media-v1",
-        "sha256": "3e460ef13b92077857b435883cf72721296c5db294119884f3c72869cae03028",
-        "bytes": 399049
-      },
-      "caption": "Esta fue la primera sesión de Lívia.\n\nDespués de un accidente que comprometió la región de la ceja, buscó una forma de recuperar la armonía de la mirada respetando cada límite de la piel.\n\nAquí cada pelo se pensó con calma, analizando la textura, el relieve y la respuesta del tejido. Sin prisa. Sin exceso.\n\nEl objetivo era devolver ligereza con naturalidad, sin pasar por encima de lo que la piel puede recibir.\n\nEmpezamos con trazos bien ubicados, más espaciados, siguiendo el patrón natural del crecimiento. En la mezcla del pigmento usé Escuro de Hades levemente calentado con Calor de Gaia: profundidad sin recargar la mirada.\n\nEsa es la ventaja de unir técnica, criterio y estudio: el resultado es sutil, pero transforma.\n\nY esto es apenas el comienzo.\n\n#micropigmentacion #cejas #cicatrices #peloapelo #tecnica",
-      "caption_fingerprint": "0abc226d6599dedf",
-      "attempts": 0,
-      "max_attempts": 3,
-      "next_attempt_at": null,
-      "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
-      "history": [
-        {
-          "at": "2026-09-28T15:12:30.688495+00:00",
-          "from": "",
-          "to": "planned",
-          "by": "local"
-        },
-        {
-          "at": "2026-09-28T15:12:33.323222+00:00",
-          "from": "planned",
-          "to": "prepared",
-          "by": "local"
-        },
-        {
-          "at": "2026-09-28T15:12:33.323435+00:00",
-          "from": "prepared",
-          "to": "hosted",
-          "by": "local"
-        },
-        {
-          "at": "2026-09-28T15:12:33.323459+00:00",
-          "from": "hosted",
-          "to": "scheduled",
-          "by": "local"
-        }
-      ],
-      "scheduled_at_operador": "2026-09-30T22:08:00-03:00",
-      "origem": {
-        "pasta": "045_Imagem-unica_2026-01-13_essa-foi-a-primeira-sessao-da",
-        "formato": "Imagem única",
-        "editorial": "Aula técnica",
-        "balde": "A",
-        "score": 4.69,
-        "observacoes": []
-      }
-    },
-    {
       "id": "q_20261001T120500_DULJ5ghDq5X",
       "tiktok_id": "DULJ5ghDq5X",
       "source_url": "https://www.instagram.com/p/DULJ5ghDq5X/",
       "status": "scheduled",
-      "scheduled_at": "2026-10-01T12:05:00-06:00",
-      "scheduled_at_utc": "2026-10-01T18:05:00+00:00",
-      "slot_id": "wd-midday",
+      "scheduled_at": "2026-09-30T19:08:00-06:00",
+      "scheduled_at_utc": "2026-10-01T01:08:00+00:00",
+      "slot_id": "wd-evening",
       "rank": 42,
       "media": {
         "kind": "reel",
@@ -908,13 +842,79 @@
           "by": "local"
         }
       ],
-      "scheduled_at_operador": "2026-10-01T15:05:00-03:00",
+      "scheduled_at_operador": "2026-09-30T22:08:00-03:00",
       "origem": {
         "pasta": "042_Reel_2026-01-31_aqui-nao-comeca-com-uma-tecnica",
         "formato": "Reel",
         "editorial": "Aula técnica",
         "balde": "A",
         "score": 4.98,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20260930T190800_DTcwLG3idEc",
+      "tiktok_id": "DTcwLG3idEc",
+      "source_url": "https://www.instagram.com/p/DTcwLG3idEc/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-01T12:05:00-06:00",
+      "scheduled_at_utc": "2026-10-01T18:05:00+00:00",
+      "slot_id": "wd-midday",
+      "rank": 45,
+      "media": {
+        "kind": "image",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DTcwLG3idEc.jpg",
+        "asset_name": "DTcwLG3idEc.jpg",
+        "release_tag": "media-v1",
+        "sha256": "3e460ef13b92077857b435883cf72721296c5db294119884f3c72869cae03028",
+        "bytes": 399049
+      },
+      "caption": "Esta fue la primera sesión de Lívia.\n\nDespués de un accidente que comprometió la región de la ceja, buscó una forma de recuperar la armonía de la mirada respetando cada límite de la piel.\n\nAquí cada pelo se pensó con calma, analizando la textura, el relieve y la respuesta del tejido. Sin prisa. Sin exceso.\n\nEl objetivo era devolver ligereza con naturalidad, sin pasar por encima de lo que la piel puede recibir.\n\nEmpezamos con trazos bien ubicados, más espaciados, siguiendo el patrón natural del crecimiento. En la mezcla del pigmento usé Escuro de Hades levemente calentado con Calor de Gaia: profundidad sin recargar la mirada.\n\nEsa es la ventaja de unir técnica, criterio y estudio: el resultado es sutil, pero transforma.\n\nY esto es apenas el comienzo.\n\n#micropigmentacion #cejas #cicatrices #peloapelo #tecnica",
+      "caption_fingerprint": "0abc226d6599dedf",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T15:12:30.688495+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:33.323222+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:33.323435+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T15:12:33.323459+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-01T15:05:00-03:00",
+      "origem": {
+        "pasta": "045_Imagem-unica_2026-01-13_essa-foi-a-primeira-sessao-da",
+        "formato": "Imagem única",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 4.69,
         "observacoes": []
       }
     },
@@ -1054,13 +1054,79 @@
       }
     },
     {
-      "id": "q_20261002T185400_Dbbhls_muiW",
-      "tiktok_id": "Dbbhls_muiW",
-      "source_url": "https://www.instagram.com/p/Dbbhls_muiW/",
+      "id": "q_20261004T121400_DGGhCulJliG",
+      "tiktok_id": "DGGhCulJliG",
+      "source_url": "https://www.instagram.com/p/DGGhCulJliG/",
       "status": "scheduled",
       "scheduled_at": "2026-10-02T18:54:00-06:00",
       "scheduled_at_utc": "2026-10-03T00:54:00+00:00",
       "slot_id": "wd-evening",
+      "rank": 77,
+      "media": {
+        "kind": "reel",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DGGhCulJliG.mp4",
+        "asset_name": "DGGhCulJliG.mp4",
+        "release_tag": "media-v1",
+        "sha256": "fc773a146a42c44c110b6b7550fc9793fff6c00c007e922f260bb33cfab6ac06",
+        "bytes": 365373
+      },
+      "caption": "Así se siente por dentro hacer una sola ceja.\n\nEs una broma, claro. Pero la sensación no está tan lejos: detrás de un resultado que parece simple hay un equipo entero de decisiones trabajando al mismo tiempo.\n\nAlguien mide la proporción. Alguien define la dirección de cada pelo. Alguien elige la profundidad. Alguien piensa en cómo va a cicatrizar dentro de treinta días, no en cómo se ve ahora.\n\nCuando todas esas decisiones se toman bien, nadie las nota. La ceja simplemente parece de la persona.\n\nCuando una falla, se nota para siempre.\n\nDespués de más de diez mil alumnos formados, es lo único que no cambió: el resultado se define antes de encender el dermógrafo.\n\n#micropigmentacion #cejas #formacion #tecnica #peloapelo",
+      "caption_fingerprint": "757d9987af0360bb",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T18:12:22.525489+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:24.989928+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:24.990006+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:24.990076+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-02T21:54:00-03:00",
+      "origem": {
+        "pasta": "077_Reel_2025-02-15_sao-tantas-etapas-desde-que-comecei",
+        "formato": "Reel",
+        "editorial": "Carona em assunto do momento",
+        "balde": "A",
+        "score": 3.28,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20261002T185400_Dbbhls_muiW",
+      "tiktok_id": "Dbbhls_muiW",
+      "source_url": "https://www.instagram.com/p/Dbbhls_muiW/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-03T12:16:00-06:00",
+      "scheduled_at_utc": "2026-10-03T18:16:00+00:00",
+      "slot_id": "we-midday",
       "rank": 62,
       "media": {
         "kind": "carousel",
@@ -1122,7 +1188,7 @@
           "by": "local"
         }
       ],
-      "scheduled_at_operador": "2026-10-02T21:54:00-03:00",
+      "scheduled_at_operador": "2026-10-03T15:16:00-03:00",
       "origem": {
         "pasta": "062_Carrossel_2026-07-30_um-resultado-natural-comeca-muito-antes",
         "formato": "Carrossel",
@@ -1133,12 +1199,78 @@
       }
     },
     {
+      "id": "q_20261004T190300_DVTksuYkZaB",
+      "tiktok_id": "DVTksuYkZaB",
+      "source_url": "https://www.instagram.com/p/DVTksuYkZaB/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-03T19:00:00-06:00",
+      "scheduled_at_utc": "2026-10-04T01:00:00+00:00",
+      "slot_id": "we-evening",
+      "rank": 79,
+      "media": {
+        "kind": "reel",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DVTksuYkZaB.mp4",
+        "asset_name": "DVTksuYkZaB.mp4",
+        "release_tag": "media-v1",
+        "sha256": "a2caa065d6789b952af1fbc8b5b5e45b393dc302af5cebe94a74e6db82f2f43f",
+        "bytes": 7982506
+      },
+      "caption": "¿Transformación masculina? También.\n\nEste es el tipo de resultado que no llama la atención por el procedimiento. Llama la atención por la mirada que cambia.\n\nEn el hombre la regla es clara: respeto total a los rasgos masculinos. Sin diseño cosmético, sin excesos, sin que se note marcado. Solo estructura, dirección correcta, densidad bien pensada y un acabado que se mezcla con lo que ya existe.\n\nLa diferencia no está en el trazo bonito. Está en resistir la tentación de agregar de más, que es donde se pierde casi toda ceja masculina.\n\nMe encantó atender a Saulo. Y lo confieso: hasta yo me sorprendí con lo natural que quedó.\n\nAhora cuéntame: ¿a quién más le pareció especial este resultado?\n\n#cejasmasculinas #micropigmentacion #cejas #peloapelo #naturalidad",
+      "caption_fingerprint": "63ed55b4554f84de",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T18:12:24.990303+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:28.139656+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:28.139700+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:28.139703+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-03T22:00:00-03:00",
+      "origem": {
+        "pasta": "079_Reel_2026-02-28_transformacao-masculina-temos-esse-e-o",
+        "formato": "Reel",
+        "editorial": "Antes e depois / resultado",
+        "balde": "A",
+        "score": 3.24,
+        "observacoes": []
+      }
+    },
+    {
       "id": "q_20261003T121600_DcOs3mwml3-",
       "tiktok_id": "DcOs3mwml3-",
       "source_url": "https://www.instagram.com/p/DcOs3mwml3-/",
       "status": "scheduled",
-      "scheduled_at": "2026-10-03T12:16:00-06:00",
-      "scheduled_at_utc": "2026-10-03T18:16:00+00:00",
+      "scheduled_at": "2026-10-04T12:14:00-06:00",
+      "scheduled_at_utc": "2026-10-04T18:14:00+00:00",
       "slot_id": "we-midday",
       "rank": 66,
       "media": {
@@ -1188,7 +1320,7 @@
           "by": "local"
         }
       ],
-      "scheduled_at_operador": "2026-10-03T15:16:00-03:00",
+      "scheduled_at_operador": "2026-10-04T15:14:00-03:00",
       "origem": {
         "pasta": "066_Imagem-unica_2026-08-19_uma-das-coisas-que-mais-me",
         "formato": "Imagem única",
@@ -1199,13 +1331,79 @@
       }
     },
     {
+      "id": "q_20261005T114700_DI9wd_Qpja-",
+      "tiktok_id": "DI9wd_Qpja-",
+      "source_url": "https://www.instagram.com/p/DI9wd_Qpja-/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-04T19:03:00-06:00",
+      "scheduled_at_utc": "2026-10-05T01:03:00+00:00",
+      "slot_id": "we-evening",
+      "rank": 88,
+      "media": {
+        "kind": "reel",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DI9wd_Qpja-.mp4",
+        "asset_name": "DI9wd_Qpja-.mp4",
+        "release_tag": "media-v1",
+        "sha256": "000fa91c780e2561798435f05bd2b069ed04760b2f155570715a09ca78787160",
+        "bytes": 10037875
+      },
+      "caption": "Pocas cosas me relajan tanto como ver esto de cerca.\n\nLo que estás viendo es técnica combinada: pelo a pelo para dar dirección y estructura, y un trabajo de fondo que sostiene la densidad sin cerrar el dibujo.\n\nParece simple. No lo es.\n\nCada trazo entra con la misma profundidad, en el mismo ángulo y con la misma presión. Si uno solo entra más hondo no se nota hoy: se nota en la cicatrización, cuando se abre, se ensancha y se separa del resto.\n\nPor eso la mano firme no es talento. Es repetición, y es la parte que nadie muestra.\n\nComenta ONLINE si quieres aprender a construir este tipo de trazo.\n\n#peloapelo #micropigmentacion #cejas #satisfying #tecnica",
+      "caption_fingerprint": "50e85629b1ae5408",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T18:12:28.139823+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:31.850593+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:31.850646+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:31.850653+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-04T22:03:00-03:00",
+      "origem": {
+        "pasta": "088_Reel_2025-04-27_tao-satisfatorio-adoro-passar-meu-tempo",
+        "formato": "Reel",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 3.01,
+        "observacoes": []
+      }
+    },
+    {
       "id": "q_20261003T190000_DdPEvK_IMKD",
       "tiktok_id": "DdPEvK_IMKD",
       "source_url": "https://www.instagram.com/p/DdPEvK_IMKD/",
       "status": "scheduled",
-      "scheduled_at": "2026-10-03T19:00:00-06:00",
-      "scheduled_at_utc": "2026-10-04T01:00:00+00:00",
-      "slot_id": "we-evening",
+      "scheduled_at": "2026-10-05T11:47:00-06:00",
+      "scheduled_at_utc": "2026-10-05T17:47:00+00:00",
+      "slot_id": "wd-midday",
       "rank": 68,
       "media": {
         "kind": "image",
@@ -1254,7 +1452,7 @@
           "by": "local"
         }
       ],
-      "scheduled_at_operador": "2026-10-03T22:00:00-03:00",
+      "scheduled_at_operador": "2026-10-05T14:47:00-03:00",
       "origem": {
         "pasta": "068_Imagem-unica_2026-09-13_com-o-passar-dos-anos-a",
         "formato": "Imagem única",
@@ -1262,6 +1460,74 @@
         "balde": "A",
         "score": 3.58,
         "observacoes": []
+      }
+    },
+    {
+      "id": "q_20261005T191400_DDkCIKiJbh_",
+      "tiktok_id": "DDkCIKiJbh_",
+      "source_url": "https://www.instagram.com/p/DDkCIKiJbh_/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-05T19:14:00-06:00",
+      "scheduled_at_utc": "2026-10-06T01:14:00+00:00",
+      "slot_id": "wd-evening",
+      "rank": 115,
+      "media": {
+        "kind": "reel",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DDkCIKiJbh_.mp4",
+        "asset_name": "DDkCIKiJbh_.mp4",
+        "release_tag": "media-v1",
+        "sha256": "aeb145de4e5562f8736b72e16a47db159220e0a13372d7074ae7c5fd9afbcd1f",
+        "bytes": 3317355
+      },
+      "caption": "Bien de cerca, como les gusta.\n\nPara llegar a un buen resultado en micropigmentación labial hace falta paciencia: se construye capa por capa, nunca de una sola pasada. El labio es un tejido distinto al de la ceja, más vascularizado y más reactivo, y pide otro ritmo de trabajo.\n\nPigmento: Encanto de Íris + Rubor de Narciso.\n\nLa tentación es cargar el color en la primera sesión para que salga vibrante en la foto. El problema aparece después, cuando el labio cicatriza y ese exceso se vuelve un tono plano que no acompaña el resto de la piel.\n\nMenos presión, más capas, y un color que madura con el tiempo en lugar de apagarse.\n\n#micropigmentacionlabial #labios #pmu #tecnica #pigmentos",
+      "caption_fingerprint": "c8dd3cc361a553bd",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T18:12:31.850800+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:34.986965+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:34.986995+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T18:12:34.986998+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-05T22:14:00-03:00",
+      "origem": {
+        "pasta": "115_Reel_2024-12-13_bem-de-pertinho-do-jeito-que",
+        "formato": "Reel",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 2.44,
+        "observacoes": [
+          "era colaboração — republicar solo"
+        ]
       }
     }
   ]

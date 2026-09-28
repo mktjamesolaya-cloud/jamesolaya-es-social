@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import hashlib
 from collections.abc import Callable, Sequence
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -180,3 +180,90 @@ def montar_fila(
         **mescla.resumir([{"media_kind": i["media"]["kind"]} for i in itens], por_dia),
     }
     return itens, resumo
+
+
+#: Quanto tempo antes de um post agendado ele deixa de poder ser remexido. Uma
+#: hora: o cron acorda de 30 em 30 minutos e dorme ate a hora exata, entao
+#: mexer num item dentro dessa janela e disputar com um job que ja pode ter
+#: comecado.
+JANELA_INTOCAVEL_HORAS = 1
+
+
+def remesclar(
+    fila: dict[str, Any],
+    *,
+    alvo_video: float | None = None,
+    agora: datetime | None = None,
+) -> dict[str, Any]:
+    """Redistribui os horarios ja agendados para alternar video e estatico.
+
+    ``montar_fila`` mescla apenas o lote que esta montando. Isso basta quando o
+    lote tem os dois tipos, e falha quando nao tem: quatro Reels legendados de
+    uma vez entram como quatro Reels seguidos, por mais que a fila inteira
+    estivesse equilibrada antes. Foi o que aconteceu em 28/09/2026.
+
+    Aqui o conjunto de horarios nao muda -- so quem ocupa cada um. Nenhum post
+    e adiantado ou adiado no relogio; a grade continua a mesma.
+
+    Publicado nao se toca, e nada dentro de ``JANELA_INTOCAVEL_HORAS`` tambem
+    nao: um item prestes a sair ja pode estar sendo publicado.
+    """
+    tz = None
+    moveis: list[dict[str, Any]] = []
+    for item in fila["items"]:
+        if item.get("status") not in {"scheduled", "retry"}:
+            continue
+        quando = datetime.fromisoformat(item["scheduled_at"])
+        tz = tz or quando.tzinfo
+        limite = (agora or datetime.now(quando.tzinfo)) + timedelta(hours=JANELA_INTOCAVEL_HORAS)
+        if quando <= limite:
+            continue
+        moveis.append(item)
+
+    if len(moveis) < 2:
+        return {"remesclados": 0, "motivo": "menos de dois itens moveis"}
+
+    moveis.sort(key=lambda i: i["scheduled_at"])
+    grade = [
+        {
+            "scheduled_at": i["scheduled_at"],
+            "scheduled_at_utc": i["scheduled_at_utc"],
+            "scheduled_at_operador": i.get("scheduled_at_operador"),
+            "slot_id": i.get("slot_id"),
+        }
+        for i in moveis
+    ]
+
+    antes = [(i["media"] or {}).get("kind", "reel") for i in moveis]
+    if alvo_video is None:
+        n_video = sum(1 for k in antes if k == "reel")
+        alvo_video = mescla.sugerir_alvo(n_video, len(antes) - n_video, 1) if antes else 0.3
+        alvo_video = min(max(alvo_video, 0.0), 1.0)
+
+    ordenados = mescla.intercalar(
+        [{"media_kind": (i["media"] or {}).get("kind", "reel"), "item": i} for i in moveis],
+        alvo_video,
+    )
+    novos = [x["item"] for x in ordenados]
+
+    trocas = 0
+    for item, horario in zip(novos, grade, strict=True):
+        if item["scheduled_at"] != horario["scheduled_at"]:
+            trocas += 1
+        item.update({k: v for k, v in horario.items() if v is not None})
+
+    # a fila em disco precisa ficar em ordem cronologica: 'publish-due' confia nisso
+    fila["items"].sort(key=lambda i: i.get("scheduled_at") or "")
+
+    depois = [(i["media"] or {}).get("kind", "reel") for i in novos]
+    return {
+        "remesclados": trocas,
+        "itens_moveis": len(moveis),
+        "alvo_video": round(alvo_video, 4),
+        "sequencia_antes": mescla.resumir([{"media_kind": k} for k in antes])[
+            "maior_sequencia_mesmo_tipo"
+        ],
+        "sequencia_depois": mescla.resumir([{"media_kind": k} for k in depois])[
+            "maior_sequencia_mesmo_tipo"
+        ],
+    }

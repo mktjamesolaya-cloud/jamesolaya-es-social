@@ -38,9 +38,7 @@ SLOTS = {
 def projeto(tmp_path, itens, *, candidatos=20):
     dados = tmp_path / "data"
     dados.mkdir(parents=True, exist_ok=True)
-    (dados / "queue.json").write_text(
-        json.dumps({"version": 2, "items": itens}), encoding="utf-8"
-    )
+    (dados / "queue.json").write_text(json.dumps({"version": 2, "items": itens}), encoding="utf-8")
     (dados / "slots.json").write_text(json.dumps(SLOTS), encoding="utf-8")
 
     # Acervo de mentira, numa raiz propria: a midia e a triagem vivem no projeto
@@ -64,12 +62,8 @@ def projeto(tmp_path, itens, *, candidatos=20):
             }
         )
     (acervo / "data").mkdir(parents=True)
-    (acervo / "data" / "triagem-es.json").write_text(
-        json.dumps(triagem), encoding="utf-8"
-    )
-    (acervo / "data" / "manifesto-x.json").write_text(
-        json.dumps({"itens": []}), encoding="utf-8"
-    )
+    (acervo / "data" / "triagem-es.json").write_text(json.dumps(triagem), encoding="utf-8")
+    (acervo / "data" / "manifesto-x.json").write_text(json.dumps({"itens": []}), encoding="utf-8")
     return tmp_path, acervo
 
 
@@ -84,9 +78,7 @@ def item(*, daqui_a_dias: float, status: str = "scheduled", ident: str = "q1"):
 
 
 def roda(tmp_path, acervo, capsys, *extra):
-    codigo = cli.main(
-        ["--root", str(tmp_path), "rotina-status", "--acervo", str(acervo), *extra]
-    )
+    codigo = cli.main(["--root", str(tmp_path), "rotina-status", "--acervo", str(acervo), *extra])
     return codigo, json.loads(capsys.readouterr().out)
 
 
@@ -100,9 +92,7 @@ def test_fila_com_folga_nao_trabalha(tmp_path, capsys):
 def test_item_preso_em_publishing_trava_tudo(tmp_path, capsys):
     """Acrescentar a fila enquanto uma publicacao esta a meio caminho e pedir
     para duplicar um post -- a unica falha irreversivel deste projeto."""
-    tmp_path, acervo = projeto(
-        tmp_path, [item(daqui_a_dias=1, status="publishing", ident="q1")]
-    )
+    tmp_path, acervo = projeto(tmp_path, [item(daqui_a_dias=1, status="publishing", ident="q1")])
     _, saida = roda(tmp_path, acervo, capsys)
     assert saida["trabalhar"] is False
     assert any("publishing" in m for m in saida["motivos_para_nao"])
@@ -158,7 +148,7 @@ def test_fila_vazia_pede_trabalho(tmp_path, capsys):
 
 
 def test_diz_quando_nao_conseguiu_ler_o_git(tmp_path, capsys):
-    """"Nao sei" nao pode se confundir com "esta limpo"."""
+    """ "Nao sei" nao pode se confundir com "esta limpo"."""
     tmp_path, acervo = projeto(tmp_path, [item(daqui_a_dias=8)])
     _, saida = roda(tmp_path, acervo, capsys)
     assert saida["git_legivel"] is False, "tmp_path nao e um repositorio git"

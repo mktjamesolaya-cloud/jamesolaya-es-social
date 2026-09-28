@@ -18,6 +18,20 @@
         "DT58V4zCdjK"
       ],
       "nota": "Lote so de estatico (3 imagens + 1 carrossel): a mescla de tipos so age dentro do lote, entao a fila terminou com 3 imagens seguidas. Proximo lote prioriza Reel."
+    },
+    {
+      "quando": "2026-09-28T16:00-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DGGhCulJliG",
+        "DVTksuYkZaB",
+        "DI9wd_Qpja-",
+        "DDkCIKiJbh_"
+      ],
+      "pulados": [
+        "DZ5x1Uep-yE"
+      ],
+      "nota": "Lote so de Reel, o oposto do anterior. As duas pontas viraram bloco do mesmo tipo, o que expos que montar_fila mescla apenas dentro do lote. Corrigido com 'jayes remesclar', que redistribui a fila inteira sem mexer nos horarios: sequencia caiu de 4 para 2."
     }
   ]
 }
