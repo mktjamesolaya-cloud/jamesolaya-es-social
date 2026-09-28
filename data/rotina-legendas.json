@@ -158,6 +158,22 @@
         "DFAaOBVR1YN"
       ],
       "nota": "Primeiro lote do balde C, e a descoberta que o justifica: dos 25 Reels do balde C, 8 estao totalmente limpos e outros 4 so tem a placa da clinica no fundo. O portugues estava so na CAPA do post original, que a API nao usa -- publicando por la a miniatura sai do proprio video. A triagem classificou pela capa. Nenhum destes 7 precisou de edicao."
+    },
+    {
+      "quando": "2026-09-28T20:20-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DU5z_xlDvwb",
+        "DPkB_2ICf-i",
+        "Dcoc0Fxk7j3",
+        "DWOLf8SFMC-"
+      ],
+      "pulados": [
+        "DZr6wNjiQJr",
+        "DVWJkX5iZg9",
+        "DHvVdAhRl8H"
+      ],
+      "nota": "Primeira edicao de imagem: o card tipografico DWOLf8SFMC- foi redesenhado em espanhol com PIL e a receita ficou registrada. O DU5z_xlDvwb e o Heitor cicatrizado, e a palavra na arte (*CICATRIZADA*) e identica em espanhol, entao nao precisou de nada."
     }
   ]
 }

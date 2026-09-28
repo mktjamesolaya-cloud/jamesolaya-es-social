@@ -23,6 +23,10 @@ local = [
   # Pontuar quadros candidatos a capa (nitidez e exposicao). So no Mac: o
   # runner recebe o offset ja escolhido, congelado na fila.
   "numpy>=2.0",
+  # Redesenhar os cards tipograficos em espanhol (adaptar_es.redesenhar_texto).
+  # So no Mac: o runner recebe o JPEG ja pronto, hospedado na Release, e o
+  # import do PIL mora dentro da funcao justamente para nao pesar la.
+  "pillow>=11.0",
   # O extra curl-cffi habilita impersonation. Sem ele o TikTok devolve paginas
   # sem os dados de rehydration e o download falha -- foi a causa das 33 falhas
   # registradas em reports/download_errors.json. A faixa de versao e do proprio

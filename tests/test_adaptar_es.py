@@ -127,14 +127,100 @@ def test_arquivo_de_receitas_e_valido():
     receitas = adaptar_es.carregar(RECEITAS_REAIS)
     assert receitas, "nenhuma receita registrada"
     for short_code, receita in receitas.items():
-        assert receita.get("filtros"), f"{short_code} sem filtros"
+        # 'motivo' e 'arquivo' valem para qualquer receita; 'filtros' so para as
+        # de video, porque os cards tipograficos sao refeitos com PIL e nao
+        # passam pelo ffmpeg.
         assert receita.get("motivo"), f"{short_code} sem motivo registrado"
         assert receita.get("arquivo"), f"{short_code} sem arquivo alvo"
+        if receita.get("tipo") != "imagem_texto":
+            assert receita.get("filtros"), f"{short_code} sem filtros"
 
 
 def test_toda_receita_produz_um_comando_montavel(tmp_path):
     """Um filtro escrito errado so apareceria depois de minutos de encode."""
     for short_code, receita in adaptar_es.carregar(RECEITAS_REAIS).items():
+        if receita.get("tipo") == "imagem_texto":
+            continue
         cmd = adaptar_es.comando(tmp_path / "a.mp4", tmp_path / "b.mp4", receita)
         assert cmd[0] == "ffmpeg", short_code
         assert str(tmp_path / "b.mp4") == cmd[-1], short_code
+
+
+# --- cards tipograficos ---------------------------------------------------
+#
+# Alguns posts sao a frase: fundo chapado, texto em portugues e nada mais.
+# Publicar sem traduzir seria publicar em portugues, entao aqui a imagem e
+# refeita em vez de remendada.
+
+
+def receita_card(linhas):
+    return {
+        "tipo": "imagem_texto",
+        "arquivo": "imagem.jpg",
+        "motivo": "card tipografico em portugues",
+        "apagar": [10, 10, 190, 90],
+        "cor_fundo_em": [2, 2],
+        "fonte": "/System/Library/Fonts/Avenir Next.ttc",
+        "fonte_indice": 8,
+        "tamanho": 20,
+        "texto_em": [15, 15],
+        "altura_linha": 24,
+        "linhas": linhas,
+    }
+
+
+def card(tmp_path, cor=(255, 255, 255)):
+    Image = pytest.importorskip("PIL.Image")
+    caminho = tmp_path / "imagem.jpg"
+    Image.new("RGB", (200, 100), cor).save(caminho)
+    return caminho
+
+
+def test_redesenhar_gera_o_arquivo(tmp_path):
+    origem = card(tmp_path)
+    destino = tmp_path / "out" / "imagem.jpg"
+    adaptar_es.redesenhar_texto(origem, destino, receita_card(["Hola", "mundo"]))
+    assert destino.exists()
+
+
+def test_redesenhar_preserva_as_dimensoes(tmp_path):
+    """A Meta corta o carrossel pela proporcao do primeiro slide: mudar o
+    tamanho de um slide editado desalinharia o post inteiro."""
+    Image = pytest.importorskip("PIL.Image")
+    origem = card(tmp_path)
+    destino = tmp_path / "out" / "imagem.jpg"
+    adaptar_es.redesenhar_texto(origem, destino, receita_card(["Hola"]))
+    assert Image.open(destino).size == Image.open(origem).size
+
+
+def test_redesenhar_apaga_o_texto_antigo(tmp_path):
+    """O retangulo de limpeza tem que cobrir mesmo: sobra de letra em
+    portugues por baixo do texto novo e pior que nao editar."""
+    Image = pytest.importorskip("PIL.Image")
+    ImageDraw = pytest.importorskip("PIL.ImageDraw")
+    origem = tmp_path / "imagem.jpg"
+    im = Image.new("RGB", (200, 100), (255, 255, 255))
+    ImageDraw.Draw(im).rectangle([20, 20, 180, 80], fill=(0, 0, 0))  # "texto" antigo
+    im.save(origem)
+
+    destino = tmp_path / "out" / "imagem.jpg"
+    adaptar_es.redesenhar_texto(origem, destino, receita_card([""]))
+    px = Image.open(destino).convert("L").load()
+    assert px[100, 50] > 200, "a area antiga continua escura: o retangulo nao cobriu"
+
+
+def test_aplicar_despacha_o_card_sem_chamar_ffmpeg(tmp_path, monkeypatch):
+    """Um card e imagem; invocar ffmpeg aqui so encontraria um erro obscuro."""
+    monkeypatch.setattr(adaptar_es.subprocess, "run", lambda *a, **k: pytest.fail("chamou ffmpeg"))
+    origem = card(tmp_path)
+    destino = adaptar_es.aplicar("X", origem, receita_card(["Hola"]), tmp_path / "ad")
+    assert destino.exists()
+
+
+def test_receitas_de_card_no_repositorio_tem_o_que_precisam():
+    for short_code, r in adaptar_es.carregar(RECEITAS_REAIS).items():
+        if r.get("tipo") != "imagem_texto":
+            continue
+        for chave in ("apagar", "fonte", "tamanho", "texto_em", "altura_linha", "linhas"):
+            assert r.get(chave), f"{short_code} sem '{chave}'"
+        assert len(r["apagar"]) == 4, f"{short_code}: 'apagar' precisa de 4 coordenadas"

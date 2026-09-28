@@ -85,6 +85,43 @@ def comando(origem: Path, destino: Path, receita: dict[str, Any]) -> list[str]:
     return cmd
 
 
+def redesenhar_texto(origem: Path, destino: Path, receita: dict[str, Any]) -> None:
+    """Reescreve um bloco de texto sobre uma imagem de fundo chapado.
+
+    Serve para os cards tipograficos: fundo de cor unica, uma frase em portugues
+    e nada mais. Apagar e redesenhar sai melhor que qualquer tentativa de cobrir
+    letra por letra, e o resultado fica indistinguivel do original quando a
+    fonte e proxima.
+
+    Nao serve para texto sobre foto -- ali o fundo nao e reconstituivel, e o
+    caminho e o ``delogo`` do ffmpeg.
+    """
+    from PIL import Image, ImageDraw, ImageFont  # so o Mac tem; o runner nunca chama isto
+
+    im = Image.open(origem).convert("RGB")
+    desenho = ImageDraw.Draw(im)
+    caixa = receita["apagar"]
+    amostra = receita.get("cor_fundo_em") or [20, 20]
+    desenho.rectangle(caixa, fill=im.getpixel(tuple(amostra)))
+
+    fonte = ImageFont.truetype(
+        receita["fonte"], receita["tamanho"], index=receita.get("fonte_indice", 0)
+    )
+    x, y = receita["texto_em"]
+    for i, linha in enumerate(receita["linhas"]):
+        desenho.text((x, y), linha, font=fonte, fill=tuple(receita.get("cor", [0, 0, 0])))
+        if i == len(receita["linhas"]) - 1 and receita.get("ponto_final_cor"):
+            desenho.text(
+                (x + desenho.textlength(linha, font=fonte), y),
+                ".",
+                font=fonte,
+                fill=tuple(receita["ponto_final_cor"]),
+            )
+        y += receita["altura_linha"]
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    im.save(destino, quality=95)
+
+
 def aplicar(
     short_code: str,
     origem: Path,
@@ -103,6 +140,13 @@ def aplicar(
     destino.parent.mkdir(parents=True, exist_ok=True)
     if destino.exists() and not refazer:
         return destino
+
+    if receita.get("tipo") == "imagem_texto":
+        redesenhar_texto(origem, destino, receita)
+        if not destino.exists():
+            raise AdaptacaoError(f"{short_code}: nao consegui gravar {destino}")
+        return destino
+
     if not shutil.which("ffmpeg"):
         raise AdaptacaoError("ffmpeg nao encontrado no PATH")
 

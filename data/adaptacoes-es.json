@@ -9,6 +9,48 @@
       "filtros": "delogo=x=168:y=748:w=386:h=40:enable='gte(t,50.2)',drawtext=fontfile='/System/Library/Fonts/HelveticaNeue.ttc':text='FORMACIÓN ONLINE':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=754:enable='gte(t,50.5)'",
       "por_que_delogo": "O fundo atras do texto e video vivo (pele, luva, sombra), nao uma cor chapada: uma caixa solida deixaria um retangulo obvio. O delogo interpola a partir das bordas e, como a area ja era escura, nao sobra borrao.",
       "conferido": "OCR do frame em t=55s depois da edicao devolve ['AMESOLAY.', 'FORMACIÓN ONLINE'] -- o portugues saiu."
+    },
+    "DWOLf8SFMC-": {
+      "tipo": "imagem_texto",
+      "arquivo": "imagem.jpg",
+      "visto_em": "2026-09-28",
+      "motivo": "Card tipografico inteiro em portugues: 'Saber e diferente de dominar.' sobre fundo branco. E a imagem toda, nao um detalhe -- publicar sem traduzir seria publicar em portugues.",
+      "onde": "1080x1350, bloco de texto preto entre y=440 e y=812, x=183 a 821",
+      "apagar": [
+        150,
+        400,
+        940,
+        848
+      ],
+      "cor_fundo_em": [
+        20,
+        20
+      ],
+      "fonte": "/System/Library/Fonts/Avenir Next.ttc",
+      "fonte_indice": 8,
+      "tamanho": 112,
+      "texto_em": [
+        183,
+        432
+      ],
+      "altura_linha": 143,
+      "cor": [
+        0,
+        0,
+        0
+      ],
+      "ponto_final_cor": [
+        237,
+        45,
+        45
+      ],
+      "linhas": [
+        "Saber es",
+        "distinto de",
+        "dominar"
+      ],
+      "por_que_redesenhar": "O fundo e branco chapado, entao apagar e reescrever sai perfeito. Avenir Next Heavy e a fonte do sistema mais proxima da geometrica pesada do original; Futura Bold ficou leve demais e o indice 1 saiu italico.",
+      "conferido": "OCR depois da edicao devolve ['Saber es','distinto de','dominar.','@jamesolaya'] -- nenhuma palavra em portugues."
     }
   },
   "_nao_precisou": {
