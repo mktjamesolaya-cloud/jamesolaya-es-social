@@ -62,6 +62,21 @@
         "DFs-ERIRibJ"
       ],
       "nota": "24 itens na fila, ate 10/10. Depois da remescla a sequencia caiu para 1: alternancia perfeita entre video e estatico."
+    },
+    {
+      "quando": "2026-09-28T17:30-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DY28ON1iV99",
+        "DDPUPgkpoOX",
+        "DR2xr6FiQeM",
+        "DYQL75Aypzo"
+      ],
+      "pulados": [
+        "DE8Campx1VB",
+        "DW80sXMhSMr"
+      ],
+      "nota": "28 itens ate 12/10. O DE8Campx1VB mostra de novo que a triagem erra: marcado balde A com textoTela vazio, tem quatro blocos de narracao tecnica em portugues queimados no video."
     }
   ]
 }
