@@ -1772,13 +1772,100 @@
       }
     },
     {
-      "id": "q_20261007T190800_DTVg7axDkId",
-      "tiktok_id": "DTVg7axDkId",
-      "source_url": "https://www.instagram.com/p/DTVg7axDkId/",
+      "id": "q_20261008T114400_DcywBZjFKC3",
+      "tiktok_id": "DcywBZjFKC3",
+      "source_url": "https://www.instagram.com/p/DcywBZjFKC3/",
       "status": "scheduled",
       "scheduled_at": "2026-10-07T19:08:00-06:00",
       "scheduled_at_utc": "2026-10-08T01:08:00+00:00",
       "slot_id": "wd-evening",
+      "rank": 74,
+      "media": {
+        "kind": "carousel",
+        "assets": [
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DcywBZjFKC3-01.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DcywBZjFKC3-01.jpg",
+            "sha256": "d7770178da2f3addbf381b6169668a5bc2ce04eced946680286952916c55b81e",
+            "bytes": 445970,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DcywBZjFKC3-02.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DcywBZjFKC3-02.jpg",
+            "sha256": "6bbb020ea9a1ce010866df5fcf2c955968445b277480fb17c13ffc5a917bb284",
+            "bytes": 348638,
+            "is_video": false
+          },
+          {
+            "release_tag": "media-v1",
+            "asset_name": "DcywBZjFKC3-03.jpg",
+            "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DcywBZjFKC3-03.jpg",
+            "sha256": "bd01741838e12e6518bc69adee586b8a6850df2616fc2ca79dab1b1a69a14b8c",
+            "bytes": 674824,
+            "is_video": false
+          }
+        ]
+      },
+      "caption": "En micropigmentación masculina el objetivo nunca es suavizar el rostro. Es volver la mirada más expresiva sin quitarle nada de lo que ya la define.\n\nEn este caso trabajé pelo a pelo con Tebori, construyendo cada trazo de forma individual y respetando la dirección, el grosor y el crecimiento natural del pelo.\n\nEn el visagismo masculino los detalles pequeños deciden todo. El diseño tiene que conversar con la estructura del rostro, sin arqueo de más y sin que la ceja parezca dibujada.\n\nQuiero que el resultado aporte presencia y equilibrio, pero que siga pareciendo la ceja de él.\n\nCuando alguien te dice que quedó natural, en realidad te está diciendo que no notó nada. Ese es el elogio.\n\n#cejasmasculinas #tebori #peloapelo #micropigmentacion #visagismo",
+      "caption_fingerprint": "ee7b729e5113532d",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T19:11:38.445599+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:45.987037+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:45.987078+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:45.987082+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-07T22:08:00-03:00",
+      "origem": {
+        "pasta": "074_Carrossel_2026-09-02_quando-falamos-em-micropigmentacao-masculina-o",
+        "formato": "Carrossel",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 3.31,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20261007T190800_DTVg7axDkId",
+      "tiktok_id": "DTVg7axDkId",
+      "source_url": "https://www.instagram.com/p/DTVg7axDkId/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-08T11:44:00-06:00",
+      "scheduled_at_utc": "2026-10-08T17:44:00+00:00",
+      "slot_id": "wd-midday",
       "rank": 144,
       "media": {
         "kind": "reel",
@@ -1827,7 +1914,7 @@
           "by": "local"
         }
       ],
-      "scheduled_at_operador": "2026-10-07T22:08:00-03:00",
+      "scheduled_at_operador": "2026-10-08T14:44:00-03:00",
       "origem": {
         "pasta": "144_Reel_2026-01-10_agonia-no-final-arte-treino-resultado",
         "formato": "Reel",
@@ -1835,6 +1922,272 @@
         "balde": "A",
         "score": 2.01,
         "observacoes": []
+      }
+    },
+    {
+      "id": "q_20261008T190400_DdExjr9DOHN",
+      "tiktok_id": "DdExjr9DOHN",
+      "source_url": "https://www.instagram.com/p/DdExjr9DOHN/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-08T19:04:00-06:00",
+      "scheduled_at_utc": "2026-10-09T01:04:00+00:00",
+      "slot_id": "wd-evening",
+      "rank": 76,
+      "media": {
+        "kind": "image",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DdExjr9DOHN.jpg",
+        "asset_name": "DdExjr9DOHN.jpg",
+        "release_tag": "media-v1",
+        "sha256": "acb5f7a487d3465b1fe4bf937195e8116b674849aa5017221bd6cc2ea14b30cd",
+        "bytes": 433726
+      },
+      "caption": "Cuando el pelo es fino, escaso y poco expresivo, el Shadow puede ser la elección más sofisticada para cambiar una mirada.\n\nEra exactamente el caso de esta clienta. Y por eso elegí el esfumado.\n\nEl Shadow me permite construir profundidad y volumen sin tener que crear una ceja excesivamente dibujada. La ausencia de bordes rígidos es lo que marca la diferencia: el color se construye de manera gradual y da dimensión sin pesar sobre una piel clara y delicada.\n\nEl resultado es una mirada más presente y, al mismo tiempo, muy natural.\n\nPorque volumen no significa peso. Significa densidad bien distribuida, y eso se decide antes de la primera pasada.\n\n#shadow #micropigmentacion #cejas #cejasfinas #tecnica",
+      "caption_fingerprint": "27a9a771cf024f51",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T19:11:45.987203+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:48.385080+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:48.385109+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:48.385113+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-08T22:04:00-03:00",
+      "origem": {
+        "pasta": "076_Imagem-unica_2026-09-09_quando-os-pelos-sao-finos-ralos",
+        "formato": "Imagem única",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 3.3,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20261009T184200_DTob23GiQYt",
+      "tiktok_id": "DTob23GiQYt",
+      "source_url": "https://www.instagram.com/p/DTob23GiQYt/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-09T11:48:00-06:00",
+      "scheduled_at_utc": "2026-10-09T17:48:00+00:00",
+      "slot_id": "wd-midday",
+      "rank": 153,
+      "media": {
+        "kind": "reel",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DTob23GiQYt.mp4",
+        "asset_name": "DTob23GiQYt.mp4",
+        "release_tag": "media-v1",
+        "sha256": "2f534dd2a9444cc8fc237e421cdf41676470d429140564596e77ab1821fa7e69",
+        "bytes": 2558031
+      },
+      "caption": "Pelo a pelo sobre alopecia. Mira de cerca cómo entra cada trazo.\n\nCuando no queda pelo natural que acompañar, la referencia desaparece y hay que construirla entera. No existe un pelo vecino que corrija el ángulo ni que disimule un trazo torcido: lo que se implanta es exactamente lo que se va a ver.\n\nPor eso acá la dirección se decide antes, en el proyecto, y no en la mano.\n\nCada trazo entra con una curvatura y una separación pensadas para que el conjunto respire. Si salen todos paralelos, la ceja parece peinada. Si se cruzan de más, parece sucia.\n\nEl punto exacto entre esas dos cosas es lo que se aprende practicando.\n\n#alopecia #peloapelo #micropigmentacion #cejas #tecnica",
+      "caption_fingerprint": "38bb8c4c72267b41",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T19:11:50.747143+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:53.858793+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:53.858950+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:53.858962+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-09T14:48:00-03:00",
+      "origem": {
+        "pasta": "153_Reel_2026-01-17_fio-a-fio-em-alopecia-micropigmentacao",
+        "formato": "Reel",
+        "editorial": "História de cliente",
+        "balde": "A",
+        "score": 1.92,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20261009T114800_DcJjR9FGWGO",
+      "tiktok_id": "DcJjR9FGWGO",
+      "source_url": "https://www.instagram.com/p/DcJjR9FGWGO/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-09T18:42:00-06:00",
+      "scheduled_at_utc": "2026-10-10T00:42:00+00:00",
+      "slot_id": "wd-evening",
+      "rank": 83,
+      "media": {
+        "kind": "image",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DcJjR9FGWGO.jpg",
+        "asset_name": "DcJjR9FGWGO.jpg",
+        "release_tag": "media-v1",
+        "sha256": "58f3cf903cf338bed85775c9d71a836019ea8eca3dd2d8dab982defa820d0584",
+        "bytes": 546276
+      },
+      "caption": "La piel grasa no es un obstáculo para un buen resultado. Es un factor que exige más conocimiento técnico.\n\nUno de los errores más caros en micropigmentación es tratar todas las pieles igual. La piel grasa tiene características propias: más producción de sebo, otro comportamiento durante la implantación y una respuesta de cicatrización que hay que considerar desde el proyecto.\n\nEso cambia toda la estrategia. La profundidad de implantación, la saturación del pigmento, la construcción del degradado y hasta la elección de los movimientos se adaptan para que la piel reciba el color de forma equilibrada y previsible.\n\nEl trazo fino cerrado tiende a expandirse en este tipo de piel. Quien no lo prevé entrega una ceja linda hoy y una mancha en treinta días.\n\n#pielgrasa #micropigmentacion #cejas #shadow #tecnica",
+      "caption_fingerprint": "5d3e4689601fdff8",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T19:11:48.385210+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:50.746958+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:50.747002+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:50.747008+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-09T21:42:00-03:00",
+      "origem": {
+        "pasta": "083_Imagem-unica_2026-08-17_pele-oleosa-nao-e-um-obstaculo",
+        "formato": "Imagem única",
+        "editorial": "Erro técnico / alerta",
+        "balde": "A",
+        "score": 3.11,
+        "observacoes": []
+      }
+    },
+    {
+      "id": "q_20261010T115400_DRhQz0hDtag",
+      "tiktok_id": "DRhQz0hDtag",
+      "source_url": "https://www.instagram.com/p/DRhQz0hDtag/",
+      "status": "scheduled",
+      "scheduled_at": "2026-10-10T11:54:00-06:00",
+      "scheduled_at_utc": "2026-10-10T17:54:00+00:00",
+      "slot_id": "we-midday",
+      "rank": 168,
+      "media": {
+        "kind": "reel",
+        "asset_url": "https://github.com/mktjamesolaya-cloud/jamesolaya-es-social/releases/download/media-v1/DRhQz0hDtag.mp4",
+        "asset_name": "DRhQz0hDtag.mp4",
+        "release_tag": "media-v1",
+        "sha256": "1f4bc7750820922035e9f5fe59bee27d310f7a7d29a219daecfde20dce50be6f",
+        "bytes": 10404605
+      },
+      "caption": "Cuando el pelo a pelo se encuentra con el pelo natural, el resultado cambia por completo.\n\nMucha gente cree que el pelo a pelo en dermógrafo solo sirve para quien no tiene pelo. En la práctica, algunos de los resultados más bonitos ocurren justamente en quien tiene pelo fino, escaso o espaciado.\n\nLa clave está en la continuidad: los trazos implantados tienen que entrar en el ritmo de lo que ya existe, llenar donde hay falla y desaparecer donde el pelo natural toma el control.\n\nEso no se improvisa. Antes de llegar a una piel, la mano pasa por la fase de látex, de trazo repetido, de corregir el ángulo mil veces.\n\nLa precisión que ves acá es la parte visible de esa etapa.\n\n#peloapelo #dermografo #micropigmentacion #cejas #formacion",
+      "caption_fingerprint": "6b44e05c18185cf3",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-09-28T19:11:53.859118+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:56.766188+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:56.766242+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local"
+        },
+        {
+          "at": "2026-09-28T19:11:56.766247+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local"
+        }
+      ],
+      "scheduled_at_operador": "2026-10-10T14:54:00-03:00",
+      "origem": {
+        "pasta": "168_Reel_2025-11-26_quando-o-fio-a-fio-encontra",
+        "formato": "Reel",
+        "editorial": "Aula técnica",
+        "balde": "A",
+        "score": 1.8,
+        "observacoes": [
+          "cita cidade brasileira na legenda"
+        ]
       }
     }
   ]

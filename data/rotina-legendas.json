@@ -47,6 +47,21 @@
         "DLmskw7Omkv"
       ],
       "nota": "Primeiro lote montado ja com 'remesclar' no fim: a fila de 19 itens alterna video e estatico quase perfeitamente (sequencia 2)."
+    },
+    {
+      "quando": "2026-09-28T17:05-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DcywBZjFKC3",
+        "DdExjr9DOHN",
+        "DcJjR9FGWGO",
+        "DTob23GiQYt",
+        "DRhQz0hDtag"
+      ],
+      "pulados": [
+        "DFs-ERIRibJ"
+      ],
+      "nota": "24 itens na fila, ate 10/10. Depois da remescla a sequencia caiu para 1: alternancia perfeita entre video e estatico."
     }
   ]
 }
