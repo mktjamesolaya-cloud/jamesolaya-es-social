@@ -365,6 +365,28 @@
         "DFX6dfRx1cp"
       ],
       "nota": "Reels livres caindo: 14 restantes depois deste lote."
+    },
+    {
+      "quando": "2026-09-29T02:30-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DMDBRJGufHa",
+        "DDKHQjRRPkE",
+        "DVyJqz2CeFr",
+        "DL93tffsN0E",
+        "DbBlBo1oPEg",
+        "DBzoLocS2a-",
+        "DFETAGXteb9",
+        "DHb3td-RS5O"
+      ],
+      "pulados": [
+        "DdRAVnEDhyz",
+        "DPHq7xHiXtM",
+        "DOLfaUSCTpD",
+        "DPpFc90EjrK",
+        "DFX6dfRx1cp"
+      ],
+      "nota": "Este lote levou quatro tentativas por causa da rede, e cada falha revelou um defeito diferente na hospedagem: colisao de nome do --clobber, repo_slug consultado uma vez por arquivo, e ausencia de repeticao para queda passageira. A pior parte era o tudo-ou-nada: dezenas de arquivos ja hospedados e nada gravado na fila. Agora a hospedagem e retomavel."
     }
   ]
 }

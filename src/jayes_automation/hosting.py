@@ -15,8 +15,10 @@ import hashlib
 import json
 import os
 import subprocess
+import time
 import urllib.error
 import urllib.request
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -33,13 +35,42 @@ class HostingError(RuntimeError):
     """A release or asset operation failed."""
 
 
+#: Marcas de falha passageira de rede. Nao sao erro de uso: sao a conexao
+#: caindo no meio de um upload de dezenas de MB. Repetir resolve; desistir
+#: derruba um lote inteiro que ja estava quase todo hospedado.
+TRANSITORIOS = (
+    "operation timed out",
+    "connection reset",
+    "unexpected EOF",
+    "i/o timeout",
+    "TLS handshake timeout",
+    "server misbehaving",
+)
+TENTATIVAS = 4
+
+
+def _transitorio(erro: str) -> bool:
+    baixo = erro.lower()
+    return any(marca.lower() in baixo for marca in TRANSITORIOS)
+
+
 def _gh(*args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
-    try:
-        result = subprocess.run(["gh", *args], capture_output=True, text=True, check=False)
-    except FileNotFoundError as error:
-        raise HostingError(
-            "O CLI 'gh' nao esta instalado. Instale com 'brew install gh' e rode 'gh auth login'."
-        ) from error
+    espera = 3
+    for tentativa in range(1, TENTATIVAS + 1):
+        try:
+            result = subprocess.run(["gh", *args], capture_output=True, text=True, check=False)
+        except FileNotFoundError as error:
+            raise HostingError(
+                "O CLI 'gh' nao esta instalado. Instale com 'brew install gh' e rode "
+                "'gh auth login'."
+            ) from error
+        if result.returncode == 0 or not check:
+            break
+        if tentativa < TENTATIVAS and _transitorio(result.stderr):
+            time.sleep(espera)
+            espera *= 2
+            continue
+        break
     if check and result.returncode != 0:
         erro = result.stderr.strip()
         # 404 no host de upload quase nunca e "release nao existe": e a conta
@@ -60,8 +91,16 @@ def _gh(*args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
     return result
 
 
+@lru_cache(maxsize=1)
 def repo_slug() -> str:
-    """``owner/repo``, from the CI environment or the local git remote."""
+    """``owner/repo``, do ambiente de CI ou do remote local.
+
+    Em cache porque ``upload_asset`` chama isto uma vez por arquivo: um lote de
+    oito posts com carrossel vira dezenas de idas a api.github.com para
+    descobrir algo que nao muda durante a execucao. Foi uma dessas chamadas que
+    estourou por timeout de rede e derrubou um lote inteiro em 29/09/2026,
+    depois de metade dos arquivos ja ter subido.
+    """
     from_env = os.environ.get("GITHUB_REPOSITORY")
     if from_env:
         return from_env
@@ -101,20 +140,70 @@ def ensure_release(tag: str) -> str:
     return tag
 
 
+def assets_da_release(tag: str, *, recarregar: bool = False) -> dict[str, int]:
+    """``{nome: bytes}`` do que ja esta hospedado. Uma chamada, em cache.
+
+    Existe para tornar a hospedagem retomavel. Um lote de oito posts sao dezenas
+    de arquivos e varios minutos de upload; uma queda de rede no meio derrubava
+    tudo e nada era gravado na fila, mesmo com quase todos os arquivos ja la em
+    cima. Sabendo o que ja existe, repetir o comando continua de onde parou em
+    vez de comecar do zero.
+    """
+    if recarregar or tag not in _ASSETS_CACHE:
+        saida = _gh("release", "view", tag, "--json", "assets", check=False)
+        if saida.returncode != 0:
+            return {}
+        dados = json.loads(saida.stdout or "{}").get("assets") or []
+        _ASSETS_CACHE[tag] = {a["name"]: int(a.get("size") or 0) for a in dados}
+    return _ASSETS_CACHE[tag]
+
+
+_ASSETS_CACHE: dict[str, dict[str, int]] = {}
+
+
 def upload_asset(path: Path, tag: str, *, slug: str | None = None) -> dict[str, Any]:
     """Upload one normalized MP4 and return everything the queue needs to cite it."""
     if not path.exists():
         raise HostingError(f"Arquivo nao existe: {path}")
     ensure_release(tag)
+
+    tamanho = path.stat().st_size
+    ja_la = assets_da_release(tag)
+    if ja_la.get(path.name) == tamanho:
+        # Mesmo nome e mesmo tamanho: nao ha o que subir de novo. O sha256 ainda
+        # e recalculado localmente, entao a fila continua carregando a impressao
+        # digital do arquivo que esta em disco.
+        slug = slug or repo_slug()
+        return {
+            "release_tag": tag,
+            "asset_name": path.name,
+            "asset_url": asset_url(tag, path.name, slug),
+            "sha256": sha256_of(path),
+            "bytes": tamanho,
+            "reaproveitado": True,
+        }
+
     # --clobber makes re-hosting a re-normalized file idempotent.
-    _gh("release", "upload", tag, str(path), "--clobber")
+    try:
+        _gh("release", "upload", tag, str(path), "--clobber")
+    except HostingError as erro:
+        # O --clobber do gh apaga e sobe de novo, e em lote grande ele perde a
+        # corrida consigo mesmo: a API responde 422 'ReleaseAsset.name already
+        # exists' com o asset ja no lugar. Apagar explicitamente e repetir
+        # resolve. Sem isto, um lote de oito posts morria no meio e nada era
+        # gravado na fila, apesar de metade dos arquivos ja estar hospedada.
+        if "already exists" not in str(erro):
+            raise
+        _gh("release", "delete-asset", tag, path.name, "--yes", check=False)
+        _gh("release", "upload", tag, str(path))
+    _ASSETS_CACHE.setdefault(tag, {})[path.name] = tamanho
     slug = slug or repo_slug()
     return {
         "release_tag": tag,
         "asset_name": path.name,
         "asset_url": asset_url(tag, path.name, slug),
         "sha256": sha256_of(path),
-        "bytes": path.stat().st_size,
+        "bytes": tamanho,
     }
 
 
