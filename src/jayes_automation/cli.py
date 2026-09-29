@@ -357,6 +357,9 @@ def cmd_plan_es(args: argparse.Namespace) -> int:
     config = scheduling.load_slots(paths.slots)
     tz = ZoneInfo(config.get("timezone", scheduling.TIMEZONE))
 
+    if not args.dry_run:
+        hosting.conferir_conta()
+
     ja_na_fila = {item["tiktok_id"] for item in fila["items"]}
     candidatos = [c for c in _candidatos(args, paths) if c.short_code not in ja_na_fila]
     aprovadas = legendas_es.carregar_aprovadas(paths.captions_dir)

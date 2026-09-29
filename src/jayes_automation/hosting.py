@@ -108,6 +108,25 @@ def repo_slug() -> str:
     return json.loads(result.stdout)["nameWithOwner"]
 
 
+def conferir_conta() -> None:
+    """Falha cedo se a conta ativa do gh nao puder escrever neste repositorio.
+
+    A maquina tem varias contas logadas e ``gh auth switch`` e global: qualquer
+    outro terminal troca a ativa no meio do trabalho. Aconteceu tres vezes em
+    28 e 29/09/2026, e a descoberta vinha sempre tarde -- no 404 do primeiro
+    upload, com parte do lote ja no ar. Conferir antes custa uma chamada.
+    """
+    if os.environ.get("GITHUB_REPOSITORY"):
+        return  # no runner a autenticacao vem do proprio Actions
+    quem = _gh("api", "user", "-q", ".login", check=False).stdout.strip()
+    dono = repo_slug().split("/", 1)[0]
+    if quem and dono and quem.lower() != dono.lower():
+        raise HostingError(
+            f"A conta ativa do gh e '{quem}', mas o repositorio e de '{dono}'. "
+            f"Rode: gh auth switch --user {dono}"
+        )
+
+
 def sha256_of(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:

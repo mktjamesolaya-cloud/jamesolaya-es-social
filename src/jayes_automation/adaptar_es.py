@@ -147,6 +147,10 @@ def aplicar(
             raise AdaptacaoError(f"{short_code}: nao consegui gravar {destino}")
         return destino
 
+    if receita.get("tipo") == "legenda_queimada":
+        queimar_legenda(origem, destino, receita, altura=int(receita.get("altura") or 1280))
+        return destino
+
     if not shutil.which("ffmpeg"):
         raise AdaptacaoError("ffmpeg nao encontrado no PATH")
 
@@ -169,3 +173,147 @@ def substituir(arquivos: list[Path], short_code: str, destino_raiz: Path) -> lis
     if not pasta.is_dir():
         return arquivos
     return [(pasta / a.name) if (pasta / a.name).exists() else a for a in arquivos]
+
+
+# ---------------------------------------------------------------------------
+# Legenda em espanhol queimada no video
+# ---------------------------------------------------------------------------
+#
+# Para os Reels em que o James fala em portugues. A voz continua a dele --
+# dublar com IA foi considerado e descartado pelo cliente: a voz nao seria a
+# dele e o passo nao caberia no pipeline automatico.
+#
+# A traducao e escrita a mao, segmento a segmento, e fica registrada na receita.
+# Nao da para automatizar: a transcricao do Whisper vem com erros que so quem
+# conhece o assunto desfaz. No piloto ele transcreveu "fio a fio no dermografo"
+# como "Fiofilcundermografo" e "residual" como "riso dual".
+
+#: Estilo da legenda. Branco com contorno preto e o padrao do proprio perfil, e
+#: sobrevive a qualquer fundo -- pele clara, luva preta ou clinica iluminada.
+ESTILO_ASS = (
+    "Style: Es,Arial,{corpo},&H00FFFFFF,&H000000FF,&H00000000,&H00000000,"
+    "-1,0,0,0,100,100,0,0,{tipo_borda},{borda},0,2,20,20,{margem},1"
+)
+
+#: Altura da legenda como fracao da altura do video, medida a partir de baixo.
+#:
+#: So se legenda Reel que NAO tenha legenda queimada. Tentei cobrir a legenda
+#: automatica em portugues de um deles com caixa opaca por tras da traducao, e
+#: nao funciona: a antiga tem de uma a tres linhas, muda de altura a cada fala,
+#: e sobra portugues acima ou abaixo. Esses Reels sao descartados.
+MARGEM_PADRAO = 0.14
+
+
+def _tempo_ass(segundos: float) -> str:
+    h, resto = divmod(max(0.0, float(segundos)), 3600)
+    m, s = divmod(resto, 60)
+    return f"{int(h)}:{int(m):02d}:{s:05.2f}"
+
+
+def montar_ass(segmentos: list[dict[str, Any]], altura: int = 1280, **opcoes: Any) -> str:
+    """Arquivo .ass com a legenda em espanhol, ja posicionada e estilizada.
+
+    O corpo da fonte sai da altura do video para a legenda ocupar a mesma
+    proporcao em 720x1280 e em 1080x1920.
+    """
+    corpo = max(18, round(altura * (opcoes.get("corpo") or 0.036)))
+    # BorderStyle 3 desenha uma caixa opaca atras do texto; 1 desenha so o
+    # contorno. A caixa existe para tapar legenda em portugues ja queimada, e
+    # por isso vem com borda larga: ela precisa ser mais alta e mais larga que
+    # a linha antiga para cobri-la.
+    estilo = ESTILO_ASS.format(
+        corpo=corpo,
+        borda=max(2, round(corpo * (0.55 if opcoes.get("cobrir") else 0.12))),
+        margem=round(altura * (opcoes.get("margem") or MARGEM_PADRAO)),
+        tipo_borda=3 if opcoes.get("cobrir") else 1,
+    )
+    linhas = [
+        "[Script Info]",
+        "ScriptType: v4.00+",
+        "WrapStyle: 0",
+        "ScaledBorderAndShadow: yes",
+        f"PlayResX: {round(altura * 0.5625)}",
+        f"PlayResY: {altura}",
+        "",
+        "[V4+ Styles]",
+        "Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,"
+        "BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,"
+        "BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding",
+        estilo,
+        "",
+        "[Events]",
+        "Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text",
+    ]
+    minimo = int(opcoes.get("linhas_minimas") or 0)
+    for s in segmentos:
+        texto = str(s["txt"]).replace("\n", "\\N")
+        # Com caixa opaca, o que cobre a legenda antiga e a ALTURA da caixa, e
+        # ela acompanha o numero de linhas. Legenda automatica em portugues tem
+        # duas ou tres linhas; se a traducao couber em uma, sobra portugues
+        # aparecendo por baixo. Completar com linhas vazias iguala a altura.
+        if minimo:
+            faltam = minimo - (texto.count("\\N") + 1)
+            if faltam > 0:
+                texto = "\\N" * faltam + texto
+        linhas.append(
+            f"Dialogue: 0,{_tempo_ass(s['ini'])},{_tempo_ass(s['fim'])},Es,,0,0,0,,{texto}"
+        )
+    return "\n".join(linhas) + "\n"
+
+
+def queimar_legenda(
+    origem: Path, destino: Path, receita: dict[str, Any], *, altura: int = 1280
+) -> None:
+    """Grava o video com a legenda em espanhol embutida."""
+    segmentos = receita.get("segmentos") or []
+    if not segmentos:
+        raise AdaptacaoError("receita de legenda sem 'segmentos'")
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    ass = destino.parent / f"{destino.stem}.ass"
+    ass.write_text(
+        montar_ass(
+            segmentos,
+            altura,
+            cobrir=receita.get("cobrir"),
+            linhas_minimas=receita.get("linhas_minimas"),
+            margem=receita.get("margem"),
+            corpo=receita.get("corpo"),
+        ),
+        encoding="utf-8",
+    )
+    # O caminho do .ass entra escapado: o filtro subtitles usa ':' como
+    # separador de opcao, entao um caminho absoluto cru quebra o filtro.
+    caminho = str(ass).replace("\\", "/").replace(":", r"\:")
+    resultado = subprocess.run(
+        [
+            "ffmpeg",
+            "-nostdin",
+            "-loglevel",
+            "error",
+            "-y",
+            "-i",
+            str(origem),
+            "-vf",
+            f"subtitles='{caminho}'",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "medium",
+            "-crf",
+            "20",
+            "-pix_fmt",
+            "yuv420p",
+            "-map_metadata",
+            "-1",
+            "-c:a",
+            "copy",
+            str(destino),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if resultado.returncode != 0 or not destino.exists():
+        raise AdaptacaoError(
+            f"ffmpeg falhou ao queimar a legenda ({resultado.returncode}): "
+            f"{resultado.stderr.strip()[:400]}"
+        )

@@ -409,6 +409,32 @@
         "DKiIW0BuHMy"
       ],
       "nota": "Primeiro lote com a hospedagem retomavel: passou de primeira."
+    },
+    {
+      "quando": "2026-09-29T04:30-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DMYlbpvsm_u",
+        "DMtK2a7OAUX"
+      ],
+      "pulados": [
+        "DLBB3UAO9XR",
+        "DRNm61OCXBT",
+        "DCbTeudxXEN",
+        "DBpDoYAyUTV",
+        "DbeG7BhjvRh",
+        "DVb8TCBETM2",
+        "DHW8FySJ7Jb",
+        "DdZ7-sWjwmP",
+        "DTDhEQJDt4q",
+        "DElBOoaJwPk",
+        "DJxgG0wpNta",
+        "DNVu2QUxeMY",
+        "DNbfQJTJ-j5",
+        "DF2m6GsxYwy",
+        "DP7INq3CfHk"
+      ],
+      "nota": "Balde B avaliado inteiro: dos 17 Reels, 2 renderam. Quatro tinham legenda automatica em portugues JA queimada (a triagem nao viu), dois eram o mesmo video, um tinha dialogo que o Whisper embaralhou demais para traduzir com honestidade, e o resto era datado, longo demais ou sem conteudo. O caminho da legenda queimada ficou pronto e testado, e vale para quando aparecerem Reels limpos com fala."
     }
   ]
 }

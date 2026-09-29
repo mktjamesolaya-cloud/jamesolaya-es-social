@@ -226,3 +226,45 @@ def test_caminho_inexistente_falha_antes_de_qualquer_rede(tmp_path, monkeypatch)
     with pytest.raises(hosting.HostingError, match="nao existe"):
         hosting.upload_asset(Path(tmp_path / "sumiu.mp4"), "media-v1")
     assert gh.chamadas == []
+
+
+# --- conta ativa ----------------------------------------------------------
+#
+# 'gh auth switch' e global e a maquina tem varias contas logadas. Tres vezes
+# em dois dias a conta ativa trocou no meio de um lote, e a descoberta vinha no
+# 404 do primeiro upload, com parte dos arquivos ja no ar.
+
+
+def test_conta_errada_falha_antes_de_subir(monkeypatch):
+    def respostas(args):
+        if args[1:3] == ["api", "user"]:
+            return resultado(0, "outra-pessoa\n")
+        return resultado(0)
+
+    gh = instala(monkeypatch, respostas)
+    monkeypatch.setenv("GITHUB_REPOSITORY", "dono/repo")
+    monkeypatch.delenv("GITHUB_REPOSITORY")
+    monkeypatch.setattr(hosting, "repo_slug", lambda: "dono/repo")
+    with pytest.raises(hosting.HostingError, match="gh auth switch --user dono"):
+        hosting.conferir_conta()
+    assert gh.comandos("release", "upload") == []
+
+
+def test_conta_certa_passa(monkeypatch):
+    def respostas(args):
+        if args[1:3] == ["api", "user"]:
+            return resultado(0, "dono\n")
+        return resultado(0)
+
+    instala(monkeypatch, respostas)
+    monkeypatch.delenv("GITHUB_REPOSITORY", raising=False)
+    monkeypatch.setattr(hosting, "repo_slug", lambda: "dono/repo")
+    hosting.conferir_conta()
+
+
+def test_no_runner_nao_confere_conta(monkeypatch):
+    """No Actions a autenticacao vem do proprio runner; 'gh api user' so gastaria rede."""
+    gh = instala(monkeypatch, lambda args: resultado(0, "seja-quem-for"))
+    monkeypatch.setenv("GITHUB_REPOSITORY", "dono/repo")
+    hosting.conferir_conta()
+    assert gh.chamadas == []

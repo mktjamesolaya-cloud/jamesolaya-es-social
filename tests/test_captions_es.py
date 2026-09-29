@@ -165,3 +165,41 @@ def test_texto_completo_junta_legenda_e_hashtags():
 def test_texto_completo_sem_hashtags():
     r = ces.montar("ABC", {"x": 1}, caption=BOA, hashtags=[])
     assert ces.texto_completo(r) == BOA
+
+
+# --- nomes de produto -----------------------------------------------------
+#
+# Os pigmentos da linha chamam-se "Clarao de Zeus", "Paixao de Afrodite",
+# "Encanto de Iris". Sao SKU: nao se traduzem, e varios carregam ortografia
+# portuguesa. Sem mascara-los, o detector acusa portugues vazando numa legenda
+# que esta correta -- e obriga a escolher entre traduzir um nome proprio (erro
+# que ja cometi com "Heitor") ou aprovar a forca.
+
+
+def test_nome_de_pigmento_nao_e_acusado_de_portugues():
+    texto = "Usé el Clarão de Zeus con un poco de Calor de Gaia y Medi Jab."
+    assert ces.detectar_portugues(texto) == []
+
+
+def test_portugues_de_verdade_continua_sendo_pego():
+    assert ces.detectar_portugues("Você não precisa de muita sobrancelha.")
+
+
+def test_portugues_ao_lado_de_um_nome_de_produto_nao_escapa():
+    """Mascarar o SKU nao pode virar um buraco por onde o resto passe."""
+    achados = ces.detectar_portugues("Usé Clarão de Zeus, mas não ficou bom.")
+    assert achados, "o 'mas nao ficou bom' tinha que ser acusado"
+
+
+def test_legenda_com_pigmento_passa_no_validador():
+    texto = (
+        "En este caso usé el Clarão de Zeus con Calor de Gaia, buscando un tono "
+        "que conversara con el pelo natural en lugar de competir con él."
+    )
+    assert ces.validate_es(texto, ["#cejas", "#pigmentos", "#tecnica"]) == []
+
+
+def test_todo_nome_de_produto_sobrevive_a_mascara():
+    for nome in ces.NOMES_DE_PRODUTO:
+        limpo = ces.sem_nomes_de_produto(f"Texto con {nome} adentro.")
+        assert nome.lower() not in limpo.lower(), f"{nome} nao foi mascarado"

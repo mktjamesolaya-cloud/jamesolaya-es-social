@@ -60,9 +60,245 @@
       "filtros": "delogo=x=130:y=725:w=470:h=195:enable='lte(t,5.9)',drawtext=fontfile='/System/Library/Fonts/Supplemental/Arial Bold.ttf':text='Falta mucha':fontcolor=white:fontsize=58:borderw=6:bordercolor=black:x=(w-text_w)/2-50:y=735:enable='lte(t,5.9)',drawtext=fontfile='/System/Library/Fonts/Supplemental/Arial Bold.ttf':text='densidad aquí':fontcolor=white:fontsize=58:borderw=6:bordercolor=black:x=(w-text_w)/2-50:y=825:enable='lte(t,5.9)'",
       "por_que_delogo": "A area e pele quase uniforme, entao o delogo nao deixa borrao visivel, e o texto novo em espanhol cobre o rastro que sobra. O estilo (branco com contorno preto, mesmo corpo) foi reproduzido para o post nao parecer remendado.",
       "conferido": "OCR nos frames 1s, 3s e 5s devolve ['Falta mucha','densidad aquí'] e nada em 7s -- o portugues saiu e a janela de tempo esta certa."
+    },
+    "DMYlbpvsm_u": {
+      "tipo": "legenda_queimada",
+      "arquivo": "video.mp4",
+      "altura": 1280,
+      "visto_em": "2026-09-29",
+      "motivo": "Balde B: 3 minutos de fala em portugues, sem nenhum texto na tela. Legenda em espanhol queimada no rodape.",
+      "sobre_a_traducao": "A transcricao que existia em audio.json parava aos 60s de um video de 180s. Retranscrevi com mlx_whisper. O CTA final foi adaptado: o original convida para o curso presencial em Campinas, que nao serve a este publico, entao virou o curso online.",
+      "segmentos": [
+        {
+          "ini": 0.0,
+          "fim": 4.4,
+          "txt": "Ven conmigo a ver este efecto Shadow\nsobre un fondo naranja."
+        },
+        {
+          "ini": 4.4,
+          "fim": 9.0,
+          "txt": "Es posible, siempre que ese naranja esté\ncomo lo ves en esta imagen."
+        },
+        {
+          "ini": 9.0,
+          "fim": 12.4,
+          "txt": "Ella es Michelle, una de nuestras artistas."
+        },
+        {
+          "ini": 12.4,
+          "fim": 15.0,
+          "txt": "Estaba haciendo el curso conmigo,\nperfeccionando la técnica."
+        },
+        {
+          "ini": 15.0,
+          "fim": 20.6,
+          "txt": "Esta semana tuvimos nuestro curso de Shadow\npara profesionales que quieren perfeccionarse."
+        },
+        {
+          "ini": 20.6,
+          "fim": 26.1,
+          "txt": "Como están viendo, les muestro de muy cerca\ntodos los detalles, los movimientos"
+        },
+        {
+          "ini": 26.1,
+          "fim": 33.1,
+          "txt": "que se hacen para lograr ese acabado\nsofisticado, con bordes elegantes."
+        },
+        {
+          "ini": 33.1,
+          "fim": 38.6,
+          "txt": "Y lo más importante: el color del pigmento,\npara no volver a un tono antiestético."
+        },
+        {
+          "ini": 38.6,
+          "fim": 43.1,
+          "txt": "En este caso usé el Clarão de Zeus\nde la línea JAY.O,"
+        },
+        {
+          "ini": 43.1,
+          "fim": 48.6,
+          "txt": "con el Calor de Gaia,\nque es un marrón con rojizo."
+        },
+        {
+          "ini": 48.6,
+          "fim": 54.3,
+          "txt": "Bastante amarillo del Clarão de Zeus\nmás bastante rojo da un pigmento neutro."
+        },
+        {
+          "ini": 54.3,
+          "fim": 57.8,
+          "txt": "Mira: la primera pasada,\nsolo transferencia a la piel."
+        },
+        {
+          "ini": 57.8,
+          "fim": 61.3,
+          "txt": "Tiene que quedar clarito así.\nNo puede quedar fuerte en la primera pasada."
+        },
+        {
+          "ini": 61.3,
+          "fim": 67.8,
+          "txt": "Si no, no puedo construir las capas\nque hacen ese degradado tan bonito."
+        },
+        {
+          "ini": 67.8,
+          "fim": 74.3,
+          "txt": "Porque el propósito de esta técnica\nes lograr un Shadow natural."
+        },
+        {
+          "ini": 74.3,
+          "fim": 79.8,
+          "txt": "Un Shadow con profundidad, que dure,\npero que no quede pesado."
+        },
+        {
+          "ini": 79.8,
+          "fim": 83.8,
+          "txt": "Los alumnos miraban con mucha atención,\nbien de cerca."
+        },
+        {
+          "ini": 83.8,
+          "fim": 87.3,
+          "txt": "Dejo que todos se acerquen.\nYa estoy acostumbrado, no me molesta."
+        },
+        {
+          "ini": 87.3,
+          "fim": 93.3,
+          "txt": "Y cada etapa la construimos\ncon los dermocosméticos de la línea JAY.O."
+        },
+        {
+          "ini": 93.3,
+          "fim": 97.3,
+          "txt": "Los colores que usé: Clarão de Zeus."
+        },
+        {
+          "ini": 97.3,
+          "fim": 103.8,
+          "txt": "Ahora que me acuerdo: Clarão de Zeus,\nun poco de Medi Jab y Calor de Gaia."
+        },
+        {
+          "ini": 103.8,
+          "fim": 112.3,
+          "txt": "Esos tres, con mayor proporción de Clarão de Zeus\ny mitad y mitad del Calor de Gaia."
+        },
+        {
+          "ini": 112.3,
+          "fim": 118.3,
+          "txt": "Mira de cerca qué bonito quedó este resultado."
+        },
+        {
+          "ini": 118.3,
+          "fim": 123.3,
+          "txt": "Fíjate en la densidad: donde ella tenía\nmás pelo natural, al principio."
+        },
+        {
+          "ini": 123.3,
+          "fim": 127.8,
+          "txt": "Intentamos copiar esa densidad hacia la cola,\npero sin recargarla."
+        },
+        {
+          "ini": 127.8,
+          "fim": 134.3,
+          "txt": "El efecto quedó elegante, sofisticado,\ncon aspecto de sombra."
+        },
+        {
+          "ini": 134.3,
+          "fim": 138.3,
+          "txt": "Sin ese aspecto de maquillaje\ndefinitivo antiguo."
+        },
+        {
+          "ini": 138.3,
+          "fim": 144.3,
+          "txt": "Que a ella no le quedaría bien,\nporque quiere una ceja más ligera."
+        },
+        {
+          "ini": 144.3,
+          "fim": 151.3,
+          "txt": "De cerca se ve que la mezcla de esos tres\ncolores da una ilusión óptica muy bonita."
+        },
+        {
+          "ini": 151.8,
+          "fim": 154.8,
+          "txt": "Las capas también quedaron muy sofisticadas."
+        },
+        {
+          "ini": 154.8,
+          "fim": 159.8,
+          "txt": "Y si quieres aprender a lograr\nun Shadow así de elegante,"
+        },
+        {
+          "ini": 159.8,
+          "fim": 162.8,
+          "txt": "primero, sígueme por aquí\ny acompáñame todos los días."
+        },
+        {
+          "ini": 162.8,
+          "fim": 170.8,
+          "txt": "Y segundo, conoce mi plataforma de educación\nonline, con formaciones como esta."
+        },
+        {
+          "ini": 170.8,
+          "fim": 174.8,
+          "txt": "Comenta ONLINE y te cuento\ncómo estudiar conmigo."
+        },
+        {
+          "ini": 174.8,
+          "fim": 179.8,
+          "txt": "¿Te gustó el resultado? A mí me encantó.\nCuéntame en los comentarios."
+        }
+      ]
+    },
+    "DMtK2a7OAUX": {
+      "tipo": "legenda_queimada",
+      "arquivo": "video.mp4",
+      "altura": 1280,
+      "visto_em": "2026-09-29",
+      "motivo": "Balde B: fala em portugues nos primeiros 39s, sem texto na tela. Legenda em espanhol queimada no rodape.",
+      "sobre_a_traducao": "'Olha isso, Brasil' virou so 'Miren esto': a interpelacao ao publico brasileiro nao faz sentido aqui. Depois dos 39s nao ha fala, so o resultado na tela.",
+      "segmentos": [
+        {
+          "ini": 0.0,
+          "fim": 5.0,
+          "txt": "Miren: este lado es la preparación\ny este lado es la ejecución."
+        },
+        {
+          "ini": 5.0,
+          "fim": 11.0,
+          "txt": "Les voy a mostrar cómo quedó este trabajo."
+        },
+        {
+          "ini": 11.0,
+          "fim": 15.0,
+          "txt": "Miren esto."
+        },
+        {
+          "ini": 19.0,
+          "fim": 21.0,
+          "txt": "Miren esto."
+        },
+        {
+          "ini": 22.0,
+          "fim": 24.0,
+          "txt": "¿Están viendo?"
+        },
+        {
+          "ini": 24.0,
+          "fim": 32.0,
+          "txt": "Es una técnica con pocos trazos aplicados\nque produce un volumen sensacional."
+        },
+        {
+          "ini": 32.0,
+          "fim": 36.0,
+          "txt": "100% hecho con dermógrafo."
+        },
+        {
+          "ini": 36.0,
+          "fim": 39.0,
+          "txt": "Miren qué linda quedó esta ceja."
+        }
+      ]
     }
   },
   "_nao_precisou": {
-    "DXFg5NEB4MS": "A triagem marcou balde C por 'VEJA ESSE VIDEO / ate o final', mas esse texto so existe na capa.jpg do post original. Varri os 152s do video de 5 em 5 segundos com OCR: nada. Publicando pela API a capa sai do proprio video, entao nao ha o que editar."
+    "DXFg5NEB4MS": "A triagem marcou balde C por 'VEJA ESSE VIDEO / ate o final', mas esse texto so existe na capa.jpg do post original. Varri os 152s do video de 5 em 5 segundos com OCR: nada. Publicando pela API a capa sai do proprio video, entao nao ha o que editar.",
+    "_legenda_queimada_por_cima": "Tentei cobrir a legenda automatica em portugues de DLBB3UAO9XR com uma caixa opaca atras da legenda em espanhol. Nao funciona de forma confiavel: a legenda antiga tem de uma a tres linhas e muda de altura, entao sobra portugues acima ou abaixo da caixa, e nos trechos em que a traducao nao cobre (o fim do video) ela aparece sozinha. O resultado parece remendo e qualquer quadro nao conferido vaza portugues. Reel com legenda queimada e descartado, nao remendado. 29/09/2026."
   }
 }

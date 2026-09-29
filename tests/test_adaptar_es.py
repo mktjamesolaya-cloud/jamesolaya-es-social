@@ -132,14 +132,19 @@ def test_arquivo_de_receitas_e_valido():
         # passam pelo ffmpeg.
         assert receita.get("motivo"), f"{short_code} sem motivo registrado"
         assert receita.get("arquivo"), f"{short_code} sem arquivo alvo"
-        if receita.get("tipo") != "imagem_texto":
-            assert receita.get("filtros"), f"{short_code} sem filtros"
+        tipo = receita.get("tipo")
+        if tipo == "imagem_texto":
+            continue
+        if tipo == "legenda_queimada":
+            assert receita.get("segmentos"), f"{short_code} sem segmentos"
+            continue
+        assert receita.get("filtros"), f"{short_code} sem filtros"
 
 
 def test_toda_receita_produz_um_comando_montavel(tmp_path):
     """Um filtro escrito errado so apareceria depois de minutos de encode."""
     for short_code, receita in adaptar_es.carregar(RECEITAS_REAIS).items():
-        if receita.get("tipo") == "imagem_texto":
+        if receita.get("tipo") in {"imagem_texto", "legenda_queimada"}:
             continue
         cmd = adaptar_es.comando(tmp_path / "a.mp4", tmp_path / "b.mp4", receita)
         assert cmd[0] == "ffmpeg", short_code
@@ -224,3 +229,67 @@ def test_receitas_de_card_no_repositorio_tem_o_que_precisam():
         for chave in ("apagar", "fonte", "tamanho", "texto_em", "altura_linha", "linhas"):
             assert r.get(chave), f"{short_code} sem '{chave}'"
         assert len(r["apagar"]) == 4, f"{short_code}: 'apagar' precisa de 4 coordenadas"
+
+
+# --- legenda queimada -----------------------------------------------------
+#
+# Para os Reels em que o James fala em portugues e nao ha texto na tela. A voz
+# continua a dele; a traducao entra como legenda. Onde o video JA traz legenda
+# automatica em portugues, o post e descartado -- cobrir a antiga com uma caixa
+# nao funciona, porque ela muda de altura a cada fala.
+
+
+def test_ass_traz_um_dialogo_por_segmento():
+    ass = adaptar_es.montar_ass(
+        [{"ini": 0, "fim": 2, "txt": "Hola"}, {"ini": 2, "fim": 4, "txt": "Adiós"}]
+    )
+    assert ass.count("Dialogue:") == 2
+    assert "Hola" in ass and "Adiós" in ass
+
+
+def test_ass_converte_o_tempo_para_o_formato_do_formato():
+    ass = adaptar_es.montar_ass([{"ini": 65.5, "fim": 70.25, "txt": "x"}])
+    assert "0:01:05.50" in ass
+    assert "0:01:10.25" in ass
+
+
+def test_quebra_de_linha_vira_marcacao_do_ass():
+    """Um \\n cru no .ass encerra o dialogo e corta a legenda pela metade."""
+    ass = adaptar_es.montar_ass([{"ini": 0, "fim": 2, "txt": "uno\ndos"}])
+    assert "uno\\Ndos" in ass
+    assert "uno\ndos" not in ass
+
+
+def test_corpo_da_fonte_acompanha_a_altura_do_video():
+    """A legenda tem que ocupar a mesma proporcao em 720x1280 e em 1080x1920."""
+    import re as _re
+
+    def corpo(altura):
+        ass = adaptar_es.montar_ass([{"ini": 0, "fim": 1, "txt": "x"}], altura)
+        return int(_re.search(r"Style: Es,Arial,(\d+)", ass).group(1))
+
+    assert corpo(1920) > corpo(1280)
+
+
+def test_receita_de_legenda_sem_segmentos_e_erro(tmp_path):
+    with pytest.raises(adaptar_es.AdaptacaoError, match="sem 'segmentos'"):
+        adaptar_es.queimar_legenda(tmp_path / "a.mp4", tmp_path / "b.mp4", {"segmentos": []})
+
+
+@pytest.mark.parametrize(
+    "short_code,receita",
+    [
+        (k, v)
+        for k, v in adaptar_es.carregar(RECEITAS_REAIS).items()
+        if v.get("tipo") == "legenda_queimada"
+    ],
+    ids=lambda x: x if isinstance(x, str) else "",
+)
+def test_segmentos_reais_estao_em_ordem_e_nao_se_sobrepoem(short_code, receita):
+    """Segmento fora de ordem faz a legenda piscar ou sumir no player."""
+    anterior = -1.0
+    for s in receita["segmentos"]:
+        assert s["ini"] >= anterior, f"{short_code}: segmento comeca antes do anterior"
+        assert s["fim"] > s["ini"], f"{short_code}: segmento sem duracao"
+        assert str(s["txt"]).strip(), f"{short_code}: segmento vazio"
+        anterior = s["fim"]

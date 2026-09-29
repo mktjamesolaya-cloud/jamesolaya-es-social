@@ -79,6 +79,38 @@ MARCAS_PT_FRACAS = [
 #: Palavras iguais nos dois idiomas. Sem esta lista, "natural", "profesional" e
 #: "tecnica" dariam falso positivo o tempo todo. "está" e "saber" entraram aqui
 #: depois de reprovarem um texto espanhol correto num teste.
+#: Nomes dos pigmentos da linha JAY.O. Sao SKU, nao vocabulario: nao se
+#: traduzem, e varios carregam ortografia portuguesa ("Clarao de Zeus",
+#: "Paixao de Afrodite"). Sem mascara-los, o detector acusa portugues vazando
+#: numa legenda que esta correta -- e o certo seria justamente nao mexer neles,
+#: como ja aconteceu com o nome proprio "Heitor", que eu traduzi por engano.
+NOMES_DE_PRODUTO = (
+    "Clarão de Zeus",
+    "Escuro de Hades",
+    "Calor de Gaia",
+    "Médio de Hebe",
+    "Encanto de Íris",
+    "Rubor de Narciso",
+    "Luz de Pandora",
+    "Calor de Aurora",
+    "Paixão de Afrodite",
+    "Medi Jab",
+    "Vogue Brows",
+    "Magic Shadow",
+    "Lips Sense",
+    "JayNano",
+    "Jay.O",
+    "JAY.O",
+)
+
+_PRODUTOS = re.compile("|".join(re.escape(n) for n in NOMES_DE_PRODUTO), re.I)
+
+
+def sem_nomes_de_produto(texto: str) -> str:
+    """O texto sem os nomes de produto, para o detector nao os confundir."""
+    return _PRODUTOS.sub(" ", texto or "")
+
+
 IGUAIS_NOS_DOIS = frozenset(
     {
         "natural",
@@ -166,6 +198,8 @@ def detectar_portugues(texto: str) -> list[str]:
     revisao, falso negativo custa portugues publicado.
     """
     achados: list[str] = []
+
+    texto = sem_nomes_de_produto(texto)
 
     for regex, rotulo in MARCAS_PT_FORTES:
         for m in regex.finditer(texto):
