@@ -1,0 +1,21 @@
+{
+  "tiktok_id": "DWRKeILjhs0",
+  "prompt_version": "es-v1",
+  "model": "claude-opus-5-sessao",
+  "generated_at": "2026-09-29T08:06:23.254457+00:00",
+  "input_fingerprint": "sha256:e160bb23f78796f17df35e52cbc723c742b446467000c49462948ea9d697ebe5",
+  "caption": "Hay casos que no son sobre hacer. Son sobre corregir.\n\nEste paciente llegó con una micropigmentación antigua, hecha en otro país.\n\nCorregir eso no empieza pigmentando encima. Empieza midiendo cuánto del diseño viejo se puede aprovechar y cuánto hay que bajar antes de construir.\n\nY a veces la respuesta honesta es: primero remoción, después conversamos.\n\nPrometer una corrección en una sola sesión es justamente lo que trae a la gente hasta aquí.",
+  "hashtags": [
+    "#correccion",
+    "#remocion",
+    "#micropigmentacion",
+    "#cejas",
+    "#cejasmasculinas"
+  ],
+  "alt_text": "Hombre con una micropigmentacion antigua anaranjada antes y despues de la correccion",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-09-29T08:06:23.255101+00:00",
+  "history": []
+}
