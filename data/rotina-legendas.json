@@ -279,6 +279,26 @@
         "DcgubjklJSS"
       ],
       "nota": "O cron publicou DFQqB8cyul8 e empurrou a fila enquanto este lote estava sendo montado. Juntar as duas copias criou horarios repetidos, porque cada uma trazia uma permutacao diferente da mesma grade. O doctor pegou; o remesclar agora refaz a grade sozinho quando detecta repeticao."
+    },
+    {
+      "quando": "2026-09-28T23:40-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DGlXe0vRm_7",
+        "DH3Qj5yuoZv",
+        "DWlphI-iRDq",
+        "Db086rgnxoo",
+        "DVTQKqpCWG9",
+        "DCz-Qq2SEBv"
+      ],
+      "pulados": [
+        "DKhLEyXu6HM",
+        "DE7NLZFxsgz",
+        "Db6GgmBjAi4",
+        "Dc1UygNEtHr",
+        "DGHRRHes8yr"
+      ],
+      "nota": "85 posts ate 10/11."
     }
   ]
 }
