@@ -454,7 +454,7 @@
       "id": "q_20260928T190000_DFQqB8cyul8",
       "tiktok_id": "DFQqB8cyul8",
       "source_url": "https://www.instagram.com/p/DFQqB8cyul8/",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-09-28T19:00:00-06:00",
       "scheduled_at_utc": "2026-09-29T01:00:00+00:00",
       "slot_id": "wd-evening",
@@ -550,13 +550,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18025277552857751",
+      "container_created_at": "2026-09-29T01:00:48.909601+00:00",
+      "claimed_at": "2026-09-29T01:00:01.370248+00:00",
+      "claimed_by_run": "36488856873",
+      "instagram_media_id": "18128804050770241",
+      "permalink": "https://www.instagram.com/p/Dd2h8wfiUk-/",
+      "published_at": "2026-09-29T01:01:04.507822+00:00",
       "history": [
         {
           "at": "2026-09-28T15:11:38.401821+00:00",
@@ -581,6 +581,19 @@
           "from": "hosted",
           "to": "scheduled",
           "by": "local"
+        },
+        {
+          "at": "2026-09-29T01:00:01.370267+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 36488856873"
+        },
+        {
+          "at": "2026-09-29T01:01:04.507846+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "scheduled_at_operador": "2026-09-28T22:00:00-03:00",
@@ -591,7 +604,19 @@
         "balde": "A",
         "score": 5.74,
         "observacoes": []
-      }
+      },
+      "carousel_children": [
+        "18025277345857751",
+        "18025277366857751",
+        "18025277384857751",
+        "18025277405857751",
+        "18025277423857751",
+        "18025277444857751",
+        "18025277465857751",
+        "18025277483857751",
+        "18025277504857751",
+        "18025277528857751"
+      ]
     },
     {
       "id": "q_20260929T121500_DRPL28YiZLP",
