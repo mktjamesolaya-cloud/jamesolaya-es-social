@@ -1,0 +1,21 @@
+{
+  "tiktok_id": "DXxYQqwCefG",
+  "prompt_version": "es-v1",
+  "model": "claude-opus-5-sessao",
+  "generated_at": "2026-09-29T02:21:41.592987+00:00",
+  "input_fingerprint": "sha256:3dd25baac1003923435b1f750eb7a2e033ad2b08c8c3d8b33330d254fc9716fa",
+  "caption": "No estás viendo solo un resultado. Estás viendo un proceso.\n\nCada imagen carga una etapa que mucha gente se salta: la construcción antes de la ejecución.\n\nNo empieza en el dermógrafo. Empieza en la mirada, en la medición, en las preguntas que se hacen antes de tocar la piel.\n\nCuando el resultado sale bien, nadie recuerda esa parte. Cuando sale mal, es siempre ahí donde estaba el error, y no en la mano.\n\nLa máquina no arregla un proyecto equivocado. Solo lo vuelve permanente.",
+  "hashtags": [
+    "#proceso",
+    "#visagismo",
+    "#micropigmentacion",
+    "#cejas",
+    "#peloapelo"
+  ],
+  "alt_text": "Carrusel con el antes, la construccion y el resultado de una micropigmentacion",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-09-29T02:21:41.593562+00:00",
+  "history": []
+}
