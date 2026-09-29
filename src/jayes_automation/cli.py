@@ -622,7 +622,9 @@ def cmd_remesclar(args: argparse.Namespace) -> int:
     if any(i.get("status") == "publishing" for i in fila["items"]):
         print("Ha item em 'publishing'; rode 'jayes reconcile' antes.", file=sys.stderr)
         return 1
-    resultado = planejar_es.remesclar(fila, alvo_video=args.alvo_video)
+    resultado = planejar_es.remesclar(
+        fila, config_slots=scheduling.load_slots(paths.slots), alvo_video=args.alvo_video
+    )
     if not args.dry_run and resultado.get("remesclados"):
         queue_mod.save_queue(fila, paths.queue)
     resultado["dry_run"] = args.dry_run

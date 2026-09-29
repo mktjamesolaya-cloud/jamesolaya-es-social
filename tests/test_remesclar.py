@@ -173,3 +173,77 @@ def test_fila_de_um_tipo_so_nao_quebra():
     r = planejar_es.remesclar(f, agora=agora())
     assert r["sequencia_depois"] == 4
     assert tipos(f) == ["reel"] * 4
+
+
+# --- grade quebrada -------------------------------------------------------
+#
+# Quando duas copias da fila sao juntadas -- o cron publica e empurra a fila
+# enquanto um lote novo esta sendo montado aqui -- cada copia traz uma
+# permutacao diferente da MESMA grade de horarios. Somar as duas produz
+# horarios repetidos, e reaproveitar essa grade so espalharia o problema.
+# Aconteceu em 28/09/2026 e quem pegou foi o 'doctor', depois do fato.
+
+SLOTS = {
+    "version": 1,
+    "timezone": "America/Mexico_City",
+    "posts_per_day": 2,
+    "min_gap_minutes": 300,
+    "jitter_minutes": 0,
+    "explore_every": 0,
+    "pool": [
+        {"id": "wd-midday", "weekdays": [0, 1, 2, 3, 4, 5, 6], "time": "12:00", "weight": 1.0},
+        {"id": "wd-evening", "weekdays": [0, 1, 2, 3, 4, 5, 6], "time": "19:00", "weight": 1.0},
+    ],
+}
+
+
+def fila_com_horarios_repetidos():
+    itens = [
+        item("A", "image", horas=0),
+        item("B", "reel", horas=7),
+        item("C", "image", horas=7),  # colide com B
+        item("D", "reel", horas=24),
+    ]
+    return fila(itens)
+
+
+def test_grade_repetida_e_refeita_do_zero():
+    f = fila_com_horarios_repetidos()
+    r = planejar_es.remesclar(f, config_slots=SLOTS, agora=agora())
+    assert r["grade_refeita"] is True
+    horarios = [i["scheduled_at"] for i in f["items"] if i["status"] == "scheduled"]
+    assert len(horarios) == len(set(horarios)), "ainda ha horario repetido"
+
+
+def test_grade_sadia_nao_e_refeita():
+    """Refazer sem necessidade moveria posts de horario sem motivo."""
+    f = fila(
+        [item("A", "image", horas=0), item("B", "reel", horas=7), item("C", "image", horas=24)]
+    )
+    antes = sorted(i["scheduled_at"] for i in f["items"])
+    r = planejar_es.remesclar(f, config_slots=SLOTS, agora=agora())
+    assert r["grade_refeita"] is False
+    assert sorted(i["scheduled_at"] for i in f["items"]) == antes
+
+
+def test_grade_refeita_respeita_a_janela_intocavel():
+    """Refazer a grade nao pode adiantar um post para daqui a dez minutos."""
+    f = fila_com_horarios_repetidos()
+    momento = agora()
+    planejar_es.remesclar(f, config_slots=SLOTS, agora=momento)
+    limite = momento + timedelta(hours=planejar_es.JANELA_INTOCAVEL_HORAS)
+    for i in f["items"]:
+        if i["status"] != "scheduled":
+            continue
+        quando = datetime.fromisoformat(i["scheduled_at"])
+        if i["tiktok_id"] == "A":
+            continue  # esse ja estava dentro da janela e nao foi tocado
+        assert quando > limite, f"{i['tiktok_id']} foi adiantado para dentro da janela"
+
+
+def test_grade_refeita_sai_dos_horarios_do_slots_json():
+    f = fila_com_horarios_repetidos()
+    planejar_es.remesclar(f, config_slots=SLOTS, agora=agora())
+    for i in f["items"]:
+        if i["status"] == "scheduled" and i["tiktok_id"] != "A":
+            assert datetime.fromisoformat(i["scheduled_at"]).hour in (12, 19)

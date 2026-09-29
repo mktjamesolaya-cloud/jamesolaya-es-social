@@ -239,6 +239,46 @@
         "DXh14iVCb8U"
       ],
       "nota": "O detector de celebridade nao pegou DPw3m49CWFy porque a legenda diz so \"uma famosa\", sem nome. Peguei pelo OCR do video. Vale lembrar que a regex cobre o obvio, nao o suficiente."
+    },
+    {
+      "quando": "2026-09-28T22:45-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DQEgyldCR6s",
+        "DdCMxX8G__d",
+        "DdMf8TIF2oj",
+        "DawI7Wgp9jS",
+        "DdJ7JonoKcq",
+        "DcB05EDlLUh",
+        "Dbi7WfIk-nT",
+        "DEpo8LGp1cT",
+        "DTqajlwiTiO"
+      ],
+      "pulados": [
+        "DaS97OmOn4A",
+        "DcgubjklJSS"
+      ],
+      "nota": "Maior lote ate agora, 9 de 13. scripts/contato.py passou a resolver a pasta pelo prefixo numerico -- os nomes sao truncados de formas imprevisiveis e digita-los de memoria falhava mais do que acertava."
+    },
+    {
+      "quando": "2026-09-28T23:15-03:00",
+      "modo": "manual, no chat",
+      "acrescentados": [
+        "DQEgyldCR6s",
+        "DdCMxX8G__d",
+        "DdMf8TIF2oj",
+        "DawI7Wgp9jS",
+        "DdJ7JonoKcq",
+        "DcB05EDlLUh",
+        "Dbi7WfIk-nT",
+        "DEpo8LGp1cT",
+        "DTqajlwiTiO"
+      ],
+      "pulados": [
+        "DaS97OmOn4A",
+        "DcgubjklJSS"
+      ],
+      "nota": "O cron publicou DFQqB8cyul8 e empurrou a fila enquanto este lote estava sendo montado. Juntar as duas copias criou horarios repetidos, porque cada uma trazia uma permutacao diferente da mesma grade. O doctor pegou; o remesclar agora refaz a grade sozinho quando detecta repeticao."
     }
   ]
 }

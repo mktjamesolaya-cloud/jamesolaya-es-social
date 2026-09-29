@@ -189,9 +189,36 @@ def montar_fila(
 JANELA_INTOCAVEL_HORAS = 1
 
 
+def _grade_nova(
+    quantos: int, config_slots: dict[str, Any], agora: datetime, tz: Any
+) -> list[dict[str, Any]]:
+    """Horarios novos, tirados do slots.json, para quando a grade veio quebrada."""
+    inicio = agora + timedelta(hours=JANELA_INTOCAVEL_HORAS)
+    por_dia = max(1, int(config_slots.get("posts_per_day", 2)))
+    dias = -(-quantos // por_dia) + 3
+    slots = scheduling.plan_slots(
+        inicio.date(), dias, config_slots, (), per_day=por_dia, not_before=inicio
+    )[:quantos]
+    if len(slots) < quantos:
+        raise ValueError(
+            f"slots.json rendeu {len(slots)} horarios para {quantos} itens; "
+            "amplie a janela de dias ou o pool"
+        )
+    return [
+        {
+            "scheduled_at": s.scheduled_at,
+            "scheduled_at_utc": s.scheduled_at_utc,
+            "scheduled_at_operador": s.local.astimezone(ZoneInfo(TZ_OPERADOR)).isoformat(),
+            "slot_id": s.slot_id,
+        }
+        for s in slots
+    ]
+
+
 def remesclar(
     fila: dict[str, Any],
     *,
+    config_slots: dict[str, Any] | None = None,
     alvo_video: float | None = None,
     agora: datetime | None = None,
 ) -> dict[str, Any]:
@@ -208,14 +235,16 @@ def remesclar(
     Publicado nao se toca, e nada dentro de ``JANELA_INTOCAVEL_HORAS`` tambem
     nao: um item prestes a sair ja pode estar sendo publicado.
     """
-    tz = None
+    config_slots = config_slots or {}
+    tz_publico = None
     moveis: list[dict[str, Any]] = []
     for item in fila["items"]:
         if item.get("status") not in {"scheduled", "retry"}:
             continue
         quando = datetime.fromisoformat(item["scheduled_at"])
-        tz = tz or quando.tzinfo
-        limite = (agora or datetime.now(quando.tzinfo)) + timedelta(hours=JANELA_INTOCAVEL_HORAS)
+        tz_publico = tz_publico or quando.tzinfo
+        agora = agora or datetime.now(quando.tzinfo)
+        limite = agora + timedelta(hours=JANELA_INTOCAVEL_HORAS)
         if quando <= limite:
             continue
         moveis.append(item)
@@ -233,6 +262,22 @@ def remesclar(
         }
         for i in moveis
     ]
+
+    # Se a grade ja vem com horario repetido, reaproveita-la so espalharia o
+    # problema. Isso acontece quando duas copias da fila sao juntadas: o
+    # 'remesclar' permuta os horarios entre os itens, entao duas permutacoes
+    # diferentes da MESMA grade viram colisao ao se encontrarem. Aconteceu em
+    # 28/09/2026, quando o cron publicou e empurrou a fila enquanto um lote
+    # novo estava sendo montado aqui.
+    #
+    # Nesse caso a grade e refeita do zero a partir do slots.json, o que tambem
+    # fecha buracos que tenham sobrado.
+    horarios = [g["scheduled_at"] for g in grade]
+    if len(horarios) != len(set(horarios)):
+        grade = _grade_nova(len(moveis), config_slots, agora, tz_publico)
+        refeita = True
+    else:
+        refeita = False
 
     antes = [(i["media"] or {}).get("kind", "reel") for i in moveis]
     if alvo_video is None:
@@ -258,6 +303,7 @@ def remesclar(
     depois = [(i["media"] or {}).get("kind", "reel") for i in novos]
     return {
         "remesclados": trocas,
+        "grade_refeita": refeita,
         "itens_moveis": len(moveis),
         "alvo_video": round(alvo_video, 4),
         "sequencia_antes": mescla.resumir([{"media_kind": k} for k in antes])[

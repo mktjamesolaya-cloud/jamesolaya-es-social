@@ -12,7 +12,13 @@ resultado eram mosaicos com metade das celulas pretas, que e pior que nao ter
 mosaico nenhum: da a impressao de ter conferido o que nao foi conferido.
 
 Uso:
-    uv run python scripts/contato.py saida.jpg video.mp4@0.5 foto.jpg ...
+    uv run python scripts/contato.py saida.jpg 211 212/slide-03.jpg 360@0.5 ...
+
+Cada entrada pode ser um caminho completo ou so o prefixo numerico da pasta no
+acervo (``211``), opcionalmente com um arquivo (``212/slide-03.jpg``). Resolver
+pelo prefixo existe porque os nomes de pasta sao truncados de formas
+imprevisiveis -- digita-los de memoria falhava mais do que acertava, e cada
+falha custava uma ida e volta.
 
 Um sufixo ``@fracao`` extrai aquele ponto de um video (0.5 = metade).
 """
@@ -27,6 +33,26 @@ from pathlib import Path
 
 CELULA = 380
 ROTULO = 26
+
+ACERVO = Path.home() / "PROJETOS_DEV" / "FormatosValidadosJamesolaya" / "melhores-conteudos"
+
+
+def resolver(entrada: str) -> Path:
+    """Aceita caminho completo, ``211`` ou ``211/slide-03.jpg``."""
+    caminho = Path(entrada)
+    if caminho.exists():
+        return caminho
+    prefixo, _, resto = entrada.partition("/")
+    pastas = sorted(ACERVO.glob(f"{prefixo}_*"))
+    if not pastas:
+        raise SystemExit(f"nao achei pasta com prefixo {prefixo!r} em {ACERVO}")
+    pasta = pastas[0]
+    if resto:
+        return pasta / resto
+    for nome in ("imagem.jpg", "slide-01.jpg", "video.mp4"):
+        if (pasta / nome).exists():
+            return pasta / nome
+    raise SystemExit(f"{pasta.name}: nao achei midia principal")
 
 
 def quadro_de_video(caminho: Path, fracao: float, destino: Path) -> Path:
@@ -73,16 +99,15 @@ def montar(saida: Path, entradas: list[str]) -> None:
     celulas: list[tuple[Image.Image, str]] = []
     for n, bruto in enumerate(entradas):
         alvo, _, frac = bruto.partition("@")
-        caminho = Path(alvo)
+        caminho = resolver(alvo)
         if caminho.suffix.lower() in {".mp4", ".mov"}:
             caminho = quadro_de_video(caminho, float(frac or 0.5), tmp / f"{n}.jpg")
         im = Image.open(caminho).convert("RGB")
         im.thumbnail((CELULA, CELULA), Image.LANCZOS)
         fundo = Image.new("RGB", (CELULA, CELULA + ROTULO), (245, 245, 245))
         fundo.paste(im, ((CELULA - im.width) // 2, (CELULA - im.height) // 2))
-        ImageDraw.Draw(fundo).text(
-            (6, CELULA + 6), f"{n + 1}. {Path(alvo).parent.name[:40]}", fill=(0, 0, 0)
-        )
+        rotulo = f"{n + 1}. {caminho.parent.name[:38]}/{caminho.name}"
+        ImageDraw.Draw(fundo).text((6, CELULA + 6), rotulo, fill=(0, 0, 0))
         celulas.append((fundo, alvo))
 
     colunas = min(4, len(celulas)) or 1
