@@ -1,0 +1,21 @@
+{
+  "tiktok_id": "DMDBRJGufHa",
+  "prompt_version": "es-v1",
+  "model": "claude-opus-5-sessao",
+  "generated_at": "2026-09-29T02:41:16.277688+00:00",
+  "input_fingerprint": "sha256:c0f51c1f5af48398c358b8e85b15fe4be0a274d810e992680d5340c70e54cd80",
+  "caption": "Durante esta demostración atendí a una modelo con el pelo muy claro, y eso trajo reflexiones importantes sobre color, contraste y ligereza.\n\nEn pelo claro el error más común es elegir el pigmento por el color del cabello. No funciona así: lo que manda es el subtono de la piel y el contraste que esa cara soporta.\n\nUn tono correcto para un pelo oscuro, puesto en una ceja clara, no se lee como ceja. Se lee como una línea dibujada encima.\n\nAquí bajé el contraste y trabajé con menos saturación de la que el ojo pedía en el momento, sabiendo que la cicatrización lo suaviza aún más.\n\nEn piel y pelo claros, el margen de error es la mitad.",
+  "hashtags": [
+    "#peloclaro",
+    "#pigmentos",
+    "#contraste",
+    "#micropigmentacion",
+    "#cejas"
+  ],
+  "alt_text": "Demostracion de eleccion de color en una modelo de pelo claro",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-09-29T02:41:16.278462+00:00",
+  "history": []
+}
