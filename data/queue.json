@@ -2056,7 +2056,7 @@
       "id": "q_20261010T191500_DY28ON1iV99",
       "tiktok_id": "DY28ON1iV99",
       "source_url": "https://www.instagram.com/p/DY28ON1iV99/",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-10-07T19:08:00-06:00",
       "scheduled_at_utc": "2026-10-08T01:08:00+00:00",
       "slot_id": "wd-evening",
@@ -2120,13 +2120,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18026397050857751",
+      "container_created_at": "2026-10-08T01:15:56.278716+00:00",
+      "claimed_at": "2026-10-08T01:15:23.541383+00:00",
+      "claimed_by_run": "37711989511",
+      "instagram_media_id": "18446966623122314",
+      "permalink": "https://www.instagram.com/p/DeNu1UjjRMa/",
+      "published_at": "2026-10-08T01:16:11.183671+00:00",
       "history": [
         {
           "at": "2026-09-28T19:15:34.673484+00:00",
@@ -2151,6 +2151,19 @@
           "from": "hosted",
           "to": "scheduled",
           "by": "local"
+        },
+        {
+          "at": "2026-10-08T01:15:23.541402+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 37711989511"
+        },
+        {
+          "at": "2026-10-08T01:16:11.183688+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "scheduled_at_operador": "2026-10-07T22:08:00-03:00",
@@ -2161,7 +2174,15 @@
         "balde": "A",
         "score": 3.06,
         "observacoes": []
-      }
+      },
+      "carousel_children": [
+        "18026396924857751",
+        "18026396945857751",
+        "18026396969857751",
+        "18026396990857751",
+        "18026397011857751",
+        "18026397029857751"
+      ]
     },
     {
       "id": "q_20261011T114600_DDPUPgkpoOX",
