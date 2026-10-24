@@ -5267,7 +5267,7 @@
       "id": "q_20261028T120900_DWZA5bBDki8",
       "tiktok_id": "DWZA5bBDki8",
       "source_url": "https://www.instagram.com/p/DWZA5bBDki8/",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-10-24T11:40:00-06:00",
       "scheduled_at_utc": "2026-10-24T17:40:00+00:00",
       "slot_id": "we-midday",
@@ -5286,13 +5286,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18028619456857751",
+      "container_created_at": "2026-10-24T18:44:35.477699+00:00",
+      "claimed_at": "2026-10-24T18:44:30.255285+00:00",
+      "claimed_by_run": "40122078545",
+      "instagram_media_id": "18145234177598577",
+      "permalink": "https://www.instagram.com/p/De4zjx-m3TK/",
+      "published_at": "2026-10-24T18:44:38.676925+00:00",
       "history": [
         {
           "at": "2026-09-28T21:59:32.509880+00:00",
@@ -5317,6 +5317,19 @@
           "from": "hosted",
           "to": "scheduled",
           "by": "local"
+        },
+        {
+          "at": "2026-10-24T18:44:30.255310+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 40122078545"
+        },
+        {
+          "at": "2026-10-24T18:44:38.676950+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "scheduled_at_operador": "2026-10-24T14:40:00-03:00",
