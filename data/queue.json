@@ -8273,7 +8273,7 @@
       "id": "q_20261109T185800_DVTQKqpCWG9",
       "tiktok_id": "DVTQKqpCWG9",
       "source_url": "https://www.instagram.com/p/DVTQKqpCWG9/",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-11-10T18:58:00-06:00",
       "scheduled_at_utc": "2026-11-11T00:58:00+00:00",
       "slot_id": "wd-evening",
@@ -8337,13 +8337,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18031055105857751",
+      "container_created_at": "2026-11-11T01:52:02.078477+00:00",
+      "claimed_at": "2026-11-11T01:51:27.729718+00:00",
+      "claimed_by_run": "42941916702",
+      "instagram_media_id": "18389155558238751",
+      "permalink": "https://www.instagram.com/p/DflV_Lhjj71/",
+      "published_at": "2026-11-11T01:52:07.493683+00:00",
       "history": [
         {
           "at": "2026-09-29T02:10:24.489775+00:00",
@@ -8368,6 +8368,19 @@
           "from": "hosted",
           "to": "scheduled",
           "by": "local"
+        },
+        {
+          "at": "2026-11-11T01:51:27.729746+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 42941916702"
+        },
+        {
+          "at": "2026-11-11T01:52:07.493713+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "scheduled_at_operador": "2026-11-10T21:58:00-03:00",
@@ -8378,7 +8391,15 @@
         "balde": "A",
         "score": 1.34,
         "observacoes": []
-      }
+      },
+      "carousel_children": [
+        "18031054895857751",
+        "18031054916857751",
+        "18031054949857751",
+        "18031054991857751",
+        "18031055030857751",
+        "18031055060857751"
+      ]
     },
     {
       "id": "q_20261110T185800_DQrIqJXif3t",
